@@ -15,4 +15,6 @@
 - (void)configureForScene:(SKScene *)scene;
 - (void)configureForSceneNamed:(NSString *)sceneName;
 
+- (void)switchToViewController:(UIViewController *)viewController completion:(void (^)(void))completion;
+
 @end

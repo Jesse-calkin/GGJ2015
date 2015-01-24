@@ -27,6 +27,10 @@
 		AD4522B41A740AB3004DE629 /* HackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522B21A740AB3004DE629 /* HackViewController.m */; };
 		AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4522B31A740AB3004DE629 /* HackViewController.xib */; };
 		AD4522BE1A7428A0004DE629 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522BD1A7428A0004DE629 /* UIViewController+Additions.m */; };
+		DF8CE1791A742E0E00419701 /* PlanningScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8CE1781A742E0E00419701 /* PlanningScene.m */; };
+		DF8CE17D1A742E2B00419701 /* PlanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8CE17B1A742E2B00419701 /* PlanningViewController.m */; };
+		DF8CE17E1A742E2B00419701 /* PlanningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8CE17C1A742E2B00419701 /* PlanningViewController.xib */; };
+		DF8CE1821A742E8500419701 /* PlanningScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DF8CE1811A742E8500419701 /* PlanningScene.sks */; };
 		E4074F6D1A74179F00AF1A99 /* GGJTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6C1A74179F00AF1A99 /* GGJTimeline.m */; };
 		E4074F701A74195300AF1A99 /* GGJTimelineStage.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */; };
 		E4074F731A74198800AF1A99 /* GGJClock.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F721A74198800AF1A99 /* GGJClock.m */; };
@@ -76,6 +80,12 @@
 		AD4522B31A740AB3004DE629 /* HackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HackViewController.xib; sourceTree = "<group>"; };
 		AD4522BC1A7428A0004DE629 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
 		AD4522BD1A7428A0004DE629 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
+		DF8CE1771A742E0E00419701 /* PlanningScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningScene.h; sourceTree = "<group>"; };
+		DF8CE1781A742E0E00419701 /* PlanningScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningScene.m; sourceTree = "<group>"; };
+		DF8CE17A1A742E2B00419701 /* PlanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningViewController.h; sourceTree = "<group>"; };
+		DF8CE17B1A742E2B00419701 /* PlanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningViewController.m; sourceTree = "<group>"; };
+		DF8CE17C1A742E2B00419701 /* PlanningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanningViewController.xib; sourceTree = "<group>"; };
+		DF8CE1811A742E8500419701 /* PlanningScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlanningScene.sks; sourceTree = "<group>"; };
 		E4074F6B1A74179F00AF1A99 /* GGJTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimeline.h; sourceTree = "<group>"; };
 		E4074F6C1A74179F00AF1A99 /* GGJTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimeline.m; sourceTree = "<group>"; };
 		E4074F6E1A74195300AF1A99 /* GGJTimelineStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimelineStage.h; sourceTree = "<group>"; };
@@ -181,6 +191,7 @@
 				AD4522951A735640004DE629 /* SceneManager */,
 				AD4522901A7355D2004DE629 /* GameScene */,
 				88570FC51A73721300258D69 /* CoffeeScene */,
+				DF8CE1801A742E5200419701 /* Planning Scene */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -208,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				AD4522A41A740966004DE629 /* Main View Controller */,
+				DF8CE17F1A742E3300419701 /* Planning View Controller */,
 				AD4522A51A74096D004DE629 /* Coffee View Controller */,
 				AD4522A61A740979004DE629 /* Hack View Controller */,
 			);
@@ -252,6 +264,26 @@
 				AD4522BD1A7428A0004DE629 /* UIViewController+Additions.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		DF8CE17F1A742E3300419701 /* Planning View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF8CE17A1A742E2B00419701 /* PlanningViewController.h */,
+				DF8CE17B1A742E2B00419701 /* PlanningViewController.m */,
+				DF8CE17C1A742E2B00419701 /* PlanningViewController.xib */,
+			);
+			name = "Planning View Controller";
+			sourceTree = "<group>";
+		};
+		DF8CE1801A742E5200419701 /* Planning Scene */ = {
+			isa = PBXGroup;
+			children = (
+				DF8CE1811A742E8500419701 /* PlanningScene.sks */,
+				DF8CE1771A742E0E00419701 /* PlanningScene.h */,
+				DF8CE1781A742E0E00419701 /* PlanningScene.m */,
+			);
+			name = "Planning Scene";
 			sourceTree = "<group>";
 		};
 		E4074F6A1A74177F00AF1A99 /* Game Logic */ = {
@@ -350,10 +382,12 @@
 				88570FC41A73720B00258D69 /* CoffeeScene.sks in Resources */,
 				AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */,
 				88570FAC1A734F9500258D69 /* LaunchScreen.xib in Resources */,
+				DF8CE1821A742E8500419701 /* PlanningScene.sks in Resources */,
 				AD4522A11A737499004DE629 /* HackText in Resources */,
 				AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */,
 				AD4522B01A740A84004DE629 /* CoffeeViewController.xib in Resources */,
 				88570FA91A734F9500258D69 /* Images.xcassets in Resources */,
+				DF8CE17E1A742E2B00419701 /* PlanningViewController.xib in Resources */,
 				88570FA11A734F9500258D69 /* GameScene.sks in Resources */,
 				88570FA71A734F9500258D69 /* Main.storyboard in Resources */,
 			);
@@ -373,7 +407,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF8CE17D1A742E2B00419701 /* PlanningViewController.m in Sources */,
 				88570FA41A734F9500258D69 /* GameViewController.m in Sources */,
+				DF8CE1791A742E0E00419701 /* PlanningScene.m in Sources */,
 				88570F9C1A734F9500258D69 /* AppDelegate.m in Sources */,
 				AD4522B41A740AB3004DE629 /* HackViewController.m in Sources */,
 				AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */,
