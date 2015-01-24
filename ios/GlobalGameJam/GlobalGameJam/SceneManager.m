@@ -11,6 +11,7 @@
 NSString * const CoffeeSceneName = @"CoffeeScene";
 NSString * const GameSceneName = @"GameScene";
 NSString * const HackSceneName = @"HackScene";
+NSString * const PlanningSceneName = @"PlanningScene";
 
 @implementation SceneManager
 
@@ -39,7 +40,7 @@ NSString * const HackSceneName = @"HackScene";
 
 + (NSArray *)sceneNames
 {
-    NSArray *sceneNames = @[GameSceneName, CoffeeSceneName, HackSceneName];
+    NSArray *sceneNames = @[GameSceneName, CoffeeSceneName, HackSceneName, PlanningSceneName];
     return sceneNames;
 }
 
