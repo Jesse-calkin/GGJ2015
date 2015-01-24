@@ -19,9 +19,7 @@
 		88570FC41A73720B00258D69 /* CoffeeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88570FC31A73720B00258D69 /* CoffeeScene.sks */; };
 		88570FC81A73763B00258D69 /* CoffeeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570FC71A73763B00258D69 /* CoffeeScene.m */; };
 		AD4522941A73563B004DE629 /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522931A73563B004DE629 /* SceneManager.m */; };
-		AD4522981A736B39004DE629 /* HackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD4522971A736B39004DE629 /* HackScene.sks */; };
-		AD45229B1A736B5C004DE629 /* HackScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45229A1A736B5C004DE629 /* HackScene.m */; };
-		AD4522A11A737499004DE629 /* HackSceneText in Resources */ = {isa = PBXBuildFile; fileRef = AD4522A01A737499004DE629 /* HackSceneText */; };
+		AD4522A11A737499004DE629 /* HackText in Resources */ = {isa = PBXBuildFile; fileRef = AD4522A01A737499004DE629 /* HackText */; };
 		AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522A81A740A6C004DE629 /* MainViewController.m */; };
 		AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4522A91A740A6C004DE629 /* MainViewController.xib */; };
 		AD4522AF1A740A84004DE629 /* CoffeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522AD1A740A84004DE629 /* CoffeeViewController.m */; };
@@ -65,10 +63,7 @@
 		88570FC71A73763B00258D69 /* CoffeeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeScene.m; sourceTree = "<group>"; };
 		AD4522921A73563B004DE629 /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
 		AD4522931A73563B004DE629 /* SceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneManager.m; sourceTree = "<group>"; };
-		AD4522971A736B39004DE629 /* HackScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HackScene.sks; sourceTree = "<group>"; };
-		AD4522991A736B5C004DE629 /* HackScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackScene.h; sourceTree = "<group>"; };
-		AD45229A1A736B5C004DE629 /* HackScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackScene.m; sourceTree = "<group>"; };
-		AD4522A01A737499004DE629 /* HackSceneText */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HackSceneText; sourceTree = "<group>"; };
+		AD4522A01A737499004DE629 /* HackText */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HackText; sourceTree = "<group>"; };
 		AD4522A71A740A6C004DE629 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		AD4522A81A740A6C004DE629 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		AD4522A91A740A6C004DE629 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -180,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				AD4522951A735640004DE629 /* SceneManager */,
-				AD4522961A7369F5004DE629 /* HackScene */,
 				AD4522901A7355D2004DE629 /* GameScene */,
 				88570FC51A73721300258D69 /* CoffeeScene */,
 			);
@@ -204,17 +198,6 @@
 				AD4522931A73563B004DE629 /* SceneManager.m */,
 			);
 			name = SceneManager;
-			sourceTree = "<group>";
-		};
-		AD4522961A7369F5004DE629 /* HackScene */ = {
-			isa = PBXGroup;
-			children = (
-				AD4522991A736B5C004DE629 /* HackScene.h */,
-				AD45229A1A736B5C004DE629 /* HackScene.m */,
-				AD4522971A736B39004DE629 /* HackScene.sks */,
-				AD4522A01A737499004DE629 /* HackSceneText */,
-			);
-			name = HackScene;
 			sourceTree = "<group>";
 		};
 		AD4522A31A74095D004DE629 /* View Controllers */ = {
@@ -253,6 +236,7 @@
 				AD4522B11A740AB3004DE629 /* HackViewController.h */,
 				AD4522B21A740AB3004DE629 /* HackViewController.m */,
 				AD4522B31A740AB3004DE629 /* HackViewController.xib */,
+				AD4522A01A737499004DE629 /* HackText */,
 			);
 			name = "Hack View Controller";
 			sourceTree = "<group>";
@@ -353,10 +337,9 @@
 				88570FC41A73720B00258D69 /* CoffeeScene.sks in Resources */,
 				AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */,
 				88570FAC1A734F9500258D69 /* LaunchScreen.xib in Resources */,
-				AD4522A11A737499004DE629 /* HackSceneText in Resources */,
+				AD4522A11A737499004DE629 /* HackText in Resources */,
 				AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */,
 				AD4522B01A740A84004DE629 /* CoffeeViewController.xib in Resources */,
-				AD4522981A736B39004DE629 /* HackScene.sks in Resources */,
 				88570FA91A734F9500258D69 /* Images.xcassets in Resources */,
 				88570FA11A734F9500258D69 /* GameScene.sks in Resources */,
 				88570FA71A734F9500258D69 /* Main.storyboard in Resources */,
@@ -378,7 +361,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				88570FA41A734F9500258D69 /* GameViewController.m in Sources */,
-				AD45229B1A736B5C004DE629 /* HackScene.m in Sources */,
 				88570F9C1A734F9500258D69 /* AppDelegate.m in Sources */,
 				AD4522B41A740AB3004DE629 /* HackViewController.m in Sources */,
 				AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */,

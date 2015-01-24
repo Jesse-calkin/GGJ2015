@@ -31,18 +31,20 @@ static NSInteger CharactersPerTap = 20;
     [self clearButton:self.leftButton];
     [self clearButton:self.rightButton];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"HackSceneText" ofType:nil];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"HackText" ofType:nil];
     NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     self.fullString = fullString;
+    
+    [self updateLabel];
 }
 
 #pragma mark - Actions
 
 - (IBAction)buttonTapped:(UIButton *)button {
     if (button != self.lastButtonTapped) {
+        self.lastButtonTapped = button;
         self.numberOfTaps++;
-        NSString *currentString = [self currentString];
-        self.label.text = currentString;
+        [self updateLabel];
     }
 }
 
@@ -58,6 +60,11 @@ static NSInteger CharactersPerTap = 20;
     NSRange range = NSMakeRange(0, length);
     NSString *currentString = [self.fullString substringWithRange:range];
     return currentString;
+}
+
+- (void)updateLabel {
+    NSString *currentString = [self currentString];
+    self.label.text = currentString;
 }
 
 - (void)clearButton:(UIButton *)button {
