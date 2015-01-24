@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <SceneKit/SceneKit.h>
 
+extern NSString * const CoffeeSceneName;
+extern NSString * const GameSceneName;
+extern NSString * const HackSceneName;
+
 @interface SceneManager : NSObject
 
 + (SKScene *)sceneAtIndex:(NSInteger)index;

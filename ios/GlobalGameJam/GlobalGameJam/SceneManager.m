@@ -8,6 +8,10 @@
 
 #import "SceneManager.h"
 
+NSString * const CoffeeSceneName = @"CoffeeScene";
+NSString * const GameSceneName = @"GameScene";
+NSString * const HackSceneName = @"HackScene";
+
 @implementation SceneManager
 
 #pragma mark - Public
@@ -35,7 +39,7 @@
 
 + (NSArray *)sceneNames
 {
-    NSArray *sceneNames = @[@"GameScene",@"CoffeeScene"];
+    NSArray *sceneNames = @[GameSceneName, CoffeeSceneName, HackSceneName];
     return sceneNames;
 }
 
