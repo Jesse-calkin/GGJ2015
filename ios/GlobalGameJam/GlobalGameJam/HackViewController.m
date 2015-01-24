@@ -26,15 +26,13 @@ static NSInteger CharactersPerTap = 20;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.label.text = nil;
-    
-    [self clearButton:self.leftButton];
-    [self clearButton:self.rightButton];
-    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"HackText" ofType:nil];
     NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     self.fullString = fullString;
     
+    //  View setup.
+    [self clearButton:self.leftButton];
+    [self clearButton:self.rightButton];
     [self updateLabel];
 }
 
