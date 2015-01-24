@@ -15,18 +15,18 @@ public class MainGameScreen extends ScreenAdapter {
     Rectangle mClickRectangle;
     Vector3 mTouchPoint;
     OrthographicCamera mGuiCam;
-    float mX;
-    float mY;
+    int mX;
+    int mY;
 
     public MainGameScreen(final MyGdxGame game) {
+        mX = 230;
+        mY = 230;
         mGameInstance = game;
-        mClickRectangle = new Rectangle((int)mX, (int)mY, 130, 50);
+        mClickRectangle = new Rectangle(mX, mY, 130, 50);
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
         mGuiCam.setToOrtho(false, 800, 480);
         mGuiCam.update();
-        mX = 230;
-        mY = 230;
     }
 
     private void update() {
