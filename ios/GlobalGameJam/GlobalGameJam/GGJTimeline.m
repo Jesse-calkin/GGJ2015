@@ -7,7 +7,37 @@
 //
 
 #import "GGJTimeline.h"
+#import "NSTimer+CVPausable.h"
+
+
+@interface GGJTimeline ()
+
+@property (nonatomic) NSUInteger targetIndex;
+@property (nonatomic) NSUInteger playerIndex;
+
+@property (nonatomic) NSTimer *timer;
+
+@end
 
 @implementation GGJTimeline
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
+
+- (void)startClock
+{
+    
+}
+
+- (void)stopClock
+{
+    
+}
+
 
 @end

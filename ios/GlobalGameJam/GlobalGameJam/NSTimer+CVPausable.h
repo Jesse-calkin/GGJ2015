@@ -1,5 +1,5 @@
 //
-//  GGJClock.h
+//  NSTimer+CVPausable.h
 //  GlobalGameJam
 //
 //  Created by Carl Veazey on 1/24/15.
@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GGJClock : NSObject
+@interface NSTimer (CVPausable)
 
+- (void)pauseOrResume;
+- (BOOL)isPaused;
 
 @end

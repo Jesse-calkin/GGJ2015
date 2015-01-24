@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class GGJTimeline;
+
 #define APPDELEGATE (AppDelegate *)[[UIApplication sharedApplication] delegate]
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic) GGJTimeline *timeline;
 
 @end
 

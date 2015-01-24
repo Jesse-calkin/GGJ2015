@@ -30,7 +30,7 @@
 		AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4522B31A740AB3004DE629 /* HackViewController.xib */; };
 		E4074F6D1A74179F00AF1A99 /* GGJTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6C1A74179F00AF1A99 /* GGJTimeline.m */; };
 		E4074F701A74195300AF1A99 /* GGJTimelineStage.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */; };
-		E4074F731A74198800AF1A99 /* GGJClock.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F721A74198800AF1A99 /* GGJClock.m */; };
+		E4074F7A1A74366D00AF1A99 /* NSTimer+CVPausable.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F791A74366D00AF1A99 /* NSTimer+CVPausable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +82,8 @@
 		E4074F6C1A74179F00AF1A99 /* GGJTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimeline.m; sourceTree = "<group>"; };
 		E4074F6E1A74195300AF1A99 /* GGJTimelineStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimelineStage.h; sourceTree = "<group>"; };
 		E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimelineStage.m; sourceTree = "<group>"; };
-		E4074F711A74198800AF1A99 /* GGJClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJClock.h; sourceTree = "<group>"; };
-		E4074F721A74198800AF1A99 /* GGJClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJClock.m; sourceTree = "<group>"; };
+		E4074F781A74366D00AF1A99 /* NSTimer+CVPausable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+CVPausable.h"; sourceTree = "<group>"; };
+		E4074F791A74366D00AF1A99 /* NSTimer+CVPausable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+CVPausable.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,14 +260,22 @@
 		E4074F6A1A74177F00AF1A99 /* Game Logic */ = {
 			isa = PBXGroup;
 			children = (
+				E4074F741A74362800AF1A99 /* Foundation Categories */,
 				E4074F6B1A74179F00AF1A99 /* GGJTimeline.h */,
 				E4074F6C1A74179F00AF1A99 /* GGJTimeline.m */,
 				E4074F6E1A74195300AF1A99 /* GGJTimelineStage.h */,
 				E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */,
-				E4074F711A74198800AF1A99 /* GGJClock.h */,
-				E4074F721A74198800AF1A99 /* GGJClock.m */,
 			);
 			name = "Game Logic";
+			sourceTree = "<group>";
+		};
+		E4074F741A74362800AF1A99 /* Foundation Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E4074F781A74366D00AF1A99 /* NSTimer+CVPausable.h */,
+				E4074F791A74366D00AF1A99 /* NSTimer+CVPausable.m */,
+			);
+			name = "Foundation Categories";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +388,7 @@
 				88570FA41A734F9500258D69 /* GameViewController.m in Sources */,
 				AD45229B1A736B5C004DE629 /* HackScene.m in Sources */,
 				88570F9C1A734F9500258D69 /* AppDelegate.m in Sources */,
+				E4074F7A1A74366D00AF1A99 /* NSTimer+CVPausable.m in Sources */,
 				AD4522B41A740AB3004DE629 /* HackViewController.m in Sources */,
 				AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */,
 				AD4522AF1A740A84004DE629 /* CoffeeViewController.m in Sources */,
@@ -389,7 +398,6 @@
 				88570F9F1A734F9500258D69 /* GameScene.m in Sources */,
 				AD4522941A73563B004DE629 /* SceneManager.m in Sources */,
 				88570F991A734F9500258D69 /* main.m in Sources */,
-				E4074F731A74198800AF1A99 /* GGJClock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
