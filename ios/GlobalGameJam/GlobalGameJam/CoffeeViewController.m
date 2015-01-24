@@ -7,7 +7,6 @@
 //
 
 #import "CoffeeViewController.h"
-#import "SceneManager.h"
 #import "UIViewController+Additions.h"
 
 @implementation CoffeeViewController
