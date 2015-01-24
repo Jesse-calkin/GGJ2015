@@ -17,7 +17,7 @@
 		88570FAC1A734F9500258D69 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88570FAA1A734F9500258D69 /* LaunchScreen.xib */; };
 		88570FB81A734F9500258D69 /* GlobalGameJamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570FB71A734F9500258D69 /* GlobalGameJamTests.m */; };
 		88570FC41A73720B00258D69 /* CoffeeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88570FC31A73720B00258D69 /* CoffeeScene.sks */; };
-		88570FC81A73763B00258D69 /* CoffeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570FC71A73763B00258D69 /* CoffeScene.m */; };
+		88570FC81A73763B00258D69 /* CoffeeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570FC71A73763B00258D69 /* CoffeeScene.m */; };
 		AD4522941A73563B004DE629 /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522931A73563B004DE629 /* SceneManager.m */; };
 		AD4522981A736B39004DE629 /* HackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD4522971A736B39004DE629 /* HackScene.sks */; };
 		AD45229B1A736B5C004DE629 /* HackScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45229A1A736B5C004DE629 /* HackScene.m */; };
@@ -51,8 +51,8 @@
 		88570FB61A734F9500258D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88570FB71A734F9500258D69 /* GlobalGameJamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobalGameJamTests.m; sourceTree = "<group>"; };
 		88570FC31A73720B00258D69 /* CoffeeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoffeeScene.sks; sourceTree = "<group>"; };
-		88570FC61A73763B00258D69 /* CoffeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeScene.h; sourceTree = "<group>"; };
-		88570FC71A73763B00258D69 /* CoffeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeScene.m; sourceTree = "<group>"; };
+		88570FC61A73763B00258D69 /* CoffeeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeScene.h; sourceTree = "<group>"; };
+		88570FC71A73763B00258D69 /* CoffeeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeScene.m; sourceTree = "<group>"; };
 		AD4522921A73563B004DE629 /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
 		AD4522931A73563B004DE629 /* SceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneManager.m; sourceTree = "<group>"; };
 		AD4522971A736B39004DE629 /* HackScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HackScene.sks; sourceTree = "<group>"; };
@@ -142,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				88570FC31A73720B00258D69 /* CoffeeScene.sks */,
-				88570FC61A73763B00258D69 /* CoffeScene.h */,
-				88570FC71A73763B00258D69 /* CoffeScene.m */,
+				88570FC61A73763B00258D69 /* CoffeeScene.h */,
+				88570FC71A73763B00258D69 /* CoffeeScene.m */,
 			);
 			name = CoffeeScene;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 				88570FA41A734F9500258D69 /* GameViewController.m in Sources */,
 				AD45229B1A736B5C004DE629 /* HackScene.m in Sources */,
 				88570F9C1A734F9500258D69 /* AppDelegate.m in Sources */,
-				88570FC81A73763B00258D69 /* CoffeScene.m in Sources */,
+				88570FC81A73763B00258D69 /* CoffeeScene.m in Sources */,
 				88570F9F1A734F9500258D69 /* GameScene.m in Sources */,
 				AD4522941A73563B004DE629 /* SceneManager.m in Sources */,
 				88570F991A734F9500258D69 /* main.m in Sources */,

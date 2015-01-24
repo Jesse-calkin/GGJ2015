@@ -35,7 +35,7 @@
 
 + (NSArray *)sceneNames
 {
-    NSArray *sceneNames = @[@"GameScene"];
+    NSArray *sceneNames = @[@"GameScene",@"CoffeeScene"];
     return sceneNames;
 }
 
