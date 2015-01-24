@@ -22,8 +22,9 @@ public class MainGameScreen extends ScreenAdapter {
         mGameInstance = game;
         mClickRectangle = new Rectangle((int)mX, (int)mY, 130, 50);
         mTouchPoint = new Vector3();
-        mGuiCam = new OrthographicCamera(320, 480);
-        mGuiCam.position.set(320 / 2, 480 / 2, 0);
+        mGuiCam = new OrthographicCamera();
+        mGuiCam.setToOrtho(false, 800, 480);
+        mGuiCam.update();
         mX = 230;
         mY = 230;
     }
@@ -41,6 +42,8 @@ public class MainGameScreen extends ScreenAdapter {
     private void draw() {
         Gdx.gl.glClearColor(0, 0, 0, 2f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        mGameInstance.batch.setProjectionMatrix(mGuiCam.combined);
+
         mGameInstance.batch.begin();
         showWhiteboardZone();
         mGameInstance.batch.end();

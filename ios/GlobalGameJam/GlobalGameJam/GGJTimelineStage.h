@@ -11,5 +11,6 @@
 @interface GGJTimelineStage : NSObject
 
 @property (nonatomic, copy) NSString *stageName;
+@property (nonatomic) int stagePercentComplete;
 
 @end

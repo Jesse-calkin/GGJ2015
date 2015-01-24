@@ -12,8 +12,9 @@
 
 @interface GGJTimeline : NSObject
 
-@property (nonatomic) NSArray *timelineStages;
-@property (nonatomic) GGJTimelineStage *targetStage;
-@property (nonatomic) GGJTimelineStage *playerStage;
+
+// Just use this for now
+- (void)startClock;
+- (void)stopClock;
 
 @end
