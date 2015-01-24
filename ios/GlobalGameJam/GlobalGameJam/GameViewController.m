@@ -24,7 +24,7 @@
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    GameScene *scene = (GameScene *)[SceneManager sceneWithName:@"GameScene"];
+    GameScene *scene = (GameScene *)[SceneManager sceneAtIndex:0];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

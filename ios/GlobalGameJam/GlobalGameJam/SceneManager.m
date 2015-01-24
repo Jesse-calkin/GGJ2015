@@ -14,7 +14,9 @@
 
 + (SKScene *)sceneAtIndex:(NSInteger)index
 {
-    return nil;
+    NSString *sceneName = [self sceneNameAtIndex:index];
+    SKScene *scene = [self sceneWithName:sceneName];
+    return scene;
 }
 
 + (SKScene *)sceneWithName:(NSString *)name
@@ -27,6 +29,21 @@
     SKScene *scene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
     [arch finishDecoding];
     return scene;
+}
+
+#pragma mark - Private
+
++ (NSArray *)sceneNames
+{
+    NSArray *sceneNames = @[@"GameScene"];
+    return sceneNames;
+}
+
++ (NSString *)sceneNameAtIndex:(NSInteger)index
+{
+    NSArray *sceneNames = [self sceneNames];
+    NSString *sceneName = sceneNames[index];
+    return sceneName;
 }
 
 @end
