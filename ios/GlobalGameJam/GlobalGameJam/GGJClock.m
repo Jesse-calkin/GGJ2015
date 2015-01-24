@@ -10,7 +10,7 @@
 #import "NSTimer+CVPausable.h"
 
 static const NSTimeInterval TickLength = 3;
-static const NSUInteger GameLengthInTicks = 5;
+static const NSUInteger GameLengthInTicks = 100;
 
 NSString *const GGJClockTickElapsedNotification = @"GGJClockTickElapsedNotification";
 NSString *const GGJTimeUpNotification = @"GGJTimeUpNotification";

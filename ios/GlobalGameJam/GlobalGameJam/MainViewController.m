@@ -11,6 +11,7 @@
 #import "GGJClock.h"
 #import "GGJGameStateManager.h"
 @interface MainViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @end
 
 @implementation MainViewController
@@ -23,7 +24,9 @@
 
 - (void)handleClockTick
 {
-    NSLog(@"clock tick elapsed. Percentage: %lu", (unsigned long)[[[GGJGameStateManager sharedInstance] clock] percentageTimeElapsed]);
+    NSUInteger elapsedPercentage = [[[GGJGameStateManager sharedInstance] clock] percentageTimeElapsed];
+    float progress = (float)elapsedPercentage / 100;
+    [self.progressView setProgress:progress animated:YES];
 }
 
 #pragma mark - Actions
