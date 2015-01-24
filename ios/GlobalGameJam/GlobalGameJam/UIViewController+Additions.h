@@ -11,6 +11,7 @@
 
 @interface UIViewController (Additions)
 
+- (void)configureForScene;
 - (void)configureForScene:(SKScene *)scene;
 - (void)configureForSceneNamed:(NSString *)sceneName;
 

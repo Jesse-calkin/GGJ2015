@@ -11,6 +11,13 @@
 
 @implementation UIViewController (Additions)
 
+- (void)configureForScene {
+    Class class = [self class];
+    NSString *className = NSStringFromClass(class);
+    NSString *sceneName = [className stringByReplacingOccurrencesOfString:@"ViewController" withString:@"Scene"];
+    [self configureForSceneNamed:sceneName];
+}
+
 - (void)configureForScene:(SKScene *)scene {
     CGRect frame = self.view.bounds;
     SKView *skView = [[SKView alloc] initWithFrame:frame];
