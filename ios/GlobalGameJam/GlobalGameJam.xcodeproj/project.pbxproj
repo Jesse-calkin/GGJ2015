@@ -22,9 +22,12 @@
 		AD4522981A736B39004DE629 /* HackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD4522971A736B39004DE629 /* HackScene.sks */; };
 		AD45229B1A736B5C004DE629 /* HackScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45229A1A736B5C004DE629 /* HackScene.m */; };
 		AD4522A11A737499004DE629 /* HackSceneText in Resources */ = {isa = PBXBuildFile; fileRef = AD4522A01A737499004DE629 /* HackSceneText */; };
-		E481D68C1A7407AF001FD5FA /* GGJTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = E481D68B1A7407AF001FD5FA /* GGJTimeline.m */; };
-		E481D68F1A7407C5001FD5FA /* GGJTimelineStage.m in Sources */ = {isa = PBXBuildFile; fileRef = E481D68E1A7407C5001FD5FA /* GGJTimelineStage.m */; };
-		E481D6921A74082C001FD5FA /* GGJClock.m in Sources */ = {isa = PBXBuildFile; fileRef = E481D6911A74082C001FD5FA /* GGJClock.m */; };
+		AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522A81A740A6C004DE629 /* MainViewController.m */; };
+		AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4522A91A740A6C004DE629 /* MainViewController.xib */; };
+		AD4522AF1A740A84004DE629 /* CoffeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522AD1A740A84004DE629 /* CoffeeViewController.m */; };
+		AD4522B01A740A84004DE629 /* CoffeeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4522AE1A740A84004DE629 /* CoffeeViewController.xib */; };
+		AD4522B41A740AB3004DE629 /* HackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522B21A740AB3004DE629 /* HackViewController.m */; };
+		AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4522B31A740AB3004DE629 /* HackViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,12 +66,15 @@
 		AD4522991A736B5C004DE629 /* HackScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackScene.h; sourceTree = "<group>"; };
 		AD45229A1A736B5C004DE629 /* HackScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackScene.m; sourceTree = "<group>"; };
 		AD4522A01A737499004DE629 /* HackSceneText */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HackSceneText; sourceTree = "<group>"; };
-		E481D68A1A7407AF001FD5FA /* GGJTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimeline.h; sourceTree = "<group>"; };
-		E481D68B1A7407AF001FD5FA /* GGJTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimeline.m; sourceTree = "<group>"; };
-		E481D68D1A7407C5001FD5FA /* GGJTimelineStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimelineStage.h; sourceTree = "<group>"; };
-		E481D68E1A7407C5001FD5FA /* GGJTimelineStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimelineStage.m; sourceTree = "<group>"; };
-		E481D6901A74082C001FD5FA /* GGJClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJClock.h; sourceTree = "<group>"; };
-		E481D6911A74082C001FD5FA /* GGJClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJClock.m; sourceTree = "<group>"; };
+		AD4522A71A740A6C004DE629 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		AD4522A81A740A6C004DE629 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		AD4522A91A740A6C004DE629 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		AD4522AC1A740A84004DE629 /* CoffeeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeViewController.h; sourceTree = "<group>"; };
+		AD4522AD1A740A84004DE629 /* CoffeeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeViewController.m; sourceTree = "<group>"; };
+		AD4522AE1A740A84004DE629 /* CoffeeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoffeeViewController.xib; sourceTree = "<group>"; };
+		AD4522B11A740AB3004DE629 /* HackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackViewController.h; sourceTree = "<group>"; };
+		AD4522B21A740AB3004DE629 /* HackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackViewController.m; sourceTree = "<group>"; };
+		AD4522B31A740AB3004DE629 /* HackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HackViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +116,7 @@
 		88570F951A734F9500258D69 /* GlobalGameJam */ = {
 			isa = PBXGroup;
 			children = (
-				E481D6891A7406F8001FD5FA /* Game Logic */,
+				AD4522A31A74095D004DE629 /* View Controllers */,
 				AD45228D1A735581004DE629 /* Scenes */,
 				88570F9A1A734F9500258D69 /* AppDelegate.h */,
 				88570F9B1A734F9500258D69 /* AppDelegate.m */,
@@ -201,17 +207,44 @@
 			name = HackScene;
 			sourceTree = "<group>";
 		};
-		E481D6891A7406F8001FD5FA /* Game Logic */ = {
+		AD4522A31A74095D004DE629 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E481D68A1A7407AF001FD5FA /* GGJTimeline.h */,
-				E481D68B1A7407AF001FD5FA /* GGJTimeline.m */,
-				E481D68D1A7407C5001FD5FA /* GGJTimelineStage.h */,
-				E481D68E1A7407C5001FD5FA /* GGJTimelineStage.m */,
-				E481D6901A74082C001FD5FA /* GGJClock.h */,
-				E481D6911A74082C001FD5FA /* GGJClock.m */,
+				AD4522A41A740966004DE629 /* Main View Controller */,
+				AD4522A51A74096D004DE629 /* Coffee View Controller */,
+				AD4522A61A740979004DE629 /* Hack View Controller */,
 			);
-			name = "Game Logic";
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AD4522A41A740966004DE629 /* Main View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AD4522A71A740A6C004DE629 /* MainViewController.h */,
+				AD4522A81A740A6C004DE629 /* MainViewController.m */,
+				AD4522A91A740A6C004DE629 /* MainViewController.xib */,
+			);
+			name = "Main View Controller";
+			sourceTree = "<group>";
+		};
+		AD4522A51A74096D004DE629 /* Coffee View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AD4522AC1A740A84004DE629 /* CoffeeViewController.h */,
+				AD4522AD1A740A84004DE629 /* CoffeeViewController.m */,
+				AD4522AE1A740A84004DE629 /* CoffeeViewController.xib */,
+			);
+			name = "Coffee View Controller";
+			sourceTree = "<group>";
+		};
+		AD4522A61A740979004DE629 /* Hack View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AD4522B11A740AB3004DE629 /* HackViewController.h */,
+				AD4522B21A740AB3004DE629 /* HackViewController.m */,
+				AD4522B31A740AB3004DE629 /* HackViewController.xib */,
+			);
+			name = "Hack View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +328,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				88570FC41A73720B00258D69 /* CoffeeScene.sks in Resources */,
+				AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */,
 				88570FAC1A734F9500258D69 /* LaunchScreen.xib in Resources */,
 				AD4522A11A737499004DE629 /* HackSceneText in Resources */,
+				AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */,
+				AD4522B01A740A84004DE629 /* CoffeeViewController.xib in Resources */,
 				AD4522981A736B39004DE629 /* HackScene.sks in Resources */,
 				88570FA91A734F9500258D69 /* Images.xcassets in Resources */,
 				88570FA11A734F9500258D69 /* GameScene.sks in Resources */,
@@ -321,13 +357,13 @@
 				88570FA41A734F9500258D69 /* GameViewController.m in Sources */,
 				AD45229B1A736B5C004DE629 /* HackScene.m in Sources */,
 				88570F9C1A734F9500258D69 /* AppDelegate.m in Sources */,
+				AD4522B41A740AB3004DE629 /* HackViewController.m in Sources */,
+				AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */,
+				AD4522AF1A740A84004DE629 /* CoffeeViewController.m in Sources */,
 				88570FC81A73763B00258D69 /* CoffeeScene.m in Sources */,
 				88570F9F1A734F9500258D69 /* GameScene.m in Sources */,
 				AD4522941A73563B004DE629 /* SceneManager.m in Sources */,
 				88570F991A734F9500258D69 /* main.m in Sources */,
-				E481D68C1A7407AF001FD5FA /* GGJTimeline.m in Sources */,
-				E481D68F1A7407C5001FD5FA /* GGJTimelineStage.m in Sources */,
-				E481D6921A74082C001FD5FA /* GGJClock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
