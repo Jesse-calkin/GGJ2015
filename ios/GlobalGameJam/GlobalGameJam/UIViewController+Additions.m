@@ -32,4 +32,8 @@
     [self configureForScene:scene];
 }
 
+- (void)switchToViewController:(UIViewController *)viewController completion:(void (^)(void))completion {
+    [self presentViewController:viewController animated:YES completion:completion];
+}
+
 @end
