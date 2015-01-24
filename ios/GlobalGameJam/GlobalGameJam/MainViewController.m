@@ -8,11 +8,23 @@
 
 #import "MainViewController.h"
 #import "UIViewController+Additions.h"
-
+#import "GGJClock.h"
+#import "GGJGameStateManager.h"
 @interface MainViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @end
 
 @implementation MainViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClockTick) name:GGJClockTickElapsedNotification object:nil];
+}
+
+- (void)handleClockTick
+{
+    NSLog(@"clock tick elapsed. Percentage: %lu", (unsigned long)[[[GGJGameStateManager sharedInstance] clock] percentageTimeElapsed]);
+}
 
 #pragma mark - Actions
 
