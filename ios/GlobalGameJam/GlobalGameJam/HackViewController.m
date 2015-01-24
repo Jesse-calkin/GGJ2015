@@ -14,6 +14,7 @@ static NSInteger CharactersPerTap = 20;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) UIButton *lastButtonTapped;
 @property (strong, nonatomic) NSString *fullString;
 @property (assign, nonatomic) NSInteger numberOfTaps;
 @end
@@ -25,6 +26,11 @@ static NSInteger CharactersPerTap = 20;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.label.text = nil;
+    
+    [self clearButton:self.leftButton];
+    [self clearButton:self.rightButton];
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"HackSceneText" ofType:nil];
     NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     self.fullString = fullString;
@@ -32,12 +38,12 @@ static NSInteger CharactersPerTap = 20;
 
 #pragma mark - Actions
 
-- (IBAction)leftButtonTapped {
-    [self buttonTapped];
-}
-
-- (IBAction)rightButtonTapped {
-    [self buttonTapped];
+- (IBAction)buttonTapped:(UIButton *)button {
+    if (button != self.lastButtonTapped) {
+        self.numberOfTaps++;
+        NSString *currentString = [self currentString];
+        self.label.text = currentString;
+    }
 }
 
 #pragma mark - Private
@@ -54,10 +60,9 @@ static NSInteger CharactersPerTap = 20;
     return currentString;
 }
 
-- (void)buttonTapped {
-    self.numberOfTaps++;
-    NSString *currentString = [self currentString];
-    self.label.text = currentString;
+- (void)clearButton:(UIButton *)button {
+    button.backgroundColor = [UIColor clearColor];
+    [button setTitle:nil forState:UIControlStateNormal];
 }
 
 @end
