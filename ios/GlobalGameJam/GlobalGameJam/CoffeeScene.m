@@ -8,6 +8,10 @@
 
 #import "CoffeeScene.h"
 
+@interface CoffeeScene ()
+@property (nonatomic) CGRect coffeeRect;
+@end
+
 @implementation CoffeeScene
 
 - (void)didMoveToView:(SKView *)view
@@ -28,6 +32,16 @@
     [sprite runAction:[SKAction repeatActionForever:chain]];
     
     [self addChild:sprite];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+    
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
+        
+        
+    }
 }
 
 @end
