@@ -2,8 +2,9 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 
@@ -77,7 +78,7 @@ public class MainGameScreen extends ScreenAdapter {
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
         shapeRenderer.begin();
-        shapeRenderer.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+        shapeRenderer.setColor(Color.WHITE);
         shapeRenderer.rect(mWhiteboardX, mWhiteboardY, 130, 50);
         shapeRenderer.setColor(Color.BLUE);
         shapeRenderer.rect(mCoffeeX, mCoffeeY, 130, 50);
