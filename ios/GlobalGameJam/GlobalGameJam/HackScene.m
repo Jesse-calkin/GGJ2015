@@ -18,7 +18,7 @@ static NSInteger CharactersPerTap = 20;
 
 @implementation HackScene
 
--(void)didMoveToView:(SKView *)view {
+- (void)didMoveToView:(SKView *)view {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"HackSceneText" ofType:nil];
     NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     self.fullString = fullString;
