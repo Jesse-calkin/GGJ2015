@@ -31,9 +31,10 @@
 		DF8CE17D1A742E2B00419701 /* PlanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8CE17B1A742E2B00419701 /* PlanningViewController.m */; };
 		DF8CE17E1A742E2B00419701 /* PlanningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8CE17C1A742E2B00419701 /* PlanningViewController.xib */; };
 		DF8CE1821A742E8500419701 /* PlanningScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DF8CE1811A742E8500419701 /* PlanningScene.sks */; };
-		E4074F6D1A74179F00AF1A99 /* GGJTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6C1A74179F00AF1A99 /* GGJTimeline.m */; };
+		E4074F6D1A74179F00AF1A99 /* GGJClock.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6C1A74179F00AF1A99 /* GGJClock.m */; };
 		E4074F701A74195300AF1A99 /* GGJTimelineStage.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */; };
 		E4074F7A1A74366D00AF1A99 /* NSTimer+CVPausable.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F791A74366D00AF1A99 /* NSTimer+CVPausable.m */; };
+		E454668D1A744153009EB648 /* GGJGameStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E454668C1A744153009EB648 /* GGJGameStateManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,12 +87,14 @@
 		DF8CE17B1A742E2B00419701 /* PlanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningViewController.m; sourceTree = "<group>"; };
 		DF8CE17C1A742E2B00419701 /* PlanningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanningViewController.xib; sourceTree = "<group>"; };
 		DF8CE1811A742E8500419701 /* PlanningScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlanningScene.sks; sourceTree = "<group>"; };
-		E4074F6B1A74179F00AF1A99 /* GGJTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimeline.h; sourceTree = "<group>"; };
-		E4074F6C1A74179F00AF1A99 /* GGJTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimeline.m; sourceTree = "<group>"; };
+		E4074F6B1A74179F00AF1A99 /* GGJClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJClock.h; sourceTree = "<group>"; };
+		E4074F6C1A74179F00AF1A99 /* GGJClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJClock.m; sourceTree = "<group>"; };
 		E4074F6E1A74195300AF1A99 /* GGJTimelineStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimelineStage.h; sourceTree = "<group>"; };
 		E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimelineStage.m; sourceTree = "<group>"; };
 		E4074F781A74366D00AF1A99 /* NSTimer+CVPausable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+CVPausable.h"; sourceTree = "<group>"; };
 		E4074F791A74366D00AF1A99 /* NSTimer+CVPausable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+CVPausable.m"; sourceTree = "<group>"; };
+		E454668B1A744153009EB648 /* GGJGameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJGameStateManager.h; sourceTree = "<group>"; };
+		E454668C1A744153009EB648 /* GGJGameStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJGameStateManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,10 +293,12 @@
 			isa = PBXGroup;
 			children = (
 				E4074F741A74362800AF1A99 /* Foundation Categories */,
-				E4074F6B1A74179F00AF1A99 /* GGJTimeline.h */,
-				E4074F6C1A74179F00AF1A99 /* GGJTimeline.m */,
+				E4074F6B1A74179F00AF1A99 /* GGJClock.h */,
+				E4074F6C1A74179F00AF1A99 /* GGJClock.m */,
 				E4074F6E1A74195300AF1A99 /* GGJTimelineStage.h */,
 				E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */,
+				E454668B1A744153009EB648 /* GGJGameStateManager.h */,
+				E454668C1A744153009EB648 /* GGJGameStateManager.m */,
 			);
 			name = "Game Logic";
 			sourceTree = "<group>";
@@ -424,11 +429,12 @@
 				AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */,
 				AD4522AF1A740A84004DE629 /* CoffeeViewController.m in Sources */,
 				88570FC81A73763B00258D69 /* CoffeeScene.m in Sources */,
-				E4074F6D1A74179F00AF1A99 /* GGJTimeline.m in Sources */,
+				E4074F6D1A74179F00AF1A99 /* GGJClock.m in Sources */,
 				E4074F701A74195300AF1A99 /* GGJTimelineStage.m in Sources */,
 				88570F9F1A734F9500258D69 /* GameScene.m in Sources */,
 				AD4522941A73563B004DE629 /* SceneManager.m in Sources */,
 				AD4522BE1A7428A0004DE629 /* UIViewController+Additions.m in Sources */,
+				E454668D1A744153009EB648 /* GGJGameStateManager.m in Sources */,
 				88570F991A734F9500258D69 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

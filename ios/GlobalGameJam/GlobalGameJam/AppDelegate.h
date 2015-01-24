@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class GGJTimeline;
 
 #define APPDELEGATE (AppDelegate *)[[UIApplication sharedApplication] delegate]
 
@@ -16,7 +15,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic) GGJTimeline *timeline;
 
 @end
 
