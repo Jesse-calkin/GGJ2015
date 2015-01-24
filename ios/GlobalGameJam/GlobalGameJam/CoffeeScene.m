@@ -60,6 +60,10 @@ static NSString * const GGJCoffeeAtlasName = @"Coffee";
     }
     self.coffeeSprite = [SKSpriteNode spriteNodeWithTexture:self.coffeeFrames[0]];
     self.coffeeSprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    self.coffeeSprite.texture.filteringMode = SKTextureFilteringNearest;
+    self.coffeeSprite.xScale = 3.0;
+    self.coffeeSprite.yScale = 3.0;
+    
     [self addChild:self.coffeeSprite];
     
     [self fillHerUp];
