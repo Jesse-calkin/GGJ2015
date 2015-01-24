@@ -8,27 +8,44 @@
 
 #import "HackScene.h"
 
+static NSInteger CharactersPerTap = 2;
+
+@interface HackScene ()
+@property (strong, nonatomic) NSString *fullString;
+@property (assign, nonatomic) NSInteger numberOfTaps;
+@property (strong, nonatomic) SKLabelNode *label;
+@end
+
 @implementation HackScene
 
+-(void)didMoveToView:(SKView *)view {
+    self.fullString = @"Lots of cool text goes right here.";
+    
+    self.label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    self.label.fontSize = 15;
+    self.label.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    self.label.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+    [self addChild:self.label];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"TEST");
-//    /* Called when a touch begins */
-//    
-//    for (UITouch *touch in touches) {
-//        CGPoint location = [touch locationInNode:self];
-//        
-//        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-//        
-//        sprite.xScale = 0.5;
-//        sprite.yScale = 0.5;
-//        sprite.position = location;
-//        
-//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-//        
-//        [sprite runAction:[SKAction repeatActionForever:action]];
-//        
-//        [self addChild:sprite];
-//    }
+    self.numberOfTaps++;
+    NSString *currentString = [self currentString];
+    self.label.text = currentString;
+}
+
+#pragma mark - Private
+
+- (NSString *)currentString {
+    NSInteger currentLength = CharactersPerTap * self.numberOfTaps;
+    NSUInteger maximumLength = self.fullString.length;
+    NSUInteger length = currentLength;
+    if (length > maximumLength) {
+        length = maximumLength;
+    }
+    NSRange range = NSMakeRange(0, length);
+    NSString *currentString = [self.fullString substringWithRange:range];
+    return currentString;
 }
 
 @end
