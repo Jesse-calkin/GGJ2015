@@ -22,6 +22,9 @@
 		AD4522981A736B39004DE629 /* HackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD4522971A736B39004DE629 /* HackScene.sks */; };
 		AD45229B1A736B5C004DE629 /* HackScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45229A1A736B5C004DE629 /* HackScene.m */; };
 		AD4522A11A737499004DE629 /* HackSceneText in Resources */ = {isa = PBXBuildFile; fileRef = AD4522A01A737499004DE629 /* HackSceneText */; };
+		E481D68C1A7407AF001FD5FA /* GGJTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = E481D68B1A7407AF001FD5FA /* GGJTimeline.m */; };
+		E481D68F1A7407C5001FD5FA /* GGJTimelineStage.m in Sources */ = {isa = PBXBuildFile; fileRef = E481D68E1A7407C5001FD5FA /* GGJTimelineStage.m */; };
+		E481D6921A74082C001FD5FA /* GGJClock.m in Sources */ = {isa = PBXBuildFile; fileRef = E481D6911A74082C001FD5FA /* GGJClock.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,12 @@
 		AD4522991A736B5C004DE629 /* HackScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackScene.h; sourceTree = "<group>"; };
 		AD45229A1A736B5C004DE629 /* HackScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackScene.m; sourceTree = "<group>"; };
 		AD4522A01A737499004DE629 /* HackSceneText */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HackSceneText; sourceTree = "<group>"; };
+		E481D68A1A7407AF001FD5FA /* GGJTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimeline.h; sourceTree = "<group>"; };
+		E481D68B1A7407AF001FD5FA /* GGJTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimeline.m; sourceTree = "<group>"; };
+		E481D68D1A7407C5001FD5FA /* GGJTimelineStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJTimelineStage.h; sourceTree = "<group>"; };
+		E481D68E1A7407C5001FD5FA /* GGJTimelineStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimelineStage.m; sourceTree = "<group>"; };
+		E481D6901A74082C001FD5FA /* GGJClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJClock.h; sourceTree = "<group>"; };
+		E481D6911A74082C001FD5FA /* GGJClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJClock.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +110,7 @@
 		88570F951A734F9500258D69 /* GlobalGameJam */ = {
 			isa = PBXGroup;
 			children = (
+				E481D6891A7406F8001FD5FA /* Game Logic */,
 				AD45228D1A735581004DE629 /* Scenes */,
 				88570F9A1A734F9500258D69 /* AppDelegate.h */,
 				88570F9B1A734F9500258D69 /* AppDelegate.m */,
@@ -189,6 +199,19 @@
 				AD4522A01A737499004DE629 /* HackSceneText */,
 			);
 			name = HackScene;
+			sourceTree = "<group>";
+		};
+		E481D6891A7406F8001FD5FA /* Game Logic */ = {
+			isa = PBXGroup;
+			children = (
+				E481D68A1A7407AF001FD5FA /* GGJTimeline.h */,
+				E481D68B1A7407AF001FD5FA /* GGJTimeline.m */,
+				E481D68D1A7407C5001FD5FA /* GGJTimelineStage.h */,
+				E481D68E1A7407C5001FD5FA /* GGJTimelineStage.m */,
+				E481D6901A74082C001FD5FA /* GGJClock.h */,
+				E481D6911A74082C001FD5FA /* GGJClock.m */,
+			);
+			name = "Game Logic";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +325,9 @@
 				88570F9F1A734F9500258D69 /* GameScene.m in Sources */,
 				AD4522941A73563B004DE629 /* SceneManager.m in Sources */,
 				88570F991A734F9500258D69 /* main.m in Sources */,
+				E481D68C1A7407AF001FD5FA /* GGJTimeline.m in Sources */,
+				E481D68F1A7407C5001FD5FA /* GGJTimelineStage.m in Sources */,
+				E481D6921A74082C001FD5FA /* GGJClock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
