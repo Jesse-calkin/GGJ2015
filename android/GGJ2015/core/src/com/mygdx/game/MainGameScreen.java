@@ -1,50 +1,62 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 
 import java.awt.*;
 
-public class MainGameScreen implements Screen {
+public class MainGameScreen extends ScreenAdapter {
 
     MyGdxGame mGameInstance;
-    Rectangle clickRectangle = new Rectangle();
-
+    Rectangle mClickRectangle;
+    Vector3 mTouchPoint;
+    OrthographicCamera mGuiCam;
+    float mX;
+    float mY;
 
     public MainGameScreen(final MyGdxGame game) {
         mGameInstance = game;
+        mClickRectangle = new Rectangle((int)mX, (int)mY, 130, 50);
+        mTouchPoint = new Vector3();
+        mGuiCam = new OrthographicCamera(320, 480);
+        mGuiCam.position.set(320 / 2, 480 / 2, 0);
+        mX = 230;
+        mY = 230;
     }
 
-    @Override
-    public void show() {
+    private void update() {
+        if (Gdx.input.isTouched()) {
+            mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 
+            if (mClickRectangle.contains(mTouchPoint.x, mTouchPoint.y)) {
+                mGameInstance.setScreen(new WhiteboardMinigameScreen(mGameInstance));
+            }
+        }
     }
 
-    @Override
-    public void render(float delta) {
-        update();
+    private void draw() {
         Gdx.gl.glClearColor(0, 0, 0, 2f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         mGameInstance.batch.begin();
         showWhiteboardZone();
         mGameInstance.batch.end();
-        int x = 230;
-        int y = 230;
-        clickRectangle.setBounds((int)x, (int)y, 130, 50);
+
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
         shapeRenderer.begin();
         shapeRenderer.setColor(com.badlogic.gdx.graphics.Color.BLUE);
-        shapeRenderer.rect(x, y, 130, 50);
+        shapeRenderer.rect(mX, mY, 130, 50);
         shapeRenderer.end();
     }
 
     @Override
-    public void resize(int width, int height) {
-
+    public void render(float delta) {
+        update();
+        draw();
     }
 
     @Override
@@ -52,26 +64,8 @@ public class MainGameScreen implements Screen {
 
     }
 
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
-
     private void showWhiteboardZone() {
-
-        float x = 230;
-        float y = 230;
-        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!", x, y);
+        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!", mX, mX);
     }
 
     private void showCodeZone() {
@@ -80,15 +74,5 @@ public class MainGameScreen implements Screen {
 
     private void showCoffeeZone() {
 
-    }
-
-    private void update() {
-        Vector3 touchPoint = new Vector3();
-        if (Gdx.input.isTouched()) {
-            touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-            if (clickRectangle.contains(touchPoint.x, touchPoint.y)) {
-                mGameInstance.setScreen(new WhiteboardMinigameScreen(mGameInstance));
-            }
-        }
     }
 }

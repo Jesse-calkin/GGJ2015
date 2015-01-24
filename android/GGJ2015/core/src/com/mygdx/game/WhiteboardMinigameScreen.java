@@ -1,10 +1,10 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 
-public class WhiteboardMinigameScreen implements Screen {
+public class WhiteboardMinigameScreen extends ScreenAdapter {
 
     MyGdxGame mGameInstance;
 
@@ -12,39 +12,23 @@ public class WhiteboardMinigameScreen implements Screen {
         mGameInstance = game;
     }
 
-    @Override
-    public void show() {
-        
+    private void update() {
+
     }
 
-    @Override
-    public void render(float delta) {
+    private void draw() {
         Gdx.gl.glClearColor(0, 0, 0, 2f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
     @Override
-    public void resize(int width, int height) {
-
+    public void render(float delta) {
+        update();
+        draw();
     }
 
     @Override
     public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
 
     }
 }
