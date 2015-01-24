@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -12,17 +13,32 @@ import java.awt.*;
 public class MainGameScreen extends ScreenAdapter {
 
     MyGdxGame mGameInstance;
-    Rectangle mClickRectangle;
+    Rectangle mWhiteboardClickRectangle;
+    Rectangle mCoffeeClickRectangle;
+    Rectangle mCodeClickRectangle;
     Vector3 mTouchPoint;
     OrthographicCamera mGuiCam;
-    int mX;
-    int mY;
+    int mWhiteboardX;
+    int mWhiteboardY;
+    int mCoffeeX;
+    int mCoffeeY;
+    int mCodeX;
+    int mCodeY;
 
     public MainGameScreen(final MyGdxGame game) {
-        mX = 230;
-        mY = 230;
         mGameInstance = game;
-        mClickRectangle = new Rectangle(mX, mY, 130, 50);
+
+        mWhiteboardX = 230;
+        mWhiteboardY = 130;
+        mCoffeeX = 230;
+        mCoffeeY = 230;
+        mCodeX = 230;
+        mCodeY = 330;
+
+        mWhiteboardClickRectangle = new Rectangle(mWhiteboardX, mWhiteboardY, 130, 50);
+        mCoffeeClickRectangle = new Rectangle(mCoffeeX, mCoffeeY, 130, 50);
+        mCodeClickRectangle = new Rectangle(mCodeX, mCodeY, 130, 50);
+
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
         mGuiCam.setToOrtho(false, 800, 480);
@@ -33,8 +49,17 @@ public class MainGameScreen extends ScreenAdapter {
         if (Gdx.input.isTouched()) {
             mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 
-            if (mClickRectangle.contains(mTouchPoint.x, mTouchPoint.y)) {
+            if (mWhiteboardClickRectangle.contains(mTouchPoint.x, mTouchPoint.y)) {
                 mGameInstance.setScreen(new WhiteboardMinigameScreen(mGameInstance));
+                return;
+            }
+            if (mCoffeeClickRectangle.contains(mTouchPoint.x, mTouchPoint.y)) {
+                mGameInstance.setScreen(new CoffeeMinigameScreen(mGameInstance));
+                return;
+            }
+            if (mCodeClickRectangle.contains(mTouchPoint.x, mTouchPoint.y)) {
+                mGameInstance.setScreen(new CodeMinigameScreen(mGameInstance));
+                return;
             }
         }
     }
@@ -44,15 +69,21 @@ public class MainGameScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         mGameInstance.batch.setProjectionMatrix(mGuiCam.combined);
 
-        mGameInstance.batch.begin();
-        showWhiteboardZone();
-        mGameInstance.batch.end();
+//        mGameInstance.batch.begin();
+//        showWhiteboardZone();
+//        showCoffeeZone();
+//        showCodeZone();
+//        mGameInstance.batch.end();
 
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
         shapeRenderer.begin();
-        shapeRenderer.setColor(com.badlogic.gdx.graphics.Color.BLUE);
-        shapeRenderer.rect(mX, mY, 130, 50);
+        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.rect(mWhiteboardX, mWhiteboardY, 130, 50);
+        shapeRenderer.setColor(Color.BLUE);
+        shapeRenderer.rect(mCoffeeX, mCoffeeY, 130, 50);
+        shapeRenderer.setColor(Color.GREEN);
+        shapeRenderer.rect(mCodeX, mCodeY, 130, 50);
         shapeRenderer.end();
     }
 
@@ -68,14 +99,14 @@ public class MainGameScreen extends ScreenAdapter {
     }
 
     private void showWhiteboardZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!", mX, mX);
-    }
-
-    private void showCodeZone() {
-
+        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!", mWhiteboardX, mWhiteboardY);
     }
 
     private void showCoffeeZone() {
+        mGameInstance.font.draw(mGameInstance.batch, "This is the coffee zone!", mCoffeeX, mCoffeeY);
+    }
 
+    private void showCodeZone() {
+        mGameInstance.font.draw(mGameInstance.batch, "This is some code!", mCodeX, mCodeY);
     }
 }
