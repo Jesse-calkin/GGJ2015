@@ -4,8 +4,10 @@ import com.badlogic.gdx.Screen;
 
 public class CodeMinigameScreen implements Screen {
 
-    CoffeeMinigameScreen(final MyGdxGame game) {
+    MyGdxGame mGameInstance;
 
+    CodeMinigameScreen(final MyGdxGame game) {
+        mGameInstance = game;
     }
 
     @Override

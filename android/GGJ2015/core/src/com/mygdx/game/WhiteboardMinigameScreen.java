@@ -4,8 +4,10 @@ import com.badlogic.gdx.Screen;
 
 public class WhiteboardMinigameScreen implements Screen {
 
-    public WhiteboardMinigameScreen(final MyGdxGame game) {
+    MyGdxGame mGameInstance;
 
+    public WhiteboardMinigameScreen(final MyGdxGame game) {
+        mGameInstance = game;
     }
 
     @Override
