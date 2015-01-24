@@ -1,5 +1,5 @@
 //
-//  GGJClock.h
+//  GGJTimeline.h
 //  GlobalGameJam
 //
 //  Created by Carl Veazey on 1/24/15.
@@ -8,7 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const GGJClockTickElapsedNotification;
+extern NSString *const GGJTimeUpNotification;
+
 @interface GGJClock : NSObject
 
+// Just use this for now
+- (void)startClock;
+- (void)stopClock;
+
+@property (nonatomic, readonly) NSUInteger percentageTimeElapsed;
 
 @end

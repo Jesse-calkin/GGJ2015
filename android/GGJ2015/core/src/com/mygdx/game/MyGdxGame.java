@@ -11,6 +11,7 @@ public class MyGdxGame extends Game {
     @Override
     public void create() {
         font = new BitmapFont();
+        font.scale(0.5f);
         batch = new SpriteBatch();
         this.setScreen(new MainGameScreen(this));
     }
