@@ -1,0 +1,28 @@
+//
+//  UIViewController+Additions.m
+//  GlobalGameJam
+//
+//  Created by Chris Weathers on 1/24/15.
+//  Copyright (c) 2015 shoshinboogie. All rights reserved.
+//
+
+#import "UIViewController+Additions.h"
+#import "SceneManager.h"
+
+@implementation UIViewController (Additions)
+
+- (void)configureForScene:(SKScene *)scene {
+    CGRect frame = self.view.bounds;
+    SKView *skView = [[SKView alloc] initWithFrame:frame];
+    skView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:skView];
+    
+    [skView presentScene:scene];
+}
+
+- (void)configureForSceneNamed:(NSString *)sceneName {
+    SKScene *scene = [SceneManager sceneWithName:sceneName];
+    [self configureForScene:scene];
+}
+
+@end
