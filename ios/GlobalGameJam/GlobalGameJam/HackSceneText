@@ -8,7 +8,7 @@
 
 #import "HackScene.h"
 
-static NSInteger CharactersPerTap = 20;
+static NSInteger CharactersPerTap = 2;
 
 @interface HackScene ()
 @property (strong, nonatomic) NSString *fullString;
@@ -19,8 +19,8 @@ static NSInteger CharactersPerTap = 20;
 @implementation HackScene
 
 -(void)didMoveToView:(SKView *)view {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"HackSceneText" ofType:nil];
-    NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSString *nodePath = [[NSBundle mainBundle] pathForResource:@"HackSceneText" ofType:nil];
+    NSString *fullString = [NSString stringWithContentsOfFile:nodePath encoding:NSUTF8StringEncoding error:nil];
     self.fullString = fullString;
     
     self.label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];

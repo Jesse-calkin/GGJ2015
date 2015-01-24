@@ -19,6 +19,7 @@
 		AD4522941A73563B004DE629 /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522931A73563B004DE629 /* SceneManager.m */; };
 		AD4522981A736B39004DE629 /* HackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD4522971A736B39004DE629 /* HackScene.sks */; };
 		AD45229B1A736B5C004DE629 /* HackScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45229A1A736B5C004DE629 /* HackScene.m */; };
+		AD4522A11A737499004DE629 /* HackSceneText in Resources */ = {isa = PBXBuildFile; fileRef = AD4522A01A737499004DE629 /* HackSceneText */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		AD4522971A736B39004DE629 /* HackScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HackScene.sks; sourceTree = "<group>"; };
 		AD4522991A736B5C004DE629 /* HackScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackScene.h; sourceTree = "<group>"; };
 		AD45229A1A736B5C004DE629 /* HackScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackScene.m; sourceTree = "<group>"; };
+		AD4522A01A737499004DE629 /* HackSceneText */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HackSceneText; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				AD4522991A736B5C004DE629 /* HackScene.h */,
 				AD45229A1A736B5C004DE629 /* HackScene.m */,
 				AD4522971A736B39004DE629 /* HackScene.sks */,
+				AD4522A01A737499004DE629 /* HackSceneText */,
 			);
 			name = HackScene;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88570FAC1A734F9500258D69 /* LaunchScreen.xib in Resources */,
+				AD4522A11A737499004DE629 /* HackSceneText in Resources */,
 				AD4522981A736B39004DE629 /* HackScene.sks in Resources */,
 				88570FA91A734F9500258D69 /* Images.xcassets in Resources */,
 				88570FA11A734F9500258D69 /* GameScene.sks in Resources */,
