@@ -80,7 +80,7 @@ public class MainGameScreen extends ScreenAdapter {
 
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
-        shapeRenderer.begin();
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.WHITE);
         shapeRenderer.rect(mWhiteboardX, mWhiteboardY, mRectWidth, mRectHeight);
         shapeRenderer.setColor(Color.BLUE);
