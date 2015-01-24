@@ -26,14 +26,8 @@ static NSInteger CharactersPerTap = 20;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"HackText" ofType:nil];
-    NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    self.fullString = fullString;
-    
-    //  View setup.
-    [self clearButton:self.leftButton];
-    [self clearButton:self.rightButton];
-    [self updateLabel];
+    [self populateFullString];
+    [self initializeViews];
 }
 
 #pragma mark - Actions
@@ -68,6 +62,24 @@ static NSInteger CharactersPerTap = 20;
 - (void)clearButton:(UIButton *)button {
     button.backgroundColor = [UIColor clearColor];
     [button setTitle:nil forState:UIControlStateNormal];
+}
+
+- (void)populateFullString {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"HackText" ofType:nil];
+    NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    self.fullString = fullString;
+}
+
+- (void)initializeViews {
+    [self clearButton:self.leftButton];
+    [self clearButton:self.rightButton];
+    [self updateLabel];
+}
+
+- (BOOL)gameIsFinished {
+    NSString *currentString = [self currentString];
+    BOOL gameIsFinished = [currentString isEqualToString:self.fullString];
+    return gameIsFinished;
 }
 
 @end

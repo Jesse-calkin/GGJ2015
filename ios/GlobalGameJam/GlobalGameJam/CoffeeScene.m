@@ -8,14 +8,19 @@
 
 #import "CoffeeScene.h"
 
+static NSString * const GGJCoffeeAtlasName = @"Coffee";
+
 @interface CoffeeScene ()
 @property (nonatomic) CGRect coffeeRect;
+@property (nonatomic, strong) SKSpriteNode *coffeeSprite;
+@property (nonatomic, strong) NSMutableArray *coffeeFrames;
 @end
 
 @implementation CoffeeScene
 
 - (void)didMoveToView:(SKView *)view
 {
+    [self setupTextureAtlas];
     SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"snakeLava"];
     sprite.position = CGPointMake(323.0, 310.0);
     sprite.texture.filteringMode = SKTextureFilteringNearest;
@@ -39,9 +44,34 @@
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        
-        
+        NSLog(@"Tapped point: %f,%f", location.x, location.y);
     }
 }
 
+- (void)setupTextureAtlas
+{
+    self.coffeeFrames = [NSMutableArray array];
+    
+    SKTextureAtlas *coffeeAtlas = [SKTextureAtlas atlasNamed:GGJCoffeeAtlasName];
+    
+    for (NSString *texName in [coffeeAtlas.textureNames sortedArrayUsingSelector:@selector(compare:)]) {
+        NSLog(@"Adding frame: %@", texName);
+        [self.coffeeFrames addObject:[coffeeAtlas textureNamed:texName]];
+    }
+    self.coffeeSprite = [SKSpriteNode spriteNodeWithTexture:self.coffeeFrames[0]];
+    self.coffeeSprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    self.coffeeSprite.texture.filteringMode = SKTextureFilteringNearest;
+    self.coffeeSprite.xScale = 3.0;
+    self.coffeeSprite.yScale = 3.0;
+    
+    [self addChild:self.coffeeSprite];
+    
+    [self fillHerUp];
+}
+
+- (void)fillHerUp
+{
+    SKAction *fillAction = [SKAction animateWithTextures:self.coffeeFrames timePerFrame:0.33f];
+    [self.coffeeSprite runAction:[SKAction repeatActionForever:fillAction]];
+}
 @end
