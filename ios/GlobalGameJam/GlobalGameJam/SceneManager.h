@@ -12,6 +12,7 @@
 extern NSString * const CoffeeSceneName;
 extern NSString * const GameSceneName;
 extern NSString * const HackSceneName;
+extern NSString * const PlanningSceneName;
 
 @interface SceneManager : NSObject
 
