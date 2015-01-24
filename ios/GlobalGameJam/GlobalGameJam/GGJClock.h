@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class GGJTimelineStage;
+extern NSString *const GGJClockTickElapsedNotification;
+extern NSString *const GGJTimeUpNotification;
 
-@interface GGJTimeline : NSObject
-
+@interface GGJClock : NSObject
 
 // Just use this for now
 - (void)startClock;
 - (void)stopClock;
+
+@property (nonatomic, readonly) NSUInteger percentageTimeElapsed;
 
 @end

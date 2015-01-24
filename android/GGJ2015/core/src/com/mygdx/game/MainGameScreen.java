@@ -6,9 +6,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
-
-import java.awt.*;
 
 public class MainGameScreen extends ScreenAdapter {
 
@@ -24,24 +23,28 @@ public class MainGameScreen extends ScreenAdapter {
     int mCoffeeY;
     int mCodeX;
     int mCodeY;
+    int mRectHeight;
+    int mRectWidth;
 
     public MainGameScreen(final MyGdxGame game) {
         mGameInstance = game;
 
-        mWhiteboardX = 230;
-        mWhiteboardY = 130;
-        mCoffeeX = 230;
-        mCoffeeY = 230;
-        mCodeX = 230;
-        mCodeY = 330;
+        mWhiteboardX = Gdx.graphics.getWidth() / 3;
+        mWhiteboardY = 50;
+        mCoffeeX = Gdx.graphics.getWidth() / 3;
+        mCoffeeY = 250;
+        mCodeX = Gdx.graphics.getWidth() / 3;
+        mCodeY = 450;
+        mRectWidth = 200;
+        mRectHeight = 100;
 
-        mWhiteboardClickRectangle = new Rectangle(mWhiteboardX, mWhiteboardY, 130, 50);
-        mCoffeeClickRectangle = new Rectangle(mCoffeeX, mCoffeeY, 130, 50);
-        mCodeClickRectangle = new Rectangle(mCodeX, mCodeY, 130, 50);
+        mWhiteboardClickRectangle = new Rectangle(mWhiteboardX, mWhiteboardY, mRectWidth, mRectHeight);
+        mCoffeeClickRectangle = new Rectangle(mCoffeeX, mCoffeeY, mRectWidth, mRectHeight);
+        mCodeClickRectangle = new Rectangle(mCodeX, mCodeY, mRectWidth, mRectHeight);
 
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
-        mGuiCam.setToOrtho(false, 800, 480);
+        mGuiCam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         mGuiCam.update();
     }
 
@@ -69,21 +72,21 @@ public class MainGameScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         mGameInstance.batch.setProjectionMatrix(mGuiCam.combined);
 
-//        mGameInstance.batch.begin();
-//        showWhiteboardZone();
-//        showCoffeeZone();
-//        showCodeZone();
-//        mGameInstance.batch.end();
+        mGameInstance.batch.begin();
+        showWhiteboardZone();
+        showCoffeeZone();
+        showCodeZone();
+        mGameInstance.batch.end();
 
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
-        shapeRenderer.begin();
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.WHITE);
-        shapeRenderer.rect(mWhiteboardX, mWhiteboardY, 130, 50);
+        shapeRenderer.rect(mWhiteboardX, mWhiteboardY, mRectWidth, mRectHeight);
         shapeRenderer.setColor(Color.BLUE);
-        shapeRenderer.rect(mCoffeeX, mCoffeeY, 130, 50);
+        shapeRenderer.rect(mCoffeeX, mCoffeeY, mRectWidth, mRectHeight);
         shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.rect(mCodeX, mCodeY, 130, 50);
+        shapeRenderer.rect(mCodeX, mCodeY, mRectWidth, mRectHeight);
         shapeRenderer.end();
     }
 
@@ -99,14 +102,14 @@ public class MainGameScreen extends ScreenAdapter {
     }
 
     private void showWhiteboardZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!", mWhiteboardX, mWhiteboardY);
+        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!", mWhiteboardX + mWhiteboardClickRectangle.width + 10, mWhiteboardY + (mWhiteboardClickRectangle.height / 2));
     }
 
     private void showCoffeeZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is the coffee zone!", mCoffeeX, mCoffeeY);
+        mGameInstance.font.draw(mGameInstance.batch, "This is the coffee zone!", mCoffeeX + mCoffeeClickRectangle.width + 10, mCoffeeY + (mCoffeeClickRectangle.height / 2));
     }
 
     private void showCodeZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is some code!", mCodeX, mCodeY);
+        mGameInstance.font.draw(mGameInstance.batch, "This is some code!", mCodeX + mCodeClickRectangle.width + 10, mCodeY + (mCodeClickRectangle.height / 2));
     }
 }
