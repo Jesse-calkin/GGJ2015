@@ -15,7 +15,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configureForSceneNamed:CoffeeSceneName];
+    [self configureForScene];
 }
 
 @end
