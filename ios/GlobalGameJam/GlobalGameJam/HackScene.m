@@ -13,7 +13,7 @@ static NSInteger CharactersPerTap = 20;
 @interface HackScene ()
 @property (strong, nonatomic) NSString *fullString;
 @property (assign, nonatomic) NSInteger numberOfTaps;
-@property (strong, nonatomic) SKLabelNode *label;
+@property (strong, nonatomic) UILabel *label;
 @end
 
 @implementation HackScene
@@ -23,11 +23,10 @@ static NSInteger CharactersPerTap = 20;
     NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     self.fullString = fullString;
     
-    self.label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    self.label.fontSize = 15;
-    self.label.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    self.label.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
-    [self addChild:self.label];
+    CGRect frame = view.bounds;
+    self.label = [[UILabel alloc] initWithFrame:frame];
+    self.label.numberOfLines = 0;
+    [view addSubview:self.label];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
