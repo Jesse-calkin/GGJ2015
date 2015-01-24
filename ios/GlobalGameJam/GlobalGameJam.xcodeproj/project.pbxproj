@@ -18,6 +18,7 @@
 		88570FB81A734F9500258D69 /* GlobalGameJamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570FB71A734F9500258D69 /* GlobalGameJamTests.m */; };
 		88570FC41A73720B00258D69 /* CoffeeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 88570FC31A73720B00258D69 /* CoffeeScene.sks */; };
 		88570FC81A73763B00258D69 /* CoffeeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570FC71A73763B00258D69 /* CoffeeScene.m */; };
+		88570FCA1A743D6E00258D69 /* Coffee.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 88570FC91A743D6E00258D69 /* Coffee.atlas */; };
 		AD4522941A73563B004DE629 /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522931A73563B004DE629 /* SceneManager.m */; };
 		AD4522A11A737499004DE629 /* HackText in Resources */ = {isa = PBXBuildFile; fileRef = AD4522A01A737499004DE629 /* HackText */; };
 		AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522A81A740A6C004DE629 /* MainViewController.m */; };
@@ -66,6 +67,7 @@
 		88570FC31A73720B00258D69 /* CoffeeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoffeeScene.sks; sourceTree = "<group>"; };
 		88570FC61A73763B00258D69 /* CoffeeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeScene.h; sourceTree = "<group>"; };
 		88570FC71A73763B00258D69 /* CoffeeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeScene.m; sourceTree = "<group>"; };
+		88570FC91A743D6E00258D69 /* Coffee.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coffee.atlas; sourceTree = "<group>"; };
 		AD4522921A73563B004DE629 /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
 		AD4522931A73563B004DE629 /* SceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneManager.m; sourceTree = "<group>"; };
 		AD4522A01A737499004DE629 /* HackText */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HackText; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				88570F9B1A734F9500258D69 /* AppDelegate.m */,
 				88570FA21A734F9500258D69 /* GameViewController.h */,
 				88570FA31A734F9500258D69 /* GameViewController.m */,
+				88570FC91A743D6E00258D69 /* Coffee.atlas */,
 				88570FA51A734F9500258D69 /* Main.storyboard */,
 				88570FA81A734F9500258D69 /* Images.xcassets */,
 				88570FAA1A734F9500258D69 /* LaunchScreen.xib */,
@@ -394,6 +397,7 @@
 				AD4522A11A737499004DE629 /* HackText in Resources */,
 				AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */,
 				AD4522B01A740A84004DE629 /* CoffeeViewController.xib in Resources */,
+				88570FCA1A743D6E00258D69 /* Coffee.atlas in Resources */,
 				88570FA91A734F9500258D69 /* Images.xcassets in Resources */,
 				DF8CE17E1A742E2B00419701 /* PlanningViewController.xib in Resources */,
 				88570FA11A734F9500258D69 /* GameScene.sks in Resources */,
