@@ -25,6 +25,7 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
     Vector3 mTouchPoint;
     OrthographicCamera mGuiCam;
     CountdownClock mCountdownClock;
+    int mCoffeeGuyTick = 0;
 
     ArrayList<Texture> mCoffeeTextures;
 
@@ -42,7 +43,7 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
         mCoffeeHighlight = new ShapeRenderer();
         mCoffeeHighlight.setAutoShapeType(true);
 
-        mCoffeeGuyTexture = new Texture(Gdx.files.internal("snakeLava.png"));
+        mCoffeeGuyTexture = new Texture(Gdx.files.internal("coffeeman.png"));
         mBackgroundTexture = new Texture(Gdx.files.internal("coffeePot.png"));
 
         mCoffeeTextures = new ArrayList<Texture>();
@@ -62,7 +63,7 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
         mCoffeeTouchRectangle = new Rectangle(mGameInstance.screenWidth / 8.5f, mGameInstance.screenHeight / 4, 150, 220);
 
         mCountdownClock = new CountdownClock(mGameInstance);
-        mCountdownClock.setDuration(5);
+        mCountdownClock.setDuration(15);
         mCountdownClock.setDelay(1);
         mCountdownClock.setX(40);
         mCountdownClock.setY(40);
@@ -99,13 +100,18 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
     }
 
     private void update() {
+        mCoffeeGuyX = mCoffeeGuyX + 8;
         if (mCoffeeGuyMovingRight) {
-            mCoffeeGuyX = mCoffeeGuyX + 5;
-            if (mCoffeeGuyX >= mGameInstance.screenWidth / 4) {
+            if (mCoffeeGuyX >= mGameInstance.screenWidth / 6 && mCoffeeGuyTick < 5) {
                 mCoffeeGuyMovingRight = false;
+                mCoffeeGuyTick += 1;
+            }
+            else if (mCoffeeGuyX >= mGameInstance.screenWidth/3 && mCoffeeGuyTick >= 5) {
+                mCoffeeGuyMovingRight = false;
+                mCoffeeGuyTick = 0;
             }
         } else {
-            mCoffeeGuyX = mCoffeeGuyX - 5;
+            mCoffeeGuyX = mCoffeeGuyX - 15;
             if (mCoffeeGuyX <= 0) {
                 mCoffeeGuyMovingRight = true;
             }
@@ -140,8 +146,8 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
         mGameInstance.batch.draw(mCoffeeGuyTexture,
                 mCoffeeGuyX,
                 0,
-                mCoffeeGuyTexture.getWidth() * 6,
-                mCoffeeGuyTexture.getHeight() * 6);
+                mCoffeeGuyTexture.getWidth()/3,
+                mCoffeeGuyTexture.getHeight()/3);
         mGameInstance.batch.end();
 
         mCountdownClock.render();
@@ -162,6 +168,6 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
         else {
             endText = "Go back home and train your dexterity stats";
         }
-        mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/3, mGameInstance.screenHeight/2));
+        mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/2, mGameInstance.screenHeight/2));
     }
 }
