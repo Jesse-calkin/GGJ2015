@@ -8,8 +8,16 @@
 
 #import "GGJGameStateManager.h"
 #import "GGJClock.h"
+#import "GGJDecisionPointChoice.h"
+
 
 NSString *const GGJGameOverNotification = @"GGJGameOverNotification";
+
+@interface GGJGameStateManager ()
+
+@property (nonatomic,readwrite) NSUInteger score;
+
+@end
 
 @implementation GGJGameStateManager
 
@@ -32,6 +40,19 @@ NSString *const GGJGameOverNotification = @"GGJGameOverNotification";
         sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
+}
+
+
+- (void)handleDecisionPointChoice:(GGJDecisionPointChoice *)choice
+{
+    if (choice.correct) {
+        self.score += 500;
+    }
+    else {
+        // we accelerate the clock 2% on a poor decision
+        [self.clock incrementTicks];
+        [self.clock incrementTicks];
+    }
 }
 
 

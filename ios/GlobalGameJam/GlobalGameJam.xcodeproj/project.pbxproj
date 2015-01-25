@@ -35,6 +35,8 @@
 		E4074F6D1A74179F00AF1A99 /* GGJClock.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6C1A74179F00AF1A99 /* GGJClock.m */; };
 		E4074F701A74195300AF1A99 /* GGJTimelineStage.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */; };
 		E4074F7A1A74366D00AF1A99 /* NSTimer+CVPausable.m in Sources */ = {isa = PBXBuildFile; fileRef = E4074F791A74366D00AF1A99 /* NSTimer+CVPausable.m */; };
+		E44368191A74568700DE967F /* GGJDecisionPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E44368181A74568700DE967F /* GGJDecisionPoint.m */; };
+		E443681C1A74584300DE967F /* GGJDecisionPointChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = E443681B1A74584300DE967F /* GGJDecisionPointChoice.m */; };
 		E454668D1A744153009EB648 /* GGJGameStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E454668C1A744153009EB648 /* GGJGameStateManager.m */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,10 @@
 		E4074F6F1A74195300AF1A99 /* GGJTimelineStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJTimelineStage.m; sourceTree = "<group>"; };
 		E4074F781A74366D00AF1A99 /* NSTimer+CVPausable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+CVPausable.h"; sourceTree = "<group>"; };
 		E4074F791A74366D00AF1A99 /* NSTimer+CVPausable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+CVPausable.m"; sourceTree = "<group>"; };
+		E44368171A74568700DE967F /* GGJDecisionPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJDecisionPoint.h; sourceTree = "<group>"; };
+		E44368181A74568700DE967F /* GGJDecisionPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJDecisionPoint.m; sourceTree = "<group>"; };
+		E443681A1A74584300DE967F /* GGJDecisionPointChoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJDecisionPointChoice.h; sourceTree = "<group>"; };
+		E443681B1A74584300DE967F /* GGJDecisionPointChoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJDecisionPointChoice.m; sourceTree = "<group>"; };
 		E454668B1A744153009EB648 /* GGJGameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJGameStateManager.h; sourceTree = "<group>"; };
 		E454668C1A744153009EB648 /* GGJGameStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJGameStateManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,6 +301,7 @@
 		E4074F6A1A74177F00AF1A99 /* Game Logic */ = {
 			isa = PBXGroup;
 			children = (
+				E454668E1A745574009EB648 /* Decision Points */,
 				E4074F741A74362800AF1A99 /* Foundation Categories */,
 				E4074F6B1A74179F00AF1A99 /* GGJClock.h */,
 				E4074F6C1A74179F00AF1A99 /* GGJClock.m */,
@@ -313,6 +320,17 @@
 				E4074F791A74366D00AF1A99 /* NSTimer+CVPausable.m */,
 			);
 			name = "Foundation Categories";
+			sourceTree = "<group>";
+		};
+		E454668E1A745574009EB648 /* Decision Points */ = {
+			isa = PBXGroup;
+			children = (
+				E44368171A74568700DE967F /* GGJDecisionPoint.h */,
+				E44368181A74568700DE967F /* GGJDecisionPoint.m */,
+				E443681A1A74584300DE967F /* GGJDecisionPointChoice.h */,
+				E443681B1A74584300DE967F /* GGJDecisionPointChoice.m */,
+			);
+			name = "Decision Points";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +444,7 @@
 			files = (
 				DF8CE17D1A742E2B00419701 /* PlanningViewController.m in Sources */,
 				88570FA41A734F9500258D69 /* GameViewController.m in Sources */,
+				E443681C1A74584300DE967F /* GGJDecisionPointChoice.m in Sources */,
 				DF8CE1791A742E0E00419701 /* PlanningScene.m in Sources */,
 				88570F9C1A734F9500258D69 /* AppDelegate.m in Sources */,
 				E4074F7A1A74366D00AF1A99 /* NSTimer+CVPausable.m in Sources */,
@@ -434,6 +453,7 @@
 				AD4522AF1A740A84004DE629 /* CoffeeViewController.m in Sources */,
 				88570FC81A73763B00258D69 /* CoffeeScene.m in Sources */,
 				E4074F6D1A74179F00AF1A99 /* GGJClock.m in Sources */,
+				E44368191A74568700DE967F /* GGJDecisionPoint.m in Sources */,
 				E4074F701A74195300AF1A99 /* GGJTimelineStage.m in Sources */,
 				88570F9F1A734F9500258D69 /* GameScene.m in Sources */,
 				AD4522941A73563B004DE629 /* SceneManager.m in Sources */,
