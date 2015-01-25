@@ -23,6 +23,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
 
     public WhiteboardMinigameScreen(final MyGdxGame game) {
         mGameInstance = game;
+
         InputMultiplexer inputMultiplexer = new InputMultiplexer(this);
         Gdx.input.setInputProcessor(inputMultiplexer);
         mGuiCam = new OrthographicCamera();
@@ -34,6 +35,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
         countdownClock.setDelay(2);
         countdownClock.setX(20);
         countdownClock.setY(20);
+        countdownClock.setFontColor(Color.DARK_GRAY);
         countdownClock.setCountdownListener(this);
         countdownClock.start();
     }
