@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (assign, nonatomic) NSInteger miniGamesPlayed;
 
 //  Background image stuff.
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *backgroundViews;
@@ -77,8 +78,6 @@
             }
         }
     }
-    
-    [self updateBackgroundViewAnimated:YES];
 }
 
 - (void)handleScoreChanged
@@ -154,6 +153,9 @@
 #pragma mark - <GameViewControllerDelegate>
 
 - (void)gameViewControllerFinished:(UIViewController *)gameViewController {
+    self.miniGamesPlayed++;
+    [self updateBackgroundViewAnimated:YES];
+    
     if ([gameViewController isKindOfClass:[HackViewController class]]) {
         [[GGJGameStateManager sharedInstance] handleMinigameWon:YES];
         [gameViewController dismissViewControllerAnimated:YES completion:nil];
@@ -161,6 +163,9 @@
 }
 
 - (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {
+    self.miniGamesPlayed++;
+    [self updateBackgroundViewAnimated:YES];
+    
     if ([gameViewController isKindOfClass:[PlanningViewController class]]) {
         [[GGJGameStateManager sharedInstance] handleMinigameWon:YES];
         NSArray *images = (NSArray *)context;
@@ -189,28 +194,6 @@
     }];
 }
 
-- (NSInteger)backgroundViewIndexForProgress:(CGFloat)progress {
-    NSInteger index = 0;
-    
-    if (progress < .03f) {
-        index = 2;
-    }
-    if (progress < .02f) {
-        index = 1;
-    }
-    if (progress < .01f) {
-        index = 0;
-    }
-    
-    return index;
-}
-
-- (UIView *)backgroundViewForProgress:(CGFloat)progress {
-    NSInteger backgroundViewIndex = [self backgroundViewIndexForProgress:progress];
-    UIView *backgroundView = self.backgroundViews[backgroundViewIndex];
-    return backgroundView;
-}
-
 - (void)showBackgroundView:(UIView *)backgroundView animated:(BOOL)animated {
     if (backgroundView.alpha == 1.0f) {
         return;
@@ -224,10 +207,22 @@
     }];
 }
 
+- (UIView *)backgroundViewToShow {
+    NSInteger index = 0;
+    
+    if (self.miniGamesPlayed == 1) {
+        index = 1;
+    }
+    if (self.miniGamesPlayed == 3) {
+        index = 2;
+    }
+    
+    UIView *backgroundView = self.backgroundViews[index];
+    return backgroundView;
+}
+
 - (void)updateBackgroundViewAnimated:(BOOL)animated {
-    NSUInteger elapsedPercentage = [[[GGJGameStateManager sharedInstance] clock] percentageTimeElapsed];
-    CGFloat progress = (CGFloat)elapsedPercentage / 100.0f;
-    UIView *backgroundView = [self backgroundViewForProgress:progress];
+    UIView *backgroundView = [self backgroundViewToShow];
     [self showBackgroundView:backgroundView animated:animated];
 }
 
