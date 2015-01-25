@@ -10,6 +10,7 @@
 #import "UIViewController+Additions.h"
 #import "GGJClock.h"
 #import "GGJGameStateManager.h"
+#import "HackViewController.h"
 #import "PlanningViewController.h"
 #import "UIViewController+Additions.h"
 
@@ -88,7 +89,9 @@
 #pragma mark - <GameViewControllerDelegate>
 
 - (void)gameViewControllerFinished:(UIViewController *)gameViewController {
-    
+    if ([gameViewController isKindOfClass:[HackViewController class]]) {
+        [gameViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {

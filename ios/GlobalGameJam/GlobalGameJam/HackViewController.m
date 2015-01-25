@@ -7,6 +7,7 @@
 //
 
 #import "HackViewController.h"
+#import "UIViewController+Additions.h"
 
 static NSInteger CharactersPerTap = 20;
 
@@ -37,6 +38,7 @@ static NSInteger CharactersPerTap = 20;
         self.lastButtonTapped = button;
         self.numberOfTaps++;
         [self updateLabel];
+        [self winIfWeWon];
     }
 }
 
@@ -80,6 +82,13 @@ static NSInteger CharactersPerTap = 20;
     NSString *currentString = [self currentString];
     BOOL gameIsFinished = [currentString isEqualToString:self.fullString];
     return gameIsFinished;
+}
+
+- (void)winIfWeWon {
+    BOOL gameIsFinished = [self gameIsFinished];
+    if (gameIsFinished) {
+        [self.gameViewControllerDelegate gameViewControllerFinished:self];
+    }
 }
 
 @end
