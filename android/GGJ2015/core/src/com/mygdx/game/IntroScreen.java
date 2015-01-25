@@ -60,7 +60,7 @@ public class IntroScreen extends ScreenAdapter {
             }
 
             if (mCreditsRect.contains(mTouchPoint.x, mTouchPoint.y)) {
-                mGameInstance.setScreen(new CodeMinigameScreen(mGameInstance));
+                mGameInstance.setScreen(new CreditsScreen(mGameInstance));
             }
         }
     }

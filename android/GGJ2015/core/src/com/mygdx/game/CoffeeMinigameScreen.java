@@ -64,8 +64,8 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
         mCountdownClock = new CountdownClock(mGameInstance);
         mCountdownClock.setDuration(5);
         mCountdownClock.setDelay(1);
-        mCountdownClock.setX(20);
-        mCountdownClock.setY(20);
+        mCountdownClock.setX(40);
+        mCountdownClock.setY(40);
         mCountdownClock.setFontColor(Color.WHITE);
         mCountdownClock.setCountdownListener(this);
         mCountdownClock.start();
