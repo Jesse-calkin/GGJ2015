@@ -18,6 +18,5 @@
 @property (assign, nonatomic) BOOL handled;
 @property (assign, nonatomic) NSTimeInterval scheduledTime;
 
-+ (GGJDecisionPoint *)randomDecisionPoint;
 
 @end
