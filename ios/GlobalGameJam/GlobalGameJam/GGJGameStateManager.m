@@ -55,5 +55,12 @@ NSString *const GGJGameOverNotification = @"GGJGameOverNotification";
     }
 }
 
+- (void)handleMinigameWon:(BOOL)won
+{
+    if (won) {
+        self.score += 1000;
+    }
+}
+
 
 @end

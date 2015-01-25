@@ -23,5 +23,6 @@ extern NSString *const GGJGameOverNotification;
 - (void)startGame;
 
 - (void)handleDecisionPointChoice:(GGJDecisionPointChoice *)choice;
+- (void)handleMinigameWon:(BOOL)won;
 
 @end
