@@ -7,6 +7,7 @@
 //
 
 #import "CoffeeScene.h"
+#import "SKScene+Additions.h"
 
 static NSString * const GGJCoffeeAtlasName = @"Coffee";
 
@@ -120,6 +121,15 @@ static NSString * const GGJCoffeeAtlasName = @"Coffee";
 - (void)winnerWinnerChickenDinner
 {
     NSLog(@"WIN!");
+    NSNumber *win = [NSNumber numberWithBool:YES];
+    [self.sceneDelegate scene:self finishedWithContext:win];
+}
+
+- (void)lose
+{
+    NSLog(@"LOSE!");
+    NSNumber *lose = [NSNumber numberWithBool:NO];
+    [self.sceneDelegate scene:self finishedWithContext:lose];
 }
 
 @end

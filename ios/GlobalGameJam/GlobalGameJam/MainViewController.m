@@ -12,6 +12,7 @@
 #import "GGJGameStateManager.h"
 #import "HackViewController.h"
 #import "PlanningViewController.h"
+#import "CoffeeViewController.h"
 #import "UIViewController+Additions.h"
 
 @interface MainViewController () <GameViewControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
@@ -100,6 +101,14 @@
         UIImage *image = (UIImage *)context;
         
         //  Nick does really awesome things here.
+    }
+    if ([gameViewController isKindOfClass:[CoffeeViewController class]]) {
+        BOOL didWin = [context boolValue];
+        if (didWin) {
+            [gameViewController dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"How funky is your chicken?");
+            }];
+        }
     }
 }
 
