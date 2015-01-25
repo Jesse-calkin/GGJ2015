@@ -125,6 +125,7 @@ static NSInteger CharactersPerTap = 40;
     BOOL gameIsFinished = [self gameIsFinished];
     if (gameIsFinished) {
         [self.gameViewControllerDelegate gameViewControllerFinished:self];
+        self.gameViewControllerDelegate = nil;
     }
 }
 
