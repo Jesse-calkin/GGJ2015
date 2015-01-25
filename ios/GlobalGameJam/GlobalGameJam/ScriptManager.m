@@ -10,6 +10,7 @@
 #import "GGJDecisionPoint.h"
 #import "MiniGameScriptPoint.h"
 
+static NSArray *AllScriptPoints;
 static NSArray *MiniGameScriptPoints;
 static NSArray *DecisionPoints;
 
@@ -19,13 +20,16 @@ static NSArray *DecisionPoints;
 
 + (NSArray *)allScriptPoints
 {
-    NSArray *miniGameScriptPoints = [self miniGameScriptPoints];
-    NSArray *decisionPoints = [self decisionPoints];
-    NSArray *allScriptPoints = [miniGameScriptPoints arrayByAddingObjectsFromArray:decisionPoints];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"scheduledTime" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    allScriptPoints = [allScriptPoints sortedArrayUsingDescriptors:sortDescriptors];
-    return allScriptPoints;
+    if (AllScriptPoints == nil) {
+        NSArray *miniGameScriptPoints = [self miniGameScriptPoints];
+        NSArray *decisionPoints = [self decisionPoints];
+        NSArray *allScriptPoints = [miniGameScriptPoints arrayByAddingObjectsFromArray:decisionPoints];
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"scheduledTime" ascending:YES];
+        NSArray *sortDescriptors = @[sortDescriptor];
+        AllScriptPoints = [allScriptPoints sortedArrayUsingDescriptors:sortDescriptors];
+    }
+    
+    return AllScriptPoints;
 }
 
 + (id<ScriptPoint>)currentScriptPoint
@@ -34,6 +38,14 @@ static NSArray *DecisionPoints;
 }
 
 #pragma mark - Private class
+
++ (NSArray *)allUnhandledScriptPoints
+{
+    NSArray *allScriptPoints = [self allScriptPoints];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"handled == NO"];
+    NSArray *allUnhandledScriptPoints = [allScriptPoints filteredArrayUsingPredicate:predicate];
+    return allUnhandledScriptPoints;
+}
 
 + (NSArray *)miniGameScriptPoints
 {
