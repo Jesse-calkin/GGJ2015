@@ -19,10 +19,4 @@
     [self configureForScene];
 }
 
-#pragma mark - <SceneDelegate>
-
-- (void)sceneFinished:(SKScene *)scene {
-    
-}
-
 @end
