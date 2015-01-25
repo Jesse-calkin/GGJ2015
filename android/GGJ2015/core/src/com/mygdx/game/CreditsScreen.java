@@ -13,6 +13,9 @@ public class CreditsScreen extends ScreenAdapter {
     OrthographicCamera mGuiCam;
     StringBuilder mNames;
 
+    float mStringX;
+    float mStringY;
+
     public CreditsScreen(final MyGdxGame game) {
         mGameInstance = game;
 
@@ -25,6 +28,8 @@ public class CreditsScreen extends ScreenAdapter {
         mNames.append("CHRIS WEATHERS\n");
         mNames.append("ERIC YOUNG");
 
+        mStringX = (mGameInstance.screenWidth / 2) - (mGameInstance.font.getMultiLineBounds(mNames).width / 2);
+        mStringY = (mGameInstance.screenHeight / 2) + (mGameInstance.font.getMultiLineBounds(mNames).height / 2);
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
         mGuiCam.setToOrtho(false, mGameInstance.screenWidth, mGameInstance.screenHeight);
@@ -47,8 +52,8 @@ public class CreditsScreen extends ScreenAdapter {
         mGameInstance.batch.begin();
         mGameInstance.font.drawMultiLine(mGameInstance.batch,
                 mNames,
-                0,
-                mGameInstance.screenHeight);
+                mStringX,
+                mStringY);
         mGameInstance.batch.end();
     }
 

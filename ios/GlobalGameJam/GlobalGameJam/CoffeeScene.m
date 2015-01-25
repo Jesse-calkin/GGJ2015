@@ -21,6 +21,8 @@ static NSString * const GGJFillingAtlasName = @"filling";
 @property (nonatomic, strong) NSMutableArray *coffeeFrames;
 @property (nonatomic, strong) NSMutableArray *fillingFrames;
 
+@property (nonatomic) BOOL readyToPour;
+
 @end
 
 @implementation CoffeeScene
@@ -39,6 +41,8 @@ static NSString * const GGJFillingAtlasName = @"filling";
     self.coffeeButton.position = CGPointMake(175, 225);
     self.coffeeButton.xScale = 3.0;
     self.coffeeButton.yScale = 3.0;
+    self.coffeeButton.zPosition = 0;
+    self.coffeeButton.colorBlendFactor = 1;
     [self addChild:self.coffeeButton];
 
     [self performSelector:@selector(setupTextureAtlas) withObject:nil afterDelay:0.33f];
@@ -53,10 +57,11 @@ static NSString * const GGJFillingAtlasName = @"filling";
     self.blocker.texture.filteringMode = SKTextureFilteringNearest;
     self.blocker.xScale = -0.5;
     self.blocker.yScale = 0.5;
+    self.blocker.zPosition = 1;
     
-    SKAction *a1 = [SKAction moveByX:-150.0 y:0.0 duration:0.88];
+    SKAction *a1 = [SKAction moveByX:-125.0 y:0.0 duration:0.88];
     SKAction *r1 = [a1 reversedAction];
-    SKAction *a2 = [SKAction moveByX:270.0 y:0.0 duration:1.15];
+    SKAction *a2 = [SKAction moveByX:300.0 y:0.0 duration:1.15];
     SKAction *r2 = [a2 reversedAction];
     
     SKAction *chain = [SKAction sequence:@[a1, a2, r2, r1]];
@@ -92,7 +97,7 @@ static NSString * const GGJFillingAtlasName = @"filling";
         [self.fillingFrames addObject:[fillingAtlas textureNamed:texName]];
     }
     self.fillingSprite = [SKSpriteNode spriteNodeWithTexture:self.fillingFrames[0]];
-    self.fillingSprite.position = CGPointMake(859.0, 200.0);
+    self.fillingSprite.position = CGPointMake(859.0, 162.0);
     self.fillingSprite.texture.filteringMode = SKTextureFilteringNearest;
     self.fillingSprite.xScale = 6.0;
     self.fillingSprite.yScale = 6.0;
@@ -109,15 +114,17 @@ static NSString * const GGJFillingAtlasName = @"filling";
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
+
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         NSLog(@"Tapped point: %f,%f", location.x, location.y);
-        BOOL hitCoffee = CGRectContainsPoint(self.coffeeButton.frame, location);
-        BOOL blocked = CGRectContainsPoint(self.blocker.frame, location);
         
-        if (hitCoffee) {
-            NSLog(@"Hit the coffee!");
+        SKNode *touchedNode = [self nodeAtPoint:location];
+        
+        BOOL hitCoffee = CGRectContainsPoint(self.coffeeButton.frame, location);//[touchedNode isEqual:self.coffeeButton];
+        
+        if (hitCoffee && self.readyToPour) {
+            NSLog(@"Pouring!!!");
             self.fillingSprite.hidden = NO;
             self.coffeeSprite.paused = NO;
         }
@@ -148,7 +155,7 @@ static NSString * const GGJFillingAtlasName = @"filling";
 
 - (void)fillHerUp
 {
-    SKAction *fillAction = [SKAction animateWithTextures:self.coffeeFrames timePerFrame:1.33f];
+    SKAction *fillAction = [SKAction animateWithTextures:self.coffeeFrames timePerFrame:1.0f];
     [self.coffeeSprite runAction:fillAction completion:^{
         [self winnerWinnerChickenDinner];
     }];
@@ -171,6 +178,18 @@ static NSString * const GGJFillingAtlasName = @"filling";
     [self.sceneDelegate scene:self finishedWithContext:lose];
 }
 
+- (void) update:(NSTimeInterval)currentTime
+{
+    CGRect blockingRect = CGRectInset(self.blocker.frame, 75, 0);
+    if (CGRectIntersectsRect(self.coffeeButton.frame, blockingRect)) {
+        self.coffeeButton.color = [UIColor redColor];
+        self.readyToPour = NO;
+    }
+    else {
+        self.coffeeButton.color = [UIColor greenColor];
+        self.readyToPour = YES;
+    }
+}
 @end
 
 

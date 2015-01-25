@@ -3,9 +3,10 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
@@ -13,37 +14,41 @@ public class IntroScreen extends ScreenAdapter {
     MyGdxGame mGameInstance;
     Rectangle mStartGameRect;
     Rectangle mCreditsRect;
-    Texture mStartGameTexture;
-    Texture mCreditsTexture;
     Vector3 mTouchPoint;
     OrthographicCamera mGuiCam;
 
-    int mStartGameX;
-    int mStartGameY;
-    int mCreditsX;
-    int mCreditsY;
-    int mStartRectHeight;
-    int mStartRectWidth;
-    int mCreditsRectHeight;
-    int mCreditsRectWidth;
+    String mStartGameString;
+    String mCreditsString;
+
+    float mStartGameX;
+    float mStartGameY;
+    float mCreditsX;
+    float mCreditsY;
+    float mStartRectWidth;
+    float mStartRectHeight;
+    float mCreditsRectWidth;
+    float mCreditsRectHeight;
 
     public IntroScreen(final MyGdxGame game) {
         mGameInstance = game;
 
-        mStartGameX = mGameInstance.screenWidth / 3;
-        mStartGameY = mGameInstance.screenHeight / 2;
-        mCreditsX = mStartGameX;
-        mCreditsY = mStartGameY - 100;
+        mStartGameString = "START GAME";
+        mCreditsString = "CREDITS";
 
-        mStartGameTexture = new Texture(Gdx.files.internal("startGame.png"));
-        mStartRectHeight = mStartGameTexture.getHeight();
-        mStartRectWidth = mStartGameTexture.getWidth();
-        mStartGameRect = new Rectangle(mStartGameX, mStartGameY, mStartRectWidth, mStartRectHeight);
+        mStartRectWidth = mGameInstance.font.getBounds(mStartGameString).width;
+        mStartRectHeight = mGameInstance.font.getBounds(mStartGameString).height;
 
-        mCreditsTexture = new Texture(Gdx.files.internal("credits.png"));
-        mCreditsRectHeight = mCreditsTexture.getHeight();
-        mCreditsRectWidth = mCreditsTexture.getWidth();
-        mCreditsRect = new Rectangle(mCreditsX, mCreditsY, mCreditsRectWidth, mCreditsRectHeight);
+        mCreditsRectWidth = mGameInstance.font.getBounds(mCreditsString).width;
+        mCreditsRectHeight = mGameInstance.font.getBounds(mCreditsString).height;
+
+        mStartGameX = (mGameInstance.screenWidth / 2) - (mStartRectWidth / 2);
+        mStartGameY = (mGameInstance.screenHeight / 2) + (mStartRectHeight / 2);
+
+        mCreditsX = (mGameInstance.screenWidth / 2) - (mCreditsRectWidth / 2);
+        mCreditsY = (mGameInstance.screenHeight / 2) + (mCreditsRectHeight / 2) - mStartRectHeight - 10;
+
+        mStartGameRect = new Rectangle(mStartGameX, mStartGameY - mStartRectHeight, mStartRectWidth, mStartRectHeight);
+        mCreditsRect = new Rectangle(mCreditsX, mCreditsY - mCreditsRectHeight, mCreditsRectWidth, mCreditsRectHeight);
 
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
@@ -75,13 +80,23 @@ public class IntroScreen extends ScreenAdapter {
         mGameInstance.batch.setProjectionMatrix(mGuiCam.combined);
 
         mGameInstance.batch.begin();
-        mGameInstance.batch.draw(mStartGameTexture,
+        mGameInstance.font.draw(mGameInstance.batch,
+                mStartGameString,
                 mStartGameX,
                 mStartGameY);
-        mGameInstance.batch.draw(mCreditsTexture,
+        mGameInstance.font.draw(mGameInstance.batch,
+                mCreditsString,
                 mCreditsX,
                 mCreditsY);
         mGameInstance.batch.end();
+
+        ShapeRenderer renderer = new ShapeRenderer();
+        renderer.setAutoShapeType(true);
+        renderer.setColor(Color.GREEN);
+        renderer.begin();
+        renderer.rect(mStartGameX, mStartGameY - mStartRectHeight, mStartRectWidth, mStartRectHeight);
+        renderer.rect(mCreditsX, mCreditsY - mCreditsRectHeight, mCreditsRectWidth, mCreditsRectHeight);
+        renderer.end();
     }
 
     @Override
