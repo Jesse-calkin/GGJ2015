@@ -40,7 +40,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClockTick) name:GGJClockTickElapsedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleScoreChanged) name:GGJScoreChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleGameOver) name:GGJGameOverNotification object:nil];
 }
 
 #pragma mark - Notification Handlers
@@ -75,12 +74,6 @@
 - (void)handleScoreChanged
 {
     self.scoreLabel.text = [NSString stringWithFormat:@"SCORE: %d", [GGJGameStateManager sharedInstance].score];
-}
-
-- (void)handleGameOver
-{
-    GameOverViewController *govc = [[GameOverViewController alloc] init];
-    [self presentModalViewController:govc animated:YES];
 }
 
 #pragma mark - Actions
