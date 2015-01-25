@@ -31,11 +31,11 @@ public class MainGameScreen extends ScreenAdapter {
 
         mGameInstance.font.setColor(Color.WHITE);
         mWhiteboardX = mGameInstance.screenWidth / 3;
-        mWhiteboardY = 50;
+        mWhiteboardY = 450;
         mCoffeeX = mGameInstance.screenWidth / 3;
         mCoffeeY = 250;
         mCodeX = mGameInstance.screenWidth / 3;
-        mCodeY = 450;
+        mCodeY = 50;
         mRectWidth = 200;
         mRectHeight = 100;
 
