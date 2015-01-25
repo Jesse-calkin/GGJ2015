@@ -33,8 +33,8 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
         countdownClock = new CountdownClock(mGameInstance);
         countdownClock.setDuration(20);
         countdownClock.setDelay(2);
-        countdownClock.setX(20);
-        countdownClock.setY(20);
+        countdownClock.setX(40);
+        countdownClock.setY(40);
         countdownClock.setFontColor(Color.DARK_GRAY);
         countdownClock.setCountdownListener(this);
         countdownClock.start();
