@@ -121,7 +121,7 @@ static NSString * const GGJFillingAtlasName = @"filling";
         
         SKNode *touchedNode = [self nodeAtPoint:location];
         
-        BOOL hitCoffee = [touchedNode isEqual:self.coffeeButton];
+        BOOL hitCoffee = CGRectContainsPoint(self.coffeeButton.frame, location);//[touchedNode isEqual:self.coffeeButton];
         
         if (hitCoffee && self.readyToPour) {
             NSLog(@"Pouring!!!");
@@ -180,7 +180,7 @@ static NSString * const GGJFillingAtlasName = @"filling";
 
 - (void) update:(NSTimeInterval)currentTime
 {
-    CGRect blockingRect = CGRectInset(self.blocker.frame, 50, 0);
+    CGRect blockingRect = CGRectInset(self.blocker.frame, 75, 0);
     if (CGRectIntersectsRect(self.coffeeButton.frame, blockingRect)) {
         self.coffeeButton.color = [UIColor redColor];
         self.readyToPour = NO;
