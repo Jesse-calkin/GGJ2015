@@ -149,6 +149,7 @@
 
 - (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {
     if ([gameViewController isKindOfClass:[PlanningViewController class]]) {
+        [[GGJGameStateManager sharedInstance] handleMinigameWon:YES];
         NSArray *images = (NSArray *)context;
         self.gameTitleImageView.image = [images objectAtIndex:0];
         self.mainCharacterImageView.image = [images objectAtIndex:1];
@@ -156,14 +157,19 @@
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-    if ([gameViewController isKindOfClass:[CoffeeViewController class]]) {
+    else if ([gameViewController isKindOfClass:[CoffeeViewController class]]) {
         BOOL didWin = [context boolValue];
+        [[GGJGameStateManager sharedInstance] handleMinigameWon:didWin];
         if (didWin) {
             [gameViewController dismissViewControllerAnimated:YES completion:^{
                 NSLog(@"How funky is your chicken?");
             }];
         }
     }
+    else if ([gameViewController isKindOfClass:[HackViewController class]]) {
+        [[GGJGameStateManager sharedInstance] handleMinigameWon:YES];
+    }
+    
 }
 
 @end
