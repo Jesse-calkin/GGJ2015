@@ -29,7 +29,6 @@ public class WhiteboardMinigameScreen extends ScreenAdapter {
     private void update() {
         if (Gdx.input.isTouched()) {
             Vector3 unprojectedTouchPoint = mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-            //Vector3 unprojectedTouchPoint = (mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
             mPoints.add(new Vector2(unprojectedTouchPoint.x, unprojectedTouchPoint.y));
         }
     }
@@ -38,14 +37,15 @@ public class WhiteboardMinigameScreen extends ScreenAdapter {
         Gdx.gl.glClearColor(255, 255, 255, 2f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        for (Vector2 point : mPoints) {
-            ShapeRenderer shapeRenderer = new ShapeRenderer();
-            shapeRenderer.setAutoShapeType(true);
-            shapeRenderer.setProjectionMatrix(mGuiCam.combined);
+        ShapeRenderer shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setAutoShapeType(true);
+        shapeRenderer.setProjectionMatrix(mGuiCam.combined);
+        shapeRenderer.setColor(Color.BLACK);
+        Gdx.gl.glLineWidth(20);
 
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            shapeRenderer.setColor(Color.BLACK);
-            shapeRenderer.circle(point.x, point.y, 15);
+        for (int i = 1; i < mPoints.size()-1; i++) {
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+            shapeRenderer.line(mPoints.get(i).x, mPoints.get(i).y, mPoints.get(i+1).x, mPoints.get(i+1).y);
             shapeRenderer.end();
         }
     }
