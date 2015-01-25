@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		882D05241A74AA95000F02C0 /* GGJDecisionPoint.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882D05231A74AA95000F02C0 /* GGJDecisionPoint.xib */; };
 		88570F991A734F9500258D69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570F981A734F9500258D69 /* main.m */; };
 		88570F9C1A734F9500258D69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570F9B1A734F9500258D69 /* AppDelegate.m */; };
 		88570F9F1A734F9500258D69 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570F9E1A734F9500258D69 /* GameScene.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		882D05231A74AA95000F02C0 /* GGJDecisionPoint.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGJDecisionPoint.xib; sourceTree = "<group>"; };
+		882D05251A74AB13000F02C0 /* kenpixel_mini_square.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kenpixel_mini_square.ttf; sourceTree = "<group>"; };
 		88570F931A734F9500258D69 /* GlobalGameJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalGameJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88570F971A734F9500258D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88570F981A734F9500258D69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 				88570FC91A743D6E00258D69 /* Coffee.atlas */,
 				88570FA51A734F9500258D69 /* Main.storyboard */,
 				88570FA81A734F9500258D69 /* Images.xcassets */,
+				882D05251A74AB13000F02C0 /* kenpixel_mini_square.ttf */,
 				88570FAA1A734F9500258D69 /* LaunchScreen.xib */,
 				88570F961A734F9500258D69 /* Supporting Files */,
 			);
@@ -346,6 +350,7 @@
 				E44368181A74568700DE967F /* GGJDecisionPoint.m */,
 				E443681A1A74584300DE967F /* GGJDecisionPointChoice.h */,
 				E443681B1A74584300DE967F /* GGJDecisionPointChoice.m */,
+				882D05231A74AA95000F02C0 /* GGJDecisionPoint.xib */,
 			);
 			name = "Decision Points";
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 				88570FAC1A734F9500258D69 /* LaunchScreen.xib in Resources */,
 				DF8CE1821A742E8500419701 /* PlanningScene.sks in Resources */,
 				AD4522A11A737499004DE629 /* HackText in Resources */,
+				882D05241A74AA95000F02C0 /* GGJDecisionPoint.xib in Resources */,
 				AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */,
 				AD4522B01A740A84004DE629 /* CoffeeViewController.xib in Resources */,
 				88570FCA1A743D6E00258D69 /* Coffee.atlas in Resources */,
