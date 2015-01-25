@@ -13,7 +13,7 @@
 #import "PlanningViewController.h"
 #import "UIViewController+Additions.h"
 
-@interface MainViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface MainViewController () <GameViewControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @end
 
