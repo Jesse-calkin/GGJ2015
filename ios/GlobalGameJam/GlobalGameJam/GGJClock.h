@@ -19,5 +19,6 @@ extern NSString *const GGJTimeUpNotification;
 - (void)incrementTicks; // please don't call this
 
 @property (nonatomic, readonly) NSUInteger percentageTimeElapsed;
+@property (nonatomic, readonly) NSTimeInterval tickLength;
 
 @end

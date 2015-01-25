@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClockTick) name:GGJClockTickElapsedNotification object:nil];
 }
 
@@ -35,7 +36,10 @@
 {
     NSUInteger elapsedPercentage = [[[GGJGameStateManager sharedInstance] clock] percentageTimeElapsed];
     float progress = (float)elapsedPercentage / 100;
-    [self.progressView setProgress:progress animated:YES];
+    NSTimeInterval tickLength = [[[GGJGameStateManager sharedInstance] clock] tickLength];
+    [UIView animateWithDuration:tickLength delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
+        [self.progressView setProgress:progress animated:YES];
+    } completion:nil];
 }
 
 #pragma mark - Actions
