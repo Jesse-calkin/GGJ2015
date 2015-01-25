@@ -89,6 +89,7 @@
 		AD4522C01A746E8F004DE629 /* SKScene+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKScene+Additions.h"; sourceTree = "<group>"; };
 		AD4522C11A746E8F004DE629 /* SKScene+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKScene+Additions.m"; sourceTree = "<group>"; };
 		AD4522C41A747201004DE629 /* GameViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewControllerDelegate.h; sourceTree = "<group>"; };
+		AD4522C51A74728D004DE629 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		DF8CE1771A742E0E00419701 /* PlanningScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningScene.h; sourceTree = "<group>"; };
 		DF8CE1781A742E0E00419701 /* PlanningScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningScene.m; sourceTree = "<group>"; };
 		DF8CE17A1A742E2B00419701 /* PlanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningViewController.h; sourceTree = "<group>"; };
@@ -289,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				AD4522C41A747201004DE629 /* GameViewControllerDelegate.h */,
+				AD4522C51A74728D004DE629 /* SceneDelegate.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

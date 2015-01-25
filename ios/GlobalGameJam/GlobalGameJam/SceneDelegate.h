@@ -1,5 +1,5 @@
 //
-//  SKScene+Additions.h
+//  SceneDelegate.h
 //  GlobalGameJam
 //
 //  Created by Chris Weathers on 1/24/15.
@@ -7,11 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "SceneDelegate.h"
 
-@interface SKScene (Additions)
-
-@property (weak, nonatomic) id<SceneDelegate> sceneDelegate;
-
+@protocol SceneDelegate <NSObject>
+- (void)sceneFinished:(SKScene *)scene;
 @end
-
