@@ -14,6 +14,7 @@ public class AndroidLauncher extends AndroidApplication {
         config.useCompass = false;
         config.useAccelerometer = false;
         config.useImmersiveMode = true;
+        config.useWakelock = true;
         initialize(new MyGdxGame(), config);
     }
 }
