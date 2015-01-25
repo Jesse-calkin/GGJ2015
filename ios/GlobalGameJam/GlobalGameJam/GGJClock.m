@@ -79,4 +79,10 @@ NSString *const GGJTimeUpNotification = @"GGJTimeUpNotification";
 {
     return TickLength;
 }
+
+- (NSTimeInterval)timeElapsed
+{
+    return self.elapsedTicks * TickLength;
+}
+
 @end
