@@ -7,7 +7,9 @@
 //
 
 #import "ScriptManager.h"
+#import "GGJClock.h"
 #import "GGJDecisionPoint.h"
+#import "GGJGameStateManager.h"
 #import "MiniGameScriptPoint.h"
 
 static NSArray *AllScriptPoints;
@@ -34,7 +36,12 @@ static NSArray *DecisionPoints;
 
 + (id<ScriptPoint>)currentScriptPoint
 {
-    return nil;
+    NSTimeInterval timeElapsed = [[[GGJGameStateManager sharedInstance] clock] timeElapsed];
+    NSArray *allUnhandledScriptPoints = [self allUnhandledScriptPoints];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"scheduledTime <= %f", timeElapsed];
+    NSArray *allUnhandledScriptPointsOnDeck = [allUnhandledScriptPoints filteredArrayUsingPredicate:predicate];
+    id<ScriptPoint> currentScriptPoint = [allUnhandledScriptPoints firstObject];
+    return currentScriptPoint;
 }
 
 #pragma mark - Private class
