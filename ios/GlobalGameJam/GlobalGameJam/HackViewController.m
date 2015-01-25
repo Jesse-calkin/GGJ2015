@@ -51,8 +51,6 @@ static NSInteger CharactersPerTap = 40;
     rightButtonFrame.size.width = halfWidth;
     rightButtonFrame.size.height = height;
     self.rightButton.frame = rightButtonFrame;
-    
-    self.label.frame = self.view.bounds;
 }
 
 #pragma mark - Actions
@@ -84,7 +82,8 @@ static NSInteger CharactersPerTap = 40;
     NSString *currentString = [self currentString];
     self.label.text = currentString;
     
-    CGFloat width = self.view.bounds.size.width;
+    CGFloat height = 768.0f;
+    CGFloat width = 1024.0f;
     CGFloat maximumHeight = CGFLOAT_MAX;
     CGSize maximumSize = CGSizeMake(width, maximumHeight);
     CGSize textSize = [currentString sizeWithFont:self.label.font constrainedToSize:maximumSize lineBreakMode:self.label.lineBreakMode];
@@ -92,8 +91,8 @@ static NSInteger CharactersPerTap = 40;
     
     CGRect labelFrame = self.label.frame;
     labelFrame.origin.y = 0.0f;
-    if (textHeight > self.view.bounds.size.height) {
-        labelFrame.origin.y = self.view.bounds.size.height - textHeight;
+    if (textHeight > height) {
+        labelFrame.origin.y = height - textHeight;
     }
     labelFrame.size.width = width;
     labelFrame.size.height = textSize.height;
