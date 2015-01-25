@@ -24,10 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *gameTitleImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *mainCharacterImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *gameMechanicImageView;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @property (nonatomic) BOOL canDisplayDecisionPoint;
-
-@property (strong, nonatomic) DecisionModalViewController *modalViewController;
 
 
 
@@ -40,6 +39,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClockTick) name:GGJClockTickElapsedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleScoreChanged) name:GGJScoreChangedNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -48,6 +48,8 @@
     
     self.canDisplayDecisionPoint = YES;
 }
+
+#pragma mark - Notification Handlers
 
 - (void)handleClockTick
 {
@@ -61,6 +63,12 @@
     
     [self rollForDecisionsPoint];
 }
+
+- (void)handleScoreChanged
+{
+    self.scoreLabel.text = [NSString stringWithFormat:@"SCORE: %d", [GGJGameStateManager sharedInstance].score];
+}
+
 
 #pragma mark - Actions
 

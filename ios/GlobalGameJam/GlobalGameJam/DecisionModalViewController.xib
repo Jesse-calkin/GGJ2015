@@ -9,14 +9,20 @@
             <string>KenPixel-Mini-Square</string>
             <string>KenPixel-Mini-Square</string>
             <string>KenPixel-Mini-Square</string>
+            <string>KenPixel-Mini-Square</string>
+            <string>KenPixel-Mini-Square</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DecisionModalViewController">
             <connections>
                 <outlet property="bottomButton" destination="zh0-Ng-foz" id="OvT-8X-jaq"/>
+                <outlet property="continueButton" destination="BfA-nm-rCb" id="dbI-gS-G1o"/>
                 <outlet property="modalView" destination="4lX-nI-xr2" id="JZ3-OB-zkF"/>
                 <outlet property="questionTextLabel" destination="fb5-uX-hjQ" id="gfP-sB-anE"/>
+                <outlet property="resultLabel" destination="Hil-b6-eWR" id="5Kx-Vy-hvb"/>
+                <outlet property="resultView" destination="Jol-Gt-7kY" id="Vb5-9e-E5q"/>
+                <outlet property="resultsBackgroundView" destination="jJv-CY-ikb" id="KBf-X6-VUj"/>
                 <outlet property="topButton" destination="jVm-LL-3Lx" id="4lQ-Qu-bsJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -90,12 +96,54 @@
                         <constraint firstAttribute="width" constant="400" id="wIg-OV-BDV"/>
                     </constraints>
                 </view>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJv-CY-ikb">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jol-Gt-7kY">
+                    <rect key="frame" x="216" y="259" width="169" height="83"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Celey Fiber? WTF" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hil-b6-eWR">
+                            <rect key="frame" x="10" y="10" width="149" height="22"/>
+                            <fontDescription key="fontDescription" name="KenPixel-Mini-Square" family="KenPixel Mini Square" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfA-nm-rCb">
+                            <rect key="frame" x="10" y="42" width="149" height="31"/>
+                            <fontDescription key="fontDescription" name="KenPixel-Mini-Square" family="KenPixel Mini Square" pointSize="15"/>
+                            <state key="normal" title="Continue">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="continueButton:" destination="-1" eventType="touchUpInside" id="n3p-N7-dgT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Hil-b6-eWR" firstAttribute="leading" secondItem="Jol-Gt-7kY" secondAttribute="leading" constant="10" id="FSZ-fC-DQ5"/>
+                        <constraint firstItem="BfA-nm-rCb" firstAttribute="top" secondItem="Hil-b6-eWR" secondAttribute="bottom" constant="10" id="HX4-NV-Nij"/>
+                        <constraint firstAttribute="trailing" secondItem="Hil-b6-eWR" secondAttribute="trailing" constant="10" id="MMZ-8Y-vJZ"/>
+                        <constraint firstItem="Hil-b6-eWR" firstAttribute="top" secondItem="Jol-Gt-7kY" secondAttribute="top" constant="10" id="PD4-iS-MdP"/>
+                        <constraint firstAttribute="bottom" secondItem="BfA-nm-rCb" secondAttribute="bottom" constant="10" id="epG-AG-fVX"/>
+                        <constraint firstAttribute="trailing" secondItem="BfA-nm-rCb" secondAttribute="trailing" constant="10" id="kRT-mq-LGr"/>
+                        <constraint firstItem="BfA-nm-rCb" firstAttribute="leading" secondItem="Jol-Gt-7kY" secondAttribute="leading" constant="10" id="mEI-Zh-BNv"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="6w9-d7-ITg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1sO-jf-yoA"/>
+                <constraint firstItem="jJv-CY-ikb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3so-wM-bKZ"/>
+                <constraint firstAttribute="centerY" secondItem="Jol-Gt-7kY" secondAttribute="centerY" id="A15-Od-nNM"/>
                 <constraint firstItem="6w9-d7-ITg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Bkr-ft-UWZ"/>
+                <constraint firstAttribute="trailing" secondItem="jJv-CY-ikb" secondAttribute="trailing" id="QQU-Wd-WLI"/>
                 <constraint firstAttribute="trailing" secondItem="6w9-d7-ITg" secondAttribute="trailing" id="VQO-oB-KG7"/>
+                <constraint firstAttribute="centerX" secondItem="Jol-Gt-7kY" secondAttribute="centerX" id="bYf-QA-nik"/>
+                <constraint firstItem="jJv-CY-ikb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="baL-37-rdq"/>
+                <constraint firstAttribute="bottom" secondItem="jJv-CY-ikb" secondAttribute="bottom" id="f6Y-9L-XkR"/>
                 <constraint firstAttribute="centerX" secondItem="4lX-nI-xr2" secondAttribute="centerX" id="fk7-J6-Lkg"/>
                 <constraint firstAttribute="bottom" secondItem="6w9-d7-ITg" secondAttribute="bottom" id="jA3-2f-XK6"/>
                 <constraint firstAttribute="centerY" secondItem="4lX-nI-xr2" secondAttribute="centerY" id="ySC-7q-gTE"/>
