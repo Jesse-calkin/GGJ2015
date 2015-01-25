@@ -88,6 +88,7 @@
 		AD4522BD1A7428A0004DE629 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
 		AD4522C01A746E8F004DE629 /* SKScene+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKScene+Additions.h"; sourceTree = "<group>"; };
 		AD4522C11A746E8F004DE629 /* SKScene+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKScene+Additions.m"; sourceTree = "<group>"; };
+		AD4522C41A747201004DE629 /* GameViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewControllerDelegate.h; sourceTree = "<group>"; };
 		DF8CE1771A742E0E00419701 /* PlanningScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningScene.h; sourceTree = "<group>"; };
 		DF8CE1781A742E0E00419701 /* PlanningScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningScene.m; sourceTree = "<group>"; };
 		DF8CE17A1A742E2B00419701 /* PlanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningViewController.h; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 		88570F951A734F9500258D69 /* GlobalGameJam */ = {
 			isa = PBXGroup;
 			children = (
+				AD4522C31A7471EA004DE629 /* Protocols */,
 				AD4522BB1A74288F004DE629 /* Categories */,
 				E4074F6A1A74177F00AF1A99 /* Game Logic */,
 				AD4522A31A74095D004DE629 /* View Controllers */,
@@ -281,6 +283,14 @@
 				AD4522C11A746E8F004DE629 /* SKScene+Additions.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		AD4522C31A7471EA004DE629 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AD4522C41A747201004DE629 /* GameViewControllerDelegate.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		DF8CE17F1A742E3300419701 /* Planning View Controller */ = {
