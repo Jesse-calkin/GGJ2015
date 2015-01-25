@@ -1,38 +1,45 @@
 //
-//  HackScene.m
+//  HackViewController.m
 //  GlobalGameJam
 //
-//  Created by Chris Weathers on 1/23/15.
+//  Created by Chris Weathers on 1/24/15.
 //  Copyright (c) 2015 shoshinboogie. All rights reserved.
 //
 
-#import "HackScene.h"
+#import "HackViewController.h"
+#import "UIViewController+Additions.h"
 
 static NSInteger CharactersPerTap = 20;
 
-@interface HackScene ()
+@interface HackViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
+@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) UIButton *lastButtonTapped;
 @property (strong, nonatomic) NSString *fullString;
 @property (assign, nonatomic) NSInteger numberOfTaps;
-@property (strong, nonatomic) UILabel *label;
 @end
 
-@implementation HackScene
+@implementation HackViewController
 
--(void)didMoveToView:(SKView *)view {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"HackSceneText" ofType:nil];
-    NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    self.fullString = fullString;
+#pragma mark - UIViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    CGRect frame = view.bounds;
-    self.label = [[UILabel alloc] initWithFrame:frame];
-    self.label.numberOfLines = 0;
-    [view addSubview:self.label];
+    [self populateFullString];
+    [self initializeViews];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    self.numberOfTaps++;
-    NSString *currentString = [self currentString];
-    self.label.text = currentString;
+#pragma mark - Actions
+
+- (IBAction)buttonTapped:(UIButton *)button {
+    if (button != self.lastButtonTapped) {
+        //self.lastButtonTapped = button;
+        self.numberOfTaps++;
+        [self updateLabel];
+        [self winIfWeWon];
+    }
 }
 
 #pragma mark - Private
@@ -47,6 +54,58 @@ static NSInteger CharactersPerTap = 20;
     NSRange range = NSMakeRange(0, length);
     NSString *currentString = [self.fullString substringWithRange:range];
     return currentString;
+}
+
+- (void)updateLabel {
+    NSString *currentString = [self currentString];
+    self.label.text = currentString;
+    
+    CGFloat width = self.view.bounds.size.width;
+    CGFloat maximumHeight = CGFLOAT_MAX;
+    CGSize maximumSize = CGSizeMake(width, maximumHeight);
+    CGSize textSize = [currentString sizeWithFont:self.label.font constrainedToSize:maximumSize lineBreakMode:self.label.lineBreakMode];
+    CGFloat textHeight = textSize.height;
+    
+    CGRect labelFrame = self.label.frame;
+    labelFrame.origin.y = 0.0f;
+    if (textHeight > self.view.bounds.size.height) {
+        labelFrame.origin.y = self.view.bounds.size.height - textHeight;
+    }
+    labelFrame.size.width = width;
+    labelFrame.size.height = textSize.height;
+    self.label.frame = labelFrame;
+    
+    self.label.backgroundColor = [UIColor blueColor];
+}
+
+- (void)clearButton:(UIButton *)button {
+    button.backgroundColor = [UIColor clearColor];
+    [button setTitle:nil forState:UIControlStateNormal];
+}
+
+- (void)populateFullString {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"HackText" ofType:nil];
+    NSString *fullString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    self.fullString = fullString;
+}
+
+- (void)initializeViews {
+    [self clearButton:self.leftButton];
+    [self clearButton:self.rightButton];
+    [self updateLabel];
+}
+
+- (BOOL)gameIsFinished {
+    NSString *currentString = [self currentString];
+    BOOL gameIsFinished = [currentString isEqualToString:self.fullString];
+    return gameIsFinished;
+}
+
+- (void)winIfWeWon {
+    BOOL gameIsFinished = [self gameIsFinished];
+    if (gameIsFinished) {
+        [self.gameViewControllerDelegate gameViewControllerFinished:self];
+    }
 }
 
 @end
