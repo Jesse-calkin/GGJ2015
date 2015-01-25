@@ -62,8 +62,8 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
         mCoffeeTouchRectangle = new Rectangle(mGameInstance.screenWidth / 8.5f, mGameInstance.screenHeight / 4, 150, 220);
 
         mCountdownClock = new CountdownClock(mGameInstance);
-        mCountdownClock.setDuration(20);
-        mCountdownClock.setDelay(2);
+        mCountdownClock.setDuration(5);
+        mCountdownClock.setDelay(1);
         mCountdownClock.setX(20);
         mCountdownClock.setY(20);
         mCountdownClock.setFontColor(Color.WHITE);
@@ -154,10 +154,14 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
     }
 
     @Override
-    public void pause() {}
-
-    @Override
     public void onCountdownFinished() {
-        mGameInstance.setScreen(new MainGameScreen(mGameInstance));
+        String endText;
+        if (mCoffeeLevel == 4) {
+            endText = "You managed to get coffee for your entire team";
+        }
+        else {
+            endText = "Go back home and train your dexterity stats";
+        }
+        mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/3, mGameInstance.screenHeight/2));
     }
 }

@@ -69,11 +69,6 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
     }
 
     @Override
-    public void pause() {
-
-    }
-
-    @Override
     public boolean keyDown(int keycode) {
         return false;
     }
