@@ -11,15 +11,17 @@
 
 @interface PlanningScene ()
 
-@property NSMutableArray *lines;
-@property UIImageView *imageView;
-@property UILabel *titleLabel;
+@property (strong, nonatomic) NSMutableArray *lines;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UILabel *titleLabel;
 
-@property NSMutableArray *finishedImages;
+@property (strong, nonatomic) NSMutableArray *finishedImages;
 
-@property NSArray *roundTimes;
-@property NSTimeInterval startTime;
-@property NSInteger currentRound;
+@property (nonatomic) NSInteger renderedLines;
+
+@property (strong, nonatomic) NSArray *roundTimes;
+@property (nonatomic) NSTimeInterval startTime;
+@property (nonatomic) NSInteger currentRound;
 
 @end
 
@@ -31,6 +33,7 @@
     [super didMoveToView:view];
     
     self.lines = [NSMutableArray array];
+    self.renderedLines = 0;
     self.finishedImages = [NSMutableArray array];
     
     self.imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
@@ -81,14 +84,12 @@
 {
     self.currentRound = newRound;
 
-    //self.titleLabel.alpha = 1.0f;
-
     if (newRound == 0) {
         self.titleLabel.text = @"QUICK! WE NEED A GAME TITLE";
     }
     else {
         [self.finishedImages addObject:[self renderImage]];
-        [self.lines removeAllObjects];
+        [self clearCanvas];
         
         if(newRound  == 1) {
             self.titleLabel.text = @"NOW WE NEED A MAIN CHARACTER";
@@ -97,10 +98,6 @@
             self.titleLabel.text = @"NOW A KICKASS GAME MECHANIC";
         }
     }
-//
-//    [UIView animateWithDuration:5.0f animations:^{
-//        self.titleLabel.alpha = 0.5f;
-//    }];
 }
 
 
@@ -115,8 +112,10 @@
 }
 
 
-- (void)drawLines
+- (void)clearCanvas
 {
+    [self.lines removeAllObjects];
+    
     NSMutableArray *linesToDelete = [NSMutableArray array];
     for(CALayer *layer in self.imageView.layer.sublayers) {
         if([layer.name isEqualToString:@"line"]) {
@@ -125,7 +124,13 @@
     }
     [linesToDelete makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     
-    for (NSInteger i = 0; i < self.lines.count; i++) {
+    self.renderedLines = 0;
+}
+
+
+- (void)drawLines
+{
+    for (NSInteger i = self.renderedLines; i < self.lines.count; i++) {
         NSMutableArray *line = [self.lines objectAtIndex:i];
 
         CGMutablePathRef ref = CGPathCreateMutable();
@@ -153,6 +158,8 @@
         lineLayer.path = ref;
         CGPathRelease(ref);
         [self.imageView.layer addSublayer:lineLayer];
+        
+        self.renderedLines = i;
     }
 }
 
