@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
-#import "SKScene+Additions.h"
+#import "GameViewControllerDelegate.h"
+#import "SceneDelegate.h"
 
 @interface UIViewController (Additions) <SceneDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+
+@property (strong, nonatomic) id<GameViewControllerDelegate> gameViewControllerDelegate;
 
 - (void)configureForScene;
 - (void)configureForScene:(SKScene *)scene;

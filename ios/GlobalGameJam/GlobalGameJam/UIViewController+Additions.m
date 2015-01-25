@@ -8,9 +8,13 @@
 
 #import "UIViewController+Additions.h"
 #import "SceneManager.h"
+#import "SKScene+Additions.h"
 #import <CoreImage/CoreImage.h>
+#import <objc/runtime.h>
 
 @implementation UIViewController (Additions)
+
+static void *AssociationKey;
 
 #pragma mark - Public
 
@@ -121,6 +125,16 @@
 
 - (void)sceneFinished:(SKScene *)scene {
     
+}
+
+#pragma mark - Accessors
+
+- (void)setGameViewControllerDelegate:(id<GameViewControllerDelegate>)gameViewControllerDelegate {
+    objc_setAssociatedObject(self, AssociationKey, gameViewControllerDelegate, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (id<GameViewControllerDelegate>)gameViewControllerDelegate {
+    return objc_getAssociatedObject(self, AssociationKey);
 }
 
 @end
