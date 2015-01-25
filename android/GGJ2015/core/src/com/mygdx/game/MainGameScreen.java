@@ -102,14 +102,20 @@ public class MainGameScreen extends ScreenAdapter {
     }
 
     private void showWhiteboardZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!", mWhiteboardX + mWhiteboardClickRectangle.width + 10, mWhiteboardY + (mWhiteboardClickRectangle.height / 2));
+        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!",
+                mWhiteboardX + mWhiteboardClickRectangle.width + 10,
+                mWhiteboardY + (mWhiteboardClickRectangle.height / 2));
     }
 
     private void showCoffeeZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is the coffee zone!", mCoffeeX + mCoffeeClickRectangle.width + 10, mCoffeeY + (mCoffeeClickRectangle.height / 2));
+        mGameInstance.font.draw(mGameInstance.batch, "This is the coffee zone!",
+                mCoffeeX + mCoffeeClickRectangle.width + 10,
+                mCoffeeY + (mCoffeeClickRectangle.height / 2));
     }
 
     private void showCodeZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is some code!", mCodeX + mCodeClickRectangle.width + 10, mCodeY + (mCodeClickRectangle.height / 2));
+        mGameInstance.font.draw(mGameInstance.batch, "This is some code!",
+                mCodeX + mCodeClickRectangle.width + 10,
+                mCodeY + (mCodeClickRectangle.height / 2));
     }
 }
