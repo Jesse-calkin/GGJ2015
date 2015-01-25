@@ -18,7 +18,7 @@ public class MyGdxGame extends Game {
         batch = new SpriteBatch();
         screenWidth = Gdx.graphics.getWidth();
         screenHeight = Gdx.graphics.getHeight();
-        this.setScreen(new MainGameScreen(this));
+        this.setScreen(new IntroScreen(this));
     }
 
     @Override
