@@ -4,12 +4,16 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import java.util.ArrayList;
 
 public class MyGdxGame extends Game {
     SpriteBatch batch;
     BitmapFont font;
     int screenWidth;
     int screenHeight;
+    public ArrayList<TextureRegion> whiteboardTextures;
 
     @Override
     public void create() {
@@ -19,6 +23,7 @@ public class MyGdxGame extends Game {
         screenWidth = Gdx.graphics.getWidth();
         screenHeight = Gdx.graphics.getHeight();
         this.setScreen(new IntroScreen(this));
+        whiteboardTextures = new ArrayList<TextureRegion>();
     }
 
     @Override

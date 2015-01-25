@@ -11,6 +11,8 @@
 #import "SKScene+Additions.h"
 #import <CoreImage/CoreImage.h>
 #import <objc/runtime.h>
+#import <QuartzCore/QuartzCore.h>
+#import "MainViewController.h"
 
 @implementation UIViewController (Additions)
 
@@ -42,8 +44,8 @@ static void *AssociationKey;
 }
 
 - (void)switchToViewController:(UIViewController *)viewController completion:(void (^)(void))completion {
-    //viewController.modalPresentationStyle = UIModalPresentationCustom;
-    //viewController.transitioningDelegate = self;
+    viewController.modalPresentationStyle = UIModalPresentationCustom;
+    viewController.transitioningDelegate = self;
     [self presentViewController:viewController animated:YES completion:completion];
 }
 
@@ -61,37 +63,46 @@ static void *AssociationKey;
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     UIView *containerView = [transitionContext containerView];
-    
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIImage *fromViewControllerImage = [[self class] pixelatedImageOfViewController:fromViewController];
-    UIImageView *fromViewControllerImageView = [[UIImageView alloc] initWithImage:fromViewControllerImage];
-    fromViewControllerImageView.alpha = 0.0f;
-    [containerView addSubview:fromViewControllerImageView];
-    
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    UIImage *toViewControllerImage = [[self class] pixelatedImageOfViewController:toViewController];
-    UIImageView *toViewControllerImageView = [[UIImageView alloc] initWithImage:toViewControllerImage];
-    toViewControllerImageView.alpha = 0.0f;
-    [containerView addSubview:toViewControllerImageView];
     
-    [UIView animateWithDuration:0.5f animations:^{
-                         fromViewControllerImageView.alpha = 1.0f;
-                     } completion:^(BOOL finished) {
-                         [UIView animateWithDuration:0.5f animations:^{
-                             toViewControllerImageView.alpha = 1.0f;
-                         } completion:^(BOOL finished) {
-                             [containerView addSubview:toViewController.view];
-                             [UIView animateWithDuration:0.5f animations:^{
-                                 fromViewControllerImageView.alpha = 0.0f;
-                             } completion:^(BOOL finished) {
-                                 [UIView animateWithDuration:0.5f animations:^{
-                                     toViewControllerImageView.alpha = 0.0f;
-                                 } completion:^(BOOL finished) {
-                                     [transitionContext completeTransition:YES];
-                                 }];
-                             }];
-                         }];
-                     }];
+    BOOL goingBackHome = [toViewController isKindOfClass:[MainViewController class]];
+    
+    UIViewController *mainViewController = fromViewController;
+    UIViewController *gameViewController = toViewController;
+    
+    if (goingBackHome) {
+        mainViewController = toViewController;
+        gameViewController = fromViewController;
+    }
+    
+    CGFloat smallSize = 0.01f;
+    CGFloat normalSize = 1.0f;
+    CGFloat bigSize = 4.5f;
+    
+    if (gameViewController.view.superview != containerView) {
+        [containerView addSubview:gameViewController.view];
+        gameViewController.view.frame = containerView.bounds;
+    }
+    
+    if (goingBackHome == NO) {
+        [self applyScale:smallSize toView:gameViewController.view];
+    }
+    
+    UIViewAnimationOptions options = (goingBackHome ? UIViewAnimationOptionCurveEaseOut : UIViewAnimationOptionCurveEaseIn);
+    
+    [UIView animateWithDuration:0.6f delay:0.0f options:options animations:^{
+        if (goingBackHome) {
+            [self applyScale:normalSize toView:mainViewController.view];
+            [self applyScale:smallSize toView:gameViewController.view];
+        }
+        else {
+            [self applyScale:normalSize toView:gameViewController.view];
+            [self applyScale:bigSize toView:mainViewController.view];
+        }
+    } completion:^(BOOL finished) {
+        [transitionContext completeTransition:YES];
+    }];
 }
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
@@ -119,6 +130,12 @@ static void *AssociationKey;
 + (UIImage *)pixelatedImageOfViewController:(UIViewController *)viewController {
     UIImage *pixelatedImage = [self pixelatedImageOfView:viewController.view];
     return pixelatedImage;
+}
+
+- (void)applyScale:(CGFloat)scale toView:(UIView *)view
+{
+    CGAffineTransform transform = CGAffineTransformMakeScale(scale, scale);
+    view.layer.affineTransform = transform;
 }
 
 #pragma mark - <SceneDelegate>

@@ -10,7 +10,8 @@
 
 @interface GGJDecisionPointChoice : NSObject
 
-@property (nonatomic,copy) NSString *optionText;
+@property (nonatomic, copy) NSString *optionText;
+@property (nonatomic, copy) NSString *resultText;
 @property (nonatomic,getter=isCorrect) BOOL correct;
 
 @end
