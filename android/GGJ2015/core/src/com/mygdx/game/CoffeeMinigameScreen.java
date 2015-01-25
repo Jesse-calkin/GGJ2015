@@ -13,7 +13,7 @@ import com.badlogic.gdx.math.Vector3;
 
 import java.util.ArrayList;
 
-public class CoffeeMinigameScreen extends ScreenAdapter {
+public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownClock.CountdownClockListener {
 
     MyGdxGame mGameInstance;
     Texture mCoffeeGuyTexture;
@@ -24,6 +24,7 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
     ShapeRenderer mCoffeeHighlight;
     Vector3 mTouchPoint;
     OrthographicCamera mGuiCam;
+    CountdownClock mCountdownClock;
 
     ArrayList<Texture> mCoffeeTextures;
 
@@ -58,8 +59,16 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
                 mCoffeeGuyTexture.getWidth() * 6,
                 mCoffeeGuyTexture.getHeight() * 6);
 
-
         mCoffeeTouchRectangle = new Rectangle(mGameInstance.screenWidth / 8.5f, mGameInstance.screenHeight / 4, 150, 220);
+
+        mCountdownClock = new CountdownClock(mGameInstance);
+        mCountdownClock.setDuration(20);
+        mCountdownClock.setDelay(2);
+        mCountdownClock.setX(20);
+        mCountdownClock.setY(20);
+        mCountdownClock.setFontColor(Color.WHITE);
+        mCountdownClock.setCountdownListener(this);
+        mCountdownClock.start();
 
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
@@ -134,6 +143,8 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
                 mCoffeeGuyTexture.getWidth() * 6,
                 mCoffeeGuyTexture.getHeight() * 6);
         mGameInstance.batch.end();
+
+        mCountdownClock.render();
     }
 
     @Override
@@ -144,4 +155,9 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
 
     @Override
     public void pause() {}
+
+    @Override
+    public void onCountdownFinished() {
+        mGameInstance.setScreen(new MainGameScreen(mGameInstance));
+    }
 }
