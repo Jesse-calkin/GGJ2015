@@ -16,9 +16,10 @@
 #import "UIViewController+Additions.h"
 #import "DecisionModalViewController.h"
 #import "GGJDecisionPoint.h"
+#import "ScriptManager.h"
+#import "MiniGameScriptPoint.h"
 
 @interface MainViewController () <GameViewControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
-
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UIImageView *gameTitleImageView;
@@ -28,11 +29,11 @@
 
 @property (nonatomic) BOOL canDisplayDecisionPoint;
 
-
-
 @end
 
 @implementation MainViewController
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad
 {
@@ -61,14 +62,27 @@
         [self.progressView setProgress:progress animated:YES];
     } completion:nil];
     
-    [self rollForDecisionsPoint];
+    id<ScriptPoint> currentScriptPoint = [ScriptManager currentScriptPoint];
+    if (currentScriptPoint != nil) {
+        if ([currentScriptPoint isKindOfClass:[GGJDecisionPoint class]]) {
+            if (self.canDisplayDecisionPoint) {
+                GGJDecisionPoint *decisionPoint = (GGJDecisionPoint *)currentScriptPoint;
+                decisionPoint.handled = YES;
+                [self presentDecisionPoint:decisionPoint];
+            }
+        }
+        else if ([currentScriptPoint isKindOfClass:[MiniGameScriptPoint class]]) {
+            MiniGameScriptPoint *miniGameScriptPoint = (MiniGameScriptPoint *)currentScriptPoint;
+            miniGameScriptPoint.handled = YES;
+            [self switchToViewControllerOfClass:miniGameScriptPoint.viewControllerClass];
+        }
+    }
 }
 
 - (void)handleScoreChanged
 {
     self.scoreLabel.text = [NSString stringWithFormat:@"SCORE: %d", [GGJGameStateManager sharedInstance].score];
 }
-
 
 #pragma mark - Actions
 
@@ -99,12 +113,7 @@
     NSString *pickerItem = [self pickerItemAtIndex:row];
     Class viewControllerClass = NSClassFromString(pickerItem);
     if (viewControllerClass != nil) {
-        UIViewController *viewController = [[viewControllerClass alloc] init];
-        viewController.gameViewControllerDelegate = self;
-        
-        self.canDisplayDecisionPoint = NO;
-        
-        [self switchToViewController:viewController completion:nil];
+        [self switchToViewControllerOfClass:viewControllerClass];
     }
 }
 
@@ -114,6 +123,14 @@
 }
 
 #pragma mark - Private
+
+- (void)switchToViewControllerOfClass:(Class)class {
+    self.canDisplayDecisionPoint = NO;
+    
+    UIViewController *viewController = [[class alloc] init];
+    viewController.gameViewControllerDelegate = self;
+    [self switchToViewController:viewController completion:nil];
+}
 
 - (NSArray *)pickerItems {
     NSArray *pickerItems = @[@"", @"CoffeeViewController", @"HackViewController", @"PlanningViewController"];
@@ -126,17 +143,12 @@
     return pickerItem;
 }
 
-- (void)rollForDecisionsPoint
-{
-    if (self.canDisplayDecisionPoint) {
-        if (arc4random_uniform(20) == 1) {
-            DecisionModalViewController *modalViewController = [[DecisionModalViewController alloc] init];
-            [modalViewController configureWithDecisionPoint:[GGJDecisionPoint randomDecisionPoint]];
-            modalViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-            
-            [self presentViewController:modalViewController animated:YES completion:nil];
-        }
-    }
+- (void)presentDecisionPoint:(GGJDecisionPoint *)decisionPoint {
+    DecisionModalViewController *modalViewController = [[DecisionModalViewController alloc] init];
+    [modalViewController configureWithDecisionPoint:decisionPoint];
+    modalViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    modalViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:modalViewController animated:YES completion:nil];
 }
 
 #pragma mark - <GameViewControllerDelegate>
