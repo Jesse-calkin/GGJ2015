@@ -19,7 +19,6 @@ public class CodeMinigameScreen extends ScreenAdapter {
     ShapeRenderer mRightKeyShape;
     Vector3 mTouchPoint;
     OrthographicCamera mGuiCam;
-    FileHandle mHandle;
 
     int mLeftX;
     int mLeftY;
@@ -33,6 +32,8 @@ public class CodeMinigameScreen extends ScreenAdapter {
     boolean mRightTouched;
 
     String mCodeString;
+
+    FileHandle mHandle;
 
     public CodeMinigameScreen(final MyGdxGame game) {
         mGameInstance = game;
@@ -118,7 +119,7 @@ public class CodeMinigameScreen extends ScreenAdapter {
         mRightKeyShape.begin(ShapeRenderer.ShapeType.Filled);
         mRightKeyShape.rect(mRightX, mRightY, mButtonRectWidth, mButtonRectHeight);
         mRightKeyShape.end();
-
+        
         String subString = mCodeString.substring(0, mCodeShown);
 
         mGameInstance.batch.begin();

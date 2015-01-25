@@ -32,7 +32,8 @@
     self.lines = [NSMutableArray array];
     self.finishedImages = [NSMutableArray array];
     
-    self.imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
+    self.imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:self.imageView];
     
     self.titleLabel = [[UILabel alloc] init];
