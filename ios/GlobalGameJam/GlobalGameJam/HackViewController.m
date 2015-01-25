@@ -51,6 +51,8 @@ static NSInteger CharactersPerTap = 40;
     rightButtonFrame.size.width = halfWidth;
     rightButtonFrame.size.height = height;
     self.rightButton.frame = rightButtonFrame;
+    
+    self.label.frame = self.view.bounds;
 }
 
 #pragma mark - Actions
