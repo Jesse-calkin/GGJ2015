@@ -13,7 +13,7 @@ import com.badlogic.gdx.math.Vector3;
 
 import java.util.ArrayList;
 
-public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProcessor {
+public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProcessor, CountdownClock.CountdownClockListener {
 
     MyGdxGame mGameInstance;
     ArrayList<Vector2> mPoints;
@@ -34,6 +34,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
         countdownClock.setDelay(2);
         countdownClock.setX(20);
         countdownClock.setY(20);
+        countdownClock.setCountdownListener(this);
         countdownClock.start();
     }
 
@@ -112,5 +113,10 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
     @Override
     public boolean scrolled(int amount) {
         return false;
+    }
+
+    @Override
+    public void onCountdownFinished() {
+        mGameInstance.setScreen(new MainGameScreen(mGameInstance));
     }
 }

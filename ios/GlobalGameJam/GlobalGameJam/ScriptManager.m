@@ -40,7 +40,7 @@ static NSArray *DecisionPoints;
     NSArray *allUnhandledScriptPoints = [self allUnhandledScriptPoints];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"scheduledTime <= %f", timeElapsed];
     NSArray *allUnhandledScriptPointsOnDeck = [allUnhandledScriptPoints filteredArrayUsingPredicate:predicate];
-    id<ScriptPoint> currentScriptPoint = [allUnhandledScriptPoints firstObject];
+    id<ScriptPoint> currentScriptPoint = [allUnhandledScriptPointsOnDeck firstObject];
     return currentScriptPoint;
 }
 

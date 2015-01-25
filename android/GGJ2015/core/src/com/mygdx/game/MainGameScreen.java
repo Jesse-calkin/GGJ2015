@@ -46,6 +46,7 @@ public class MainGameScreen extends ScreenAdapter {
         mGuiCam = new OrthographicCamera();
         mGuiCam.setToOrtho(false, mGameInstance.screenWidth, mGameInstance.screenHeight);
         mGuiCam.update();
+        mGameInstance.font.setColor(Color.WHITE);
     }
 
     private void update() {
