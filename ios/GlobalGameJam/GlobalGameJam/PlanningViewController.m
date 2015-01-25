@@ -8,13 +8,10 @@
 
 #import "PlanningViewController.h"
 #import "UIViewController+Additions.h"
-#import "SceneManager.h"
-
-@interface PlanningViewController ()
-
-@end
 
 @implementation PlanningViewController
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,5 +19,10 @@
     [self configureForScene];
 }
 
+#pragma mark - <SceneDelegate>
+
+- (void)sceneFinished:(SKScene *)scene {
+    
+}
 
 @end

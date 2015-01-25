@@ -8,9 +8,13 @@
 
 #import "UIViewController+Additions.h"
 #import "SceneManager.h"
+#import "SKScene+Additions.h"
 #import <CoreImage/CoreImage.h>
+#import <objc/runtime.h>
 
 @implementation UIViewController (Additions)
+
+static void *AssociationKey;
 
 #pragma mark - Public
 
@@ -22,6 +26,8 @@
 }
 
 - (void)configureForScene:(SKScene *)scene {
+    scene.sceneDelegate = self;
+    
     CGRect frame = self.view.bounds;
     SKView *skView = [[SKView alloc] initWithFrame:frame];
     skView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -113,6 +119,30 @@
 + (UIImage *)pixelatedImageOfViewController:(UIViewController *)viewController {
     UIImage *pixelatedImage = [self pixelatedImageOfView:viewController.view];
     return pixelatedImage;
+}
+
+#pragma mark - <SceneDelegate>
+
+- (void)sceneFinished:(SKScene *)scene {
+    if ([self.gameViewControllerDelegate respondsToSelector:@selector(gameViewControllerFinished:)]) {
+        [self.gameViewControllerDelegate gameViewControllerFinished:self];
+    }
+}
+
+- (void)scene:(SKScene *)scene finishedWithContext:(id)context {
+    if ([self.gameViewControllerDelegate respondsToSelector:@selector(gameViewController:finishedWithContext:)]) {
+        [self.gameViewControllerDelegate gameViewController:self finishedWithContext:context];
+    }
+}
+
+#pragma mark - Accessors
+
+- (void)setGameViewControllerDelegate:(id<GameViewControllerDelegate>)gameViewControllerDelegate {
+    objc_setAssociatedObject(self, AssociationKey, gameViewControllerDelegate, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (id<GameViewControllerDelegate>)gameViewControllerDelegate {
+    return objc_getAssociatedObject(self, AssociationKey);
 }
 
 @end

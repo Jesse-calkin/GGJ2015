@@ -16,6 +16,7 @@ extern NSString *const GGJTimeUpNotification;
 // Just use this for now
 - (void)startClock;
 - (void)stopClock;
+- (void)incrementTicks; // please don't call this
 
 @property (nonatomic, readonly) NSUInteger percentageTimeElapsed;
 
