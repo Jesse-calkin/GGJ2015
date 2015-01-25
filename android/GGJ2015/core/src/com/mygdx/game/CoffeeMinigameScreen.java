@@ -168,6 +168,6 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
         else {
             endText = "Go back home and train your dexterity stats";
         }
-        mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/3, mGameInstance.screenHeight/2));
+        mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/2, mGameInstance.screenHeight/2));
     }
 }

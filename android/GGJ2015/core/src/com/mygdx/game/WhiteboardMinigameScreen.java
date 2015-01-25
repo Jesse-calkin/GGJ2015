@@ -165,7 +165,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
             else {
                 endText = "Well you have an idea...kind of...";
             }
-            mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/4, mGameInstance.screenHeight/2.0f ));
+            mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/2, mGameInstance.screenHeight/2.0f ));
         }
     }
 }
