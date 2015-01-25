@@ -78,6 +78,12 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
                         mCoffeeMeterTexture = mCoffeeTextures.get(mCoffeeLevel);
                     }
                 }
+
+                if (mCoffeeTouchRectangle.contains(mTouchPoint.x, mTouchPoint.y) &&
+                        mCoffeeGuyRectangle.contains(mTouchPoint.x, mTouchPoint.y)) {
+                        mCoffeeLevel = 0;
+                        mCoffeeMeterTexture = mCoffeeTextures.get(mCoffeeLevel);
+                }
                 return false;
             }
         });
