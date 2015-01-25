@@ -17,9 +17,9 @@
                 <outlet property="progressView" destination="FTq-Ew-FTY" id="Xfr-2Z-Ut0"/>
                 <outlet property="scoreLabel" destination="nj0-TU-9sx" id="5NS-w7-apo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outletCollection property="backgroundViews" destination="UKm-z6-OC0" id="eqc-Qc-GHR"/>
-                <outletCollection property="backgroundViews" destination="hXn-MQ-hVC" id="KJI-oI-8Pn"/>
-                <outletCollection property="backgroundViews" destination="fzh-BV-qNd" id="wl9-7Y-3By"/>
+                <outletCollection property="backgroundViews" destination="UKm-z6-OC0" id="2hr-Eh-uB7"/>
+                <outletCollection property="backgroundViews" destination="Awc-JB-kef" id="WLa-ee-rGh"/>
+                <outletCollection property="backgroundViews" destination="JQU-gf-4ss" id="nd2-0e-Gcd"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,6 +27,10 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgy-1y-uT1" userLabel="Background Views Container View">
+                    <rect key="frame" x="0.0" y="0.0" width="1632" height="1224"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mL2-R2-wbL" userLabel="Load Button">
                     <rect key="frame" x="10" y="30" width="100" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -54,29 +58,51 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgy-1y-uT1" userLabel="Background Views Container View">
-                    <rect key="frame" x="352" y="100" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
         </view>
         <view contentMode="scaleToFill" id="UKm-z6-OC0" userLabel="Background View">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="1632" height="1224"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="basement" translatesAutoresizingMaskIntoConstraints="NO" id="tpu-7r-fMC">
+                    <rect key="frame" x="0.0" y="0.0" width="1632" height="1224"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" red="1" green="0.01171678569" blue="0.1184098688" alpha="1" colorSpace="calibratedRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <view contentMode="scaleToFill" id="hXn-MQ-hVC" userLabel="Background View">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+        <view contentMode="scaleToFill" id="Awc-JB-kef" userLabel="Background View">
+            <rect key="frame" x="0.0" y="0.0" width="1632" height="1224"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cityscape" translatesAutoresizingMaskIntoConstraints="NO" id="Msy-sZ-Tx2">
+                    <rect key="frame" x="0.0" y="0.0" width="1632" height="1224"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.01171678569" blue="0.1184098688" alpha="1" colorSpace="calibratedRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <view contentMode="scaleToFill" id="fzh-BV-qNd" userLabel="Background View">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+        <view contentMode="scaleToFill" id="JQU-gf-4ss" userLabel="Background View">
+            <rect key="frame" x="0.0" y="0.0" width="1632" height="1224"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" red="0.52872869320000004" green="0.28113162879999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="zombiecoder" translatesAutoresizingMaskIntoConstraints="NO" id="15k-Yl-POZ">
+                    <rect key="frame" x="0.0" y="0.0" width="1632" height="1224"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.01171678569" blue="0.1184098688" alpha="1" colorSpace="calibratedRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="basement" width="3264" height="2448"/>
+        <image name="cityscape" width="2048" height="1536"/>
+        <image name="zombiecoder" width="2048" height="1536"/>
+    </resources>
 </document>
