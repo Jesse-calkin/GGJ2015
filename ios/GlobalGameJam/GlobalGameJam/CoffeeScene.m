@@ -16,6 +16,7 @@ static NSString * const GGJFillingAtlasName = @"filling";
 @property (nonatomic) CGRect coffeeRect;
 @property (nonatomic, strong) SKSpriteNode *coffeeSprite;
 @property (nonatomic, strong) SKSpriteNode *fillingSprite;
+@property (nonatomic, strong) SKSpriteNode *coffeeButton;
 @property (nonatomic, strong) SKSpriteNode *blocker;
 @property (nonatomic, strong) NSMutableArray *coffeeFrames;
 @property (nonatomic, strong) NSMutableArray *fillingFrames;
@@ -34,11 +35,11 @@ static NSString * const GGJFillingAtlasName = @"filling";
     [self setupBlocker];
     
     SKTextureAtlas *coffeeAtlas = [SKTextureAtlas atlasNamed:GGJCoffeeAtlasName];
-    SKSpriteNode *coffeeButton = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:[[coffeeAtlas textureNames] lastObject]]];
-    coffeeButton.position = CGPointMake(175, 225);
-    coffeeButton.xScale = 3.0;
-    coffeeButton.yScale = 3.0;
-    [self addChild:coffeeButton];
+    self.coffeeButton = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:[[coffeeAtlas textureNames] lastObject]]];
+    self.coffeeButton.position = CGPointMake(175, 225);
+    self.coffeeButton.xScale = 3.0;
+    self.coffeeButton.yScale = 3.0;
+    [self addChild:self.coffeeButton];
 
     [self performSelector:@selector(setupTextureAtlas) withObject:nil afterDelay:0.33f];
 }
@@ -112,10 +113,10 @@ static NSString * const GGJFillingAtlasName = @"filling";
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         NSLog(@"Tapped point: %f,%f", location.x, location.y);
-        BOOL hitCoffee = location.x > self.coffeeRect.origin.x && location.x < (self.coffeeRect.origin.x + self.coffeeRect.size.width) && location.y > self.coffeeRect.origin.y && location.y < (self.coffeeRect.origin.y + self.coffeeRect.size.height);
+        BOOL hitCoffee = CGRectContainsPoint(self.coffeeButton.frame, location);
         BOOL blocked = CGRectContainsPoint(self.blocker.frame, location);
         
-        if (hitCoffee && !blocked) {
+        if (hitCoffee) {
             NSLog(@"Hit the coffee!");
             self.fillingSprite.hidden = NO;
             self.coffeeSprite.paused = NO;
