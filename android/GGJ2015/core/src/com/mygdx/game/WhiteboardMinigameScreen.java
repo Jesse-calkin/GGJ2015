@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -8,29 +10,44 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 
 import java.util.ArrayList;
 
-public class WhiteboardMinigameScreen extends ScreenAdapter {
+public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProcessor {
 
     MyGdxGame mGameInstance;
     ArrayList<Vector2> mPoints;
     OrthographicCamera mGuiCam;
     Vector3 mTouchPoint = new Vector3();
+    Actor mActor;
 
     public WhiteboardMinigameScreen(final MyGdxGame game) {
         mGameInstance = game;
+        InputMultiplexer inputMultiplexer = new InputMultiplexer(this);
+        Gdx.input.setInputProcessor(inputMultiplexer);
         mGuiCam = new OrthographicCamera();
         mGuiCam.setToOrtho(false, 800, 480);
         mGuiCam.update();
         mPoints = new ArrayList<Vector2>();
+        mActor = new Actor();
+        mActor.addListener(new DragListener() {
+            @Override
+            public void touchDragged (InputEvent event, float x, float y, int pointer) {
+                mPoints.add(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+                mPoints.add(new Vector2(x, y));
+            }
+        });
+       // inputMultiplexer.addProcessor(1, mActor);
     }
 
     private void update() {
-        if (Gdx.input.isTouched()) {
-            Vector3 unprojectedTouchPoint = mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-            mPoints.add(new Vector2(unprojectedTouchPoint.x, unprojectedTouchPoint.y));
-        }
+//        if (Gdx.input.isTouched()) {
+//            Vector3 unprojectedTouchPoint = mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
+//            mPoints.add(new Vector2(unprojectedTouchPoint.x, unprojectedTouchPoint.y));
+//        }
     }
 
     private void draw() {
@@ -45,7 +62,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter {
 
         for (int i = 1; i < mPoints.size()-1; i++) {
             shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-            shapeRenderer.line(mPoints.get(i).x, mPoints.get(i).y, mPoints.get(i+1).x, mPoints.get(i+1).y);
+            shapeRenderer.line(mPoints.get(i).x, mPoints.get(i).y, mPoints.get(i + 1).x, mPoints.get(i + 1).y);
             shapeRenderer.end();
         }
     }
@@ -59,5 +76,49 @@ public class WhiteboardMinigameScreen extends ScreenAdapter {
     @Override
     public void pause() {
 
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        Vector3 unprojectedTouchPoint = mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
+        Vector3 unprojectedEndPoint = mGuiCam.unproject(mTouchPoint.set(screenX, screenY, 0));
+        mPoints.add(new Vector2(unprojectedTouchPoint.x, unprojectedTouchPoint.y));
+        mPoints.add(new Vector2(unprojectedEndPoint.x, unprojectedEndPoint.y));
+        return true;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
     }
 }
