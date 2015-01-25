@@ -49,10 +49,11 @@ public class CountdownClock {
             @Override
             public void run() {
                 mSeconds -= 1;
-                if (mSeconds <= 0) {
+                if (mSeconds == 0) {
                     mSeconds = 0;
                     if (mListener != null) {
                         mListener.onCountdownFinished();
+                        //mSeconds = mFullDuration;
                     }
                 }
             }
@@ -74,4 +75,5 @@ public class CountdownClock {
     public void setY(float y) {
         mY = y;
     }
+
 }
