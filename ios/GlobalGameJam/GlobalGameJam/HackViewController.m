@@ -59,6 +59,23 @@ static NSInteger CharactersPerTap = 20;
 - (void)updateLabel {
     NSString *currentString = [self currentString];
     self.label.text = currentString;
+    
+    CGFloat width = self.view.bounds.size.width;
+    CGFloat maximumHeight = CGFLOAT_MAX;
+    CGSize maximumSize = CGSizeMake(width, maximumHeight);
+    CGSize textSize = [currentString sizeWithFont:self.label.font constrainedToSize:maximumSize lineBreakMode:self.label.lineBreakMode];
+    CGFloat textHeight = textSize.height;
+    
+    CGRect labelFrame = self.label.frame;
+    labelFrame.origin.y = 0.0f;
+    if (textHeight > self.view.bounds.size.height) {
+        labelFrame.origin.y = self.view.bounds.size.height - textHeight;
+    }
+    labelFrame.size.width = width;
+    labelFrame.size.height = textSize.height;
+    self.label.frame = labelFrame;
+    
+    self.label.backgroundColor = [UIColor blueColor];
 }
 
 - (void)clearButton:(UIButton *)button {
