@@ -23,6 +23,9 @@ static NSString * const GGJCoffeeAtlasName = @"Coffee";
 - (void)didMoveToView:(SKView *)view
 {
     self.coffeeRect = CGRectMake(117.0, 200.0, 75.0, 130.0);
+    
+    self.view.showsFPS = YES;
+    self.view.showsNodeCount = YES;
 
     [self setupBlocker];
 
