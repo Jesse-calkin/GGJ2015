@@ -14,7 +14,7 @@
 static void *AssociationKey;
 
 - (void)setSceneDelegate:(id<SceneDelegate>)sceneDelegate {
-    objc_setAssociatedObject(self, AssociationKey, sceneDelegate, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, AssociationKey, sceneDelegate, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (id<SceneDelegate>)sceneDelegate {
