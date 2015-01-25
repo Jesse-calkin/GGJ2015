@@ -12,6 +12,7 @@
 @class GGJDecisionPointChoice;
 
 extern NSString *const GGJGameOverNotification;
+extern NSString *const GGJScoreChangedNotification;
 
 @interface GGJGameStateManager : NSObject
 
