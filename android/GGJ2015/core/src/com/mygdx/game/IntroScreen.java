@@ -3,10 +3,8 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
@@ -45,7 +43,7 @@ public class IntroScreen extends ScreenAdapter {
         mStartGameY = (mGameInstance.screenHeight / 2) + (mStartRectHeight / 2);
 
         mCreditsX = (mGameInstance.screenWidth / 2) - (mCreditsRectWidth / 2);
-        mCreditsY = (mGameInstance.screenHeight / 2) + (mCreditsRectHeight / 2) - mStartRectHeight - 10;
+        mCreditsY = (mGameInstance.screenHeight / 2) + (mCreditsRectHeight / 2) - mStartRectHeight - 60;
 
         mStartGameRect = new Rectangle(mStartGameX, mStartGameY - mStartRectHeight, mStartRectWidth, mStartRectHeight);
         mCreditsRect = new Rectangle(mCreditsX, mCreditsY - mCreditsRectHeight, mCreditsRectWidth, mCreditsRectHeight);
@@ -89,14 +87,6 @@ public class IntroScreen extends ScreenAdapter {
                 mCreditsX,
                 mCreditsY);
         mGameInstance.batch.end();
-
-        ShapeRenderer renderer = new ShapeRenderer();
-        renderer.setAutoShapeType(true);
-        renderer.setColor(Color.GREEN);
-        renderer.begin();
-        renderer.rect(mStartGameX, mStartGameY - mStartRectHeight, mStartRectWidth, mStartRectHeight);
-        renderer.rect(mCreditsX, mCreditsY - mCreditsRectHeight, mCreditsRectWidth, mCreditsRectHeight);
-        renderer.end();
     }
 
     @Override
