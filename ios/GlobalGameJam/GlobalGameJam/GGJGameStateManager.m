@@ -30,7 +30,7 @@ NSString *const GGJScoreChangedNotification = @"GGJScoreChangedNotification";
 
 - (void)handleTimeUp
 {
-    NSLog(@"TIME UP MOTHERFUCKER");
+    [[NSNotificationCenter defaultCenter] postNotificationName:GGJGameOverNotification object:nil];
 }
 
 + (instancetype)sharedInstance
