@@ -18,4 +18,6 @@
 @property (assign, nonatomic) BOOL handled;
 @property (assign, nonatomic) NSTimeInterval scheduledTime;
 
+- (Class)viewControllerClass;
+
 @end

@@ -4,9 +4,17 @@
 <array>
 	<dict>
 		<key>viewControllerClassName</key>
+		<string>PlanningViewController</string>
+		<key>scheduledTime</key>
+		<integer>10</integer>
+		<key>duration</key>
+		<integer>20</integer>
+	</dict>
+	<dict>
+		<key>viewControllerClassName</key>
 		<string>CoffeeViewController</string>
 		<key>scheduledTime</key>
-		<integer>30</integer>
+		<integer>50</integer>
 		<key>duration</key>
 		<integer>20</integer>
 	</dict>
@@ -14,15 +22,7 @@
 		<key>viewControllerClassName</key>
 		<string>HackViewController</string>
 		<key>scheduledTime</key>
-		<integer>60</integer>
-		<key>duration</key>
-		<integer>20</integer>
-	</dict>
-	<dict>
-		<key>viewControllerClassName</key>
-		<string>PlanningViewController</string>
-		<key>scheduledTime</key>
-		<integer>90</integer>
+		<integer>80</integer>
 		<key>duration</key>
 		<integer>20</integer>
 	</dict>

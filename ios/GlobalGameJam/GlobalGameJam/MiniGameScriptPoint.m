@@ -10,4 +10,10 @@
 
 @implementation MiniGameScriptPoint
 
+- (Class)viewControllerClass
+{
+    Class viewControllerClass = NSClassFromString(self.viewControllerClassName);
+    return viewControllerClass;
+}
+
 @end
