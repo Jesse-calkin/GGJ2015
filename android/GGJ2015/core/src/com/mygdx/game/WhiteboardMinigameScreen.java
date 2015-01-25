@@ -10,9 +10,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 
 import java.util.ArrayList;
 
@@ -22,7 +19,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
     ArrayList<Vector2> mPoints;
     OrthographicCamera mGuiCam;
     Vector3 mTouchPoint = new Vector3();
-    Actor mActor;
+    CountdownClock countdownClock;
 
     public WhiteboardMinigameScreen(final MyGdxGame game) {
         mGameInstance = game;
@@ -32,22 +29,16 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
         mGuiCam.setToOrtho(false, 800, 480);
         mGuiCam.update();
         mPoints = new ArrayList<Vector2>();
-        mActor = new Actor();
-        mActor.addListener(new DragListener() {
-            @Override
-            public void touchDragged (InputEvent event, float x, float y, int pointer) {
-                mPoints.add(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
-                mPoints.add(new Vector2(x, y));
-            }
-        });
-       // inputMultiplexer.addProcessor(1, mActor);
+        countdownClock = new CountdownClock(mGameInstance);
+        countdownClock.setDuration(20);
+        countdownClock.setDelay(2);
+        countdownClock.setX(20);
+        countdownClock.setY(20);
+        countdownClock.start();
     }
 
     private void update() {
-//        if (Gdx.input.isTouched()) {
-//            Vector3 unprojectedTouchPoint = mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-//            mPoints.add(new Vector2(unprojectedTouchPoint.x, unprojectedTouchPoint.y));
-//        }
+
     }
 
     private void draw() {
@@ -65,6 +56,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
             shapeRenderer.line(mPoints.get(i).x, mPoints.get(i).y, mPoints.get(i + 1).x, mPoints.get(i + 1).y);
             shapeRenderer.end();
         }
+        countdownClock.render();
     }
 
     @Override
