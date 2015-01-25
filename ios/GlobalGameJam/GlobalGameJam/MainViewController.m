@@ -143,6 +143,7 @@
 
 - (void)gameViewControllerFinished:(UIViewController *)gameViewController {
     if ([gameViewController isKindOfClass:[HackViewController class]]) {
+        [[GGJGameStateManager sharedInstance] handleMinigameWon:YES];
         [gameViewController dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -166,10 +167,6 @@
             }];
         }
     }
-    else if ([gameViewController isKindOfClass:[HackViewController class]]) {
-        [[GGJGameStateManager sharedInstance] handleMinigameWon:YES];
-    }
-    
 }
 
 @end
