@@ -234,8 +234,6 @@
 - (void)setUpBackgroundViews {
     [self.backgroundViews enumerateObjectsUsingBlock:^(UIView *backgroundView, NSUInteger index, BOOL *stop) {
         [self.backgroundViewsContainerView addSubview:backgroundView];
-        backgroundView.frame = self.backgroundViewsContainerView.bounds;
-        backgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         backgroundView.alpha = 0.0f;
     }];
 }
