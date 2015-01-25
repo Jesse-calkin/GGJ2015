@@ -9,7 +9,7 @@
 #import "HackViewController.h"
 #import "UIViewController+Additions.h"
 
-static NSInteger CharactersPerTap = 20;
+static NSInteger CharactersPerTap = 40;
 
 @interface HackViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
@@ -29,6 +29,28 @@ static NSInteger CharactersPerTap = 20;
     
     [self populateFullString];
     [self initializeViews];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    CGFloat y = 0.0f;
+    CGFloat halfWidth = self.view.frame.size.width / 2.0f;
+    CGFloat height = self.view.frame.size.height;
+    
+    CGRect leftButtonFrame = self.leftButton.frame;
+    leftButtonFrame.origin.x = 0.0f;
+    leftButtonFrame.origin.y = y;
+    leftButtonFrame.size.width = halfWidth;
+    leftButtonFrame.size.height = height;
+    self.leftButton.frame = leftButtonFrame;
+    
+    CGRect rightButtonFrame = self.rightButton.frame;
+    rightButtonFrame.origin.x = halfWidth;
+    rightButtonFrame.origin.y = y;
+    rightButtonFrame.size.width = halfWidth;
+    rightButtonFrame.size.height = height;
+    self.rightButton.frame = rightButtonFrame;
 }
 
 #pragma mark - Actions
@@ -74,8 +96,6 @@ static NSInteger CharactersPerTap = 20;
     labelFrame.size.width = width;
     labelFrame.size.height = textSize.height;
     self.label.frame = labelFrame;
-    
-    self.label.backgroundColor = [UIColor blueColor];
 }
 
 - (void)clearButton:(UIButton *)button {
