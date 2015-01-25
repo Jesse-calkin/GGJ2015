@@ -11,7 +11,7 @@
 #import "GameViewControllerDelegate.h"
 #import "SceneDelegate.h"
 
-@interface UIViewController (Additions) <SceneDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface UIViewController (Additions) <GameViewControllerDelegate, SceneDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
 @property (strong, nonatomic) id<GameViewControllerDelegate> gameViewControllerDelegate;
 

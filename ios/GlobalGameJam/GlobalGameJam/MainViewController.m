@@ -10,6 +10,8 @@
 #import "UIViewController+Additions.h"
 #import "GGJClock.h"
 #import "GGJGameStateManager.h"
+#import "UIViewController+Additions.h"
+
 @interface MainViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @end
@@ -72,6 +74,7 @@
 
 - (void)switchToViewControllerOfClass:(Class)viewControllerClass {
     UIViewController *viewController = [[viewControllerClass alloc] init];
+    viewController.gameViewControllerDelegate = self;
     [self switchToViewController:viewController completion:nil];
 }
 
@@ -84,6 +87,16 @@
     NSArray *pickerItems = [self pickerItems];
     NSString *pickerItem = pickerItems[index];
     return pickerItem;
+}
+
+#pragma mark - <GameViewControllerDelegate>
+
+- (void)gameViewControllerFinished:(UIViewController *)gameViewController {
+    
+}
+
+- (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {
+    
 }
 
 @end
