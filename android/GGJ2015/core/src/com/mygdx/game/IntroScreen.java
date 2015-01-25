@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -48,21 +49,24 @@ public class IntroScreen extends ScreenAdapter {
         mGuiCam = new OrthographicCamera();
         mGuiCam.setToOrtho(false, mGameInstance.screenWidth, mGameInstance.screenHeight);
         mGuiCam.update();
-    }
 
-    private void update() {
-        if (Gdx.input.isTouched()) {
-            mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            @Override
+            public boolean touchDown(int x, int y, int pointer, int button) {
+                mGuiCam.unproject(mTouchPoint.set(x, y, 0));
 
-            if (mStartGameRect.contains(mTouchPoint.x, mTouchPoint.y)) {
-                mGameInstance.setScreen(new MainGameScreen(mGameInstance));
-                return;
+                if (mStartGameRect.contains(mTouchPoint.x, mTouchPoint.y)) {
+                    mGameInstance.setScreen(new MainGameScreen(mGameInstance));
+                    return true;
+                }
+
+                if (mCreditsRect.contains(mTouchPoint.x, mTouchPoint.y)) {
+                    mGameInstance.setScreen(new CreditsScreen(mGameInstance));
+                    return true;
+                }
+                return false;
             }
-
-            if (mCreditsRect.contains(mTouchPoint.x, mTouchPoint.y)) {
-                mGameInstance.setScreen(new CreditsScreen(mGameInstance));
-            }
-        }
+        });
     }
 
     private void draw() {
@@ -82,7 +86,6 @@ public class IntroScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        update();
         draw();
     }
 }

@@ -93,7 +93,7 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
                         mCoffeeLevel = 0;
                         mCoffeeMeterTexture = mCoffeeTextures.get(mCoffeeLevel);
                 }
-                return false;
+                return true;
             }
         });
     }
