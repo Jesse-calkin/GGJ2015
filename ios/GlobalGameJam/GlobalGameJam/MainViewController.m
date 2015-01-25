@@ -73,7 +73,7 @@
 
 - (void)handleScoreChanged
 {
-    self.scoreLabel.text = [NSString stringWithFormat:@"SCORE: %d", [GGJGameStateManager sharedInstance].score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"GAME AWESOMENESS SCORE: %d", [GGJGameStateManager sharedInstance].score];
 }
 
 #pragma mark - Actions

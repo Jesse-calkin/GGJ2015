@@ -11,6 +11,7 @@
 #import "GGJDecisionPoint.h"
 #import "GGJGameStateManager.h"
 #import "MiniGameScriptPoint.h"
+#import "GGJDecisionPointChoice.h"
 
 static NSArray *AllScriptPoints;
 static NSArray *MiniGameScriptPoints;
@@ -96,6 +97,22 @@ static NSArray *DecisionPoints;
     GGJDecisionPoint *decisionPoint = [[GGJDecisionPoint alloc] init];
     decisionPoint.handled = NO;
     decisionPoint.scheduledTime = [dictionary[@"scheduledTime"] doubleValue];
+    NSDictionary *yesDictionary = (NSDictionary* )dictionary[@"Yes"];
+    NSDictionary *noDictionary = (NSDictionary* )dictionary[@"No"];
+    decisionPoint.promptText = dictionary[@"prompt"];
+    
+    GGJDecisionPointChoice *yesDecision = [[GGJDecisionPointChoice alloc] init];
+    yesDecision.correct = YES;
+    yesDecision.optionText = yesDictionary[@"Choice"];
+    yesDecision.resultText = yesDictionary[@"Result"];
+    
+    GGJDecisionPointChoice *noDecision = [[GGJDecisionPointChoice alloc] init];
+    noDecision.correct = NO;
+    noDecision.optionText = noDictionary[@"Choice"];
+    noDecision.resultText = noDictionary[@"Result"];
+    
+    decisionPoint.choices = @[yesDecision, noDecision];
+   
     return decisionPoint;
 }
 

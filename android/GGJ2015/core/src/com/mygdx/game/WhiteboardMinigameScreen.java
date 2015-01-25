@@ -21,6 +21,13 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
     Vector3 mTouchPoint = new Vector3();
     CountdownClock countdownClock;
 
+    String mThemeMessage = "Quick we need a title";
+    String mCharacterMessage = "Quick we need a character";
+    String mMechanicMessage = "Quick we need a game mechanic";
+    int mScreenCount = 0;
+    String mStateText;
+    int mScore = 0;
+
     public WhiteboardMinigameScreen(final MyGdxGame game) {
         mGameInstance = game;
 
@@ -30,8 +37,9 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
         mGuiCam.setToOrtho(false, 800, 480);
         mGuiCam.update();
         mPoints = new ArrayList<Vector2>();
+        mStateText = mThemeMessage;
         countdownClock = new CountdownClock(mGameInstance);
-        countdownClock.setDuration(20);
+        countdownClock.setDuration(10);
         countdownClock.setDelay(2);
         countdownClock.setX(40);
         countdownClock.setY(40);
@@ -47,6 +55,11 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
     private void draw() {
         Gdx.gl.glClearColor(255, 255, 255, 2f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        mGameInstance.font.setColor(Color.DARK_GRAY);
+        mGameInstance.batch.begin();
+        mGameInstance.font.draw(mGameInstance.batch, mStateText, mGameInstance.screenWidth/2.5f, mGameInstance.screenHeight - mGameInstance.screenHeight/8);
+        mGameInstance.batch.end();
 
         ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
@@ -114,6 +127,43 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
 
     @Override
     public void onCountdownFinished() {
-        mGameInstance.setScreen(new EndScreen(mGameInstance, "Ended with score of " + Integer.toString(mPoints.size()), mGameInstance.screenWidth/2.0f, mGameInstance.screenHeight/2.0f ));
+        mScreenCount += 1;
+        countdownClock.stop();
+        mScore += mPoints.size();
+        if (mScreenCount == 1) {
+            mStateText = mCharacterMessage;
+            mPoints.clear();
+            countdownClock = new CountdownClock(mGameInstance);
+            countdownClock.setDuration(10);
+            countdownClock.setDelay(2);
+            countdownClock.setX(20);
+            countdownClock.setY(20);
+            countdownClock.setFontColor(Color.DARK_GRAY);
+            countdownClock.setCountdownListener(this);
+            countdownClock.start();
+        }
+        else if (mScreenCount == 2) {
+            mStateText = mMechanicMessage;
+            mPoints.clear();
+            countdownClock = new CountdownClock(mGameInstance);
+            countdownClock.setDuration(10);
+            countdownClock.setDelay(2);
+            countdownClock.setX(20);
+            countdownClock.setY(20);
+            countdownClock.setFontColor(Color.DARK_GRAY);
+            countdownClock.setCountdownListener(this);
+            countdownClock.start();
+        }
+        else {
+            mStateText = "";
+            String endText;
+            if (mScore >= 1000) {
+                endText = "Congratulations! Your planning phase is now complete!";
+            }
+            else {
+                endText = "Well you have an idea...kind of...";
+            }
+            mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/2.0f, mGameInstance.screenHeight/2.0f ));
+        }
     }
 }
