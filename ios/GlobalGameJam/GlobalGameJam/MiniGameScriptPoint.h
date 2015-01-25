@@ -1,23 +1,21 @@
 //
-//  GGJDecisionPoint.h
+//  MiniGameScriptPoint.h
 //  GlobalGameJam
 //
-//  Created by Carl Veazey on 1/24/15.
+//  Created by Chris Weathers on 1/24/15.
 //  Copyright (c) 2015 shoshinboogie. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "ScriptPoint.h"
 
-@interface GGJDecisionPoint : NSObject <ScriptPoint>
+@interface MiniGameScriptPoint : NSObject <ScriptPoint>
 
-@property (nonatomic) NSArray *choices;
-@property (nonatomic,copy) NSString *promptText;
+@property (assign, nonatomic) NSTimeInterval duration;
+@property (strong, nonatomic) NSString *viewControllerClassName;
 
 //  <ScriptPoint>
 @property (assign, nonatomic) BOOL handled;
 @property (assign, nonatomic) NSTimeInterval scheduledTime;
-
-+ (GGJDecisionPoint *)randomDecisionPoint;
 
 @end

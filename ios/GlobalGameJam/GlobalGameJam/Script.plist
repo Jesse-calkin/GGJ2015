@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>viewControllerClassName</key>
+		<string>CoffeeViewController</string>
+		<key>scheduledTime</key>
+		<integer>10</integer>
+		<key>duration</key>
+		<integer>20</integer>
+	</dict>
+	<dict>
+		<key>viewControllerClassName</key>
+		<string>HackViewController</string>
+		<key>scheduledTime</key>
+		<integer>60</integer>
+		<key>duration</key>
+		<integer>20</integer>
+	</dict>
+	<dict>
+		<key>viewControllerClassName</key>
+		<string>PlanningViewController</string>
+		<key>scheduledTime</key>
+		<integer>120</integer>
+		<key>duration</key>
+		<integer>20</integer>
+	</dict>
+</array>
+</plist>
