@@ -12,6 +12,7 @@
 
 
 NSString *const GGJGameOverNotification = @"GGJGameOverNotification";
+NSString *const GGJScoreChangedNotification = @"GGJScoreChangedNotification";
 
 @interface GGJGameStateManager ()
 
@@ -60,6 +61,13 @@ NSString *const GGJGameOverNotification = @"GGJGameOverNotification";
     if (won) {
         self.score += 1000;
     }
+}
+
+
+- (void)setScore:(NSUInteger)score
+{
+    _score = score;
+    [[NSNotificationCenter defaultCenter] postNotificationName:GGJScoreChangedNotification object:nil];
 }
 
 
