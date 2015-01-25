@@ -44,13 +44,13 @@
     CGFloat width = MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     CGFloat height = MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     self.titleLabel.frame = CGRectMake(width/2 - 500, height/2 - 400, 1000, 200);
-    self.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:44.0f];
+    self.titleLabel.font = [UIFont fontWithName:@"KenPixel-Mini-Square" size:44.0f];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.imageView addSubview:self.titleLabel];
 
-    NSTimeInterval round1Time = 15;
-    NSTimeInterval round2Time = round1Time + 15;
-    NSTimeInterval round3Time = round2Time + 15;
+    NSTimeInterval round1Time = 10;
+    NSTimeInterval round2Time = round1Time + 10;
+    NSTimeInterval round3Time = round2Time + 10;
     self.roundTimes = @[@(round1Time), @(round2Time), @(round3Time)];
     
     self.startTime = 0;
