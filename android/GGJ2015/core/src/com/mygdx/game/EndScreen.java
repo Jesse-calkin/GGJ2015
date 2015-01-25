@@ -30,8 +30,9 @@ public class EndScreen extends ScreenAdapter implements CountdownClock.Countdown
         Gdx.gl.glClearColor(255,255,255,2f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         mGameInstance.font.setColor(Color.BLACK);
+        float xOffset = mGameInstance.font.getBounds(mText).width/2;
         mGameInstance.batch.begin();
-        mGameInstance.font.draw(mGameInstance.batch, mText, mX, mY);
+        mGameInstance.font.draw(mGameInstance.batch, mText, mX - xOffset, mY);
         mGameInstance.batch.end();
     }
 

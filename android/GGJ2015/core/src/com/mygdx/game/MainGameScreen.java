@@ -17,27 +17,35 @@ public class MainGameScreen extends ScreenAdapter {
     Rectangle mCodeClickRectangle;
     Vector3 mTouchPoint;
     OrthographicCamera mGuiCam;
-    int mWhiteboardX;
-    int mWhiteboardY;
-    int mCoffeeX;
-    int mCoffeeY;
-    int mCodeX;
-    int mCodeY;
-    int mRectHeight;
-    int mRectWidth;
+    String mWhiteboard;
+    String mCoffee;
+    String mCode;
+    float mWhiteboardX;
+    float mWhiteboardY;
+    float mCoffeeX;
+    float mCoffeeY;
+    float mCodeX;
+    float mCodeY;
+    float mRectHeight;
+    float mRectWidth;
 
     public MainGameScreen(final MyGdxGame game) {
         mGameInstance = game;
 
         mGameInstance.font.setColor(Color.WHITE);
-        mWhiteboardX = mGameInstance.screenWidth / 3;
-        mWhiteboardY = 450;
-        mCoffeeX = mGameInstance.screenWidth / 3;
-        mCoffeeY = 250;
-        mCodeX = mGameInstance.screenWidth / 3;
-        mCodeY = 50;
-        mRectWidth = 200;
-        mRectHeight = 100;
+        mWhiteboard = "Whiteboard MiniGame";
+        mCoffee = "Coffee MiniGame";
+        mCode = "Coding MiniGame";
+
+        mRectWidth = 200f;
+        mRectHeight = 100f;
+
+        mWhiteboardX = (mGameInstance.screenWidth / 2) - ((mRectWidth + mGameInstance.font.getBounds(mWhiteboard).width) / 2);
+        mWhiteboardY = (mGameInstance.screenHeight  / 2) + ((mRectHeight * 3) / 2);
+        mCoffeeX = mWhiteboardX;
+        mCoffeeY = mWhiteboardY - (mRectHeight * 2);
+        mCodeX = mWhiteboardX;
+        mCodeY = mWhiteboardY - (mRectHeight * 4);
 
         mWhiteboardClickRectangle = new Rectangle(mWhiteboardX, mWhiteboardY, mRectWidth, mRectHeight);
         mCoffeeClickRectangle = new Rectangle(mCoffeeX, mCoffeeY, mRectWidth, mRectHeight);
@@ -99,19 +107,19 @@ public class MainGameScreen extends ScreenAdapter {
     }
 
     private void showWhiteboardZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!",
+        mGameInstance.font.draw(mGameInstance.batch, mWhiteboard,
                 mWhiteboardX + mWhiteboardClickRectangle.width + 10,
                 mWhiteboardY + (mWhiteboardClickRectangle.height / 2));
     }
 
     private void showCoffeeZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is the coffee zone!",
+        mGameInstance.font.draw(mGameInstance.batch, mCoffee,
                 mCoffeeX + mCoffeeClickRectangle.width + 10,
                 mCoffeeY + (mCoffeeClickRectangle.height / 2));
     }
 
     private void showCodeZone() {
-        mGameInstance.font.draw(mGameInstance.batch, "This is some code!",
+        mGameInstance.font.draw(mGameInstance.batch, mCode,
                 mCodeX + mCodeClickRectangle.width + 10,
                 mCodeY + (mCodeClickRectangle.height / 2));
     }
