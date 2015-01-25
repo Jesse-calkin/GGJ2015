@@ -23,10 +23,15 @@
 @interface MainViewController () <GameViewControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
-@property (weak, nonatomic) IBOutlet UIImageView *gameTitleImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *mainCharacterImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *gameMechanicImageView;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
+//  Background image stuff.
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *backgroundViews;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *titleImageViews;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *characterImageViews;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *mechanicImageViews;
+@property (strong, nonatomic) IBOutlet UIView *backgroundViewsContainerView;
+@property (assign, nonatomic) NSInteger currentBackgroundViewIndex;
 
 @end
 
@@ -40,6 +45,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClockTick) name:GGJClockTickElapsedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleScoreChanged) name:GGJScoreChangedNotification object:nil];
+    
+    [self setUpBackgroundViews];
+    [self updateBackgroundViewAnimated:NO];
 }
 
 #pragma mark - Notification Handlers
@@ -69,6 +77,8 @@
             }
         }
     }
+    
+    [self updateBackgroundViewAnimated:YES];
 }
 
 - (void)handleScoreChanged
@@ -154,9 +164,9 @@
     if ([gameViewController isKindOfClass:[PlanningViewController class]]) {
         [[GGJGameStateManager sharedInstance] handleMinigameWon:YES];
         NSArray *images = (NSArray *)context;
-        self.gameTitleImageView.image = [images objectAtIndex:0];
-        self.mainCharacterImageView.image = [images objectAtIndex:1];
-        self.gameMechanicImageView.image = [images objectAtIndex:2];
+        [self applyImage:images[0] toImageViews:self.titleImageViews];
+        [self applyImage:images[1] toImageViews:self.characterImageViews];
+        [self applyImage:images[2] toImageViews:self.mechanicImageViews];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -169,6 +179,63 @@
             }];
         }
     }
+}
+
+#pragma mark - Background image stuff
+
+- (void)applyImage:(UIImage *)image toImageViews:(NSArray *)imageViews {
+    [imageViews enumerateObjectsUsingBlock:^(UIImageView *imageView, NSUInteger index, BOOL *stop) {
+        imageView.image = image;
+    }];
+}
+
+- (NSInteger)backgroundViewIndexForProgress:(CGFloat)progress {
+    NSInteger index = 0;
+    
+    if (progress < .03f) {
+        index = 2;
+    }
+    if (progress < .02f) {
+        index = 1;
+    }
+    if (progress < .01f) {
+        index = 0;
+    }
+    
+    return index;
+}
+
+- (UIView *)backgroundViewForProgress:(CGFloat)progress {
+    NSInteger backgroundViewIndex = [self backgroundViewIndexForProgress:progress];
+    UIView *backgroundView = self.backgroundViews[backgroundViewIndex];
+    return backgroundView;
+}
+
+- (void)showBackgroundView:(UIView *)backgroundView animated:(BOOL)animated {
+    if (backgroundView.alpha == 1.0f) {
+        return;
+    }
+    
+    [backgroundView.superview bringSubviewToFront:backgroundView];
+    
+    NSTimeInterval duration = (animated ? 1.0f : 0.0f);
+    [UIView animateWithDuration:duration animations:^{
+        backgroundView.alpha = 1.0f;
+    }];
+}
+
+- (void)updateBackgroundViewAnimated:(BOOL)animated {
+    NSUInteger elapsedPercentage = [[[GGJGameStateManager sharedInstance] clock] percentageTimeElapsed];
+    CGFloat progress = (CGFloat)elapsedPercentage / 100.0f;
+    UIView *backgroundView = [self backgroundViewForProgress:progress];
+    [self showBackgroundView:backgroundView animated:animated];
+}
+
+- (void)setUpBackgroundViews {
+    [self.backgroundViews enumerateObjectsUsingBlock:^(UIView *backgroundView, NSUInteger index, BOOL *stop) {
+        [self.backgroundViewsContainerView addSubview:backgroundView];
+        backgroundView.alpha = 0.0f;
+    }];
 }
 
 @end
