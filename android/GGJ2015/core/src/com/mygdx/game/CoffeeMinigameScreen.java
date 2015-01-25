@@ -154,9 +154,6 @@ public class CoffeeMinigameScreen extends ScreenAdapter implements CountdownCloc
     }
 
     @Override
-    public void pause() {}
-
-    @Override
     public void onCountdownFinished() {
         mGameInstance.setScreen(new MainGameScreen(mGameInstance));
     }

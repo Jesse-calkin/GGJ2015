@@ -160,9 +160,6 @@ public class CodeMinigameScreen extends ScreenAdapter implements CountdownClock.
     }
 
     @Override
-    public void pause() {}
-
-    @Override
     public void onCountdownFinished() {
         mGameInstance.setScreen(new MainGameScreen(mGameInstance));
     }
