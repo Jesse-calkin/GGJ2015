@@ -58,7 +58,7 @@ public class CountdownClock {
         mTimer.stop();
     }
 
-    public void attachListener(CountdownClockListener listener) {
+    public void setCountdownListener(CountdownClockListener listener) {
         mListener = listener;
     }
 
