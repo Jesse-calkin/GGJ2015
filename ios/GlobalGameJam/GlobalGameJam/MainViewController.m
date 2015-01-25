@@ -10,6 +10,7 @@
 #import "UIViewController+Additions.h"
 #import "GGJClock.h"
 #import "GGJGameStateManager.h"
+#import "PlanningViewController.h"
 #import "UIViewController+Additions.h"
 
 @interface MainViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
@@ -96,7 +97,12 @@
 }
 
 - (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {
-    
+    if ([gameViewController isKindOfClass:[PlanningViewController class]]) {
+        PlanningViewController *planningViewController = (PlanningViewController *)gameViewController;
+        UIImage *image = (UIImage *)context;
+        
+        //  Nick does really awesome things here.
+    }
 }
 
 @end
