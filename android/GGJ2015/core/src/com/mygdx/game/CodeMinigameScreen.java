@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -21,6 +22,9 @@ public class CodeMinigameScreen extends ScreenAdapter {
     OrthographicCamera mGuiCam;
     FileHandle mHandle;
 
+    ShapeRenderer.ShapeType mLeftShapeType;
+    ShapeRenderer.ShapeType mRightShapeType;
+
     int mLeftX;
     int mLeftY;
     int mRightX;
@@ -37,13 +41,14 @@ public class CodeMinigameScreen extends ScreenAdapter {
     public CodeMinigameScreen(final MyGdxGame game) {
         mGameInstance = game;
 
-        mLeftX = 0;
-        mLeftY = 0;
+        //all the ones are to ensure the rects show up on an android device
+        mLeftX = 1;
+        mLeftY = 1;
         mRightX = Gdx.graphics.getWidth() - Gdx.graphics.getWidth() / 4;
-        mRightY = 0;
+        mRightY = 1;
         mCodeShown = 0;
         mButtonRectWidth = Gdx.graphics.getWidth() / 4;
-        mButtonRectHeight = Gdx.graphics.getHeight();
+        mButtonRectHeight = Gdx.graphics.getHeight() - 1;
 
         mLeftTouched = false;
         mRightTouched = false;
@@ -60,11 +65,16 @@ public class CodeMinigameScreen extends ScreenAdapter {
                 mButtonRectWidth,
                 mButtonRectHeight);
 
+        mLeftShapeType = ShapeRenderer.ShapeType.Line;
+        mRightShapeType = ShapeRenderer.ShapeType.Line;
+
         mLeftKeyShape = new ShapeRenderer();
         mLeftKeyShape.setAutoShapeType(true);
+        mLeftKeyShape.setColor(Color.GRAY);
 
         mRightKeyShape = new ShapeRenderer();
         mRightKeyShape.setAutoShapeType(true);
+        mRightKeyShape.setColor(Color.GRAY);
 
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
@@ -73,25 +83,27 @@ public class CodeMinigameScreen extends ScreenAdapter {
     }
 
     private void update() {
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.isTouched() || Gdx.input.isKeyJustPressed(Input.Keys.A) || Gdx.input.isKeyJustPressed(Input.Keys.D)) {
             mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 
-            if (mLeftKeyRectangle.contains(mTouchPoint.x, mTouchPoint.y) && !mLeftTouched) {
-                mLeftKeyShape.setColor(Color.GRAY);
+            if ((mLeftKeyRectangle.contains(mTouchPoint.x, mTouchPoint.y) ||
+                    Gdx.input.isKeyJustPressed(Input.Keys.A)) && !mLeftTouched) {
+                mLeftShapeType = ShapeRenderer.ShapeType.Filled;
                 mLeftTouched = true;
                 drawLine();
                 return;
             }
 
-            if (mRightKeyRectangle.contains(mTouchPoint.x, mTouchPoint.y) && !mRightTouched) {
-                mRightKeyShape.setColor(Color.GRAY);
+            if ((mRightKeyRectangle.contains(mTouchPoint.x, mTouchPoint.y) ||
+                    Gdx.input.isKeyJustPressed(Input.Keys.D)) && !mRightTouched) {
+                mRightShapeType = ShapeRenderer.ShapeType.Filled;
                 mRightTouched = true;
                 drawLine();
                 return;
             }
         }
-        mLeftKeyShape.setColor(Color.CLEAR);
-        mRightKeyShape.setColor(Color.CLEAR);
+        mLeftShapeType = ShapeRenderer.ShapeType.Point;
+        mRightShapeType = ShapeRenderer.ShapeType.Point;
     }
 
     private void drawLine() {
@@ -111,11 +123,11 @@ public class CodeMinigameScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         mGameInstance.batch.setProjectionMatrix(mGuiCam.combined);
 
-        mLeftKeyShape.begin(ShapeRenderer.ShapeType.Filled);
+        mLeftKeyShape.begin(mLeftShapeType);
         mLeftKeyShape.rect(mLeftX, mLeftY, mButtonRectWidth, mButtonRectHeight);
         mLeftKeyShape.end();
 
-        mRightKeyShape.begin(ShapeRenderer.ShapeType.Filled);
+        mRightKeyShape.begin(mRightShapeType);
         mRightKeyShape.rect(mRightX, mRightY, mButtonRectWidth, mButtonRectHeight);
         mRightKeyShape.end();
 

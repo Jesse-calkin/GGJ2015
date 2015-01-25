@@ -13,7 +13,7 @@
 
 @interface UIViewController (Additions) <SceneDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
-@property (strong, nonatomic) id<GameViewControllerDelegate> gameViewControllerDelegate;
+@property (weak, nonatomic) id<GameViewControllerDelegate> gameViewControllerDelegate;
 
 - (void)configureForScene;
 - (void)configureForScene:(SKScene *)scene;

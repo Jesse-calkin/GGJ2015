@@ -10,7 +10,9 @@
 #import "UIViewController+Additions.h"
 #import "GGJClock.h"
 #import "GGJGameStateManager.h"
+#import "HackViewController.h"
 #import "PlanningViewController.h"
+#import "CoffeeViewController.h"
 #import "UIViewController+Additions.h"
 
 @interface MainViewController () <GameViewControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
@@ -92,7 +94,9 @@
 #pragma mark - <GameViewControllerDelegate>
 
 - (void)gameViewControllerFinished:(UIViewController *)gameViewController {
-    
+    if ([gameViewController isKindOfClass:[HackViewController class]]) {
+        [gameViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {
@@ -103,6 +107,14 @@
         self.gameMechanicImageView.image = [images objectAtIndex:2];
         
         [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    if ([gameViewController isKindOfClass:[CoffeeViewController class]]) {
+        BOOL didWin = [context boolValue];
+        if (didWin) {
+            [gameViewController dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"How funky is your chicken?");
+            }];
+        }
     }
 }
 

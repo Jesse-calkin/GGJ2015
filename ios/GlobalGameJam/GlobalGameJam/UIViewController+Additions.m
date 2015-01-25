@@ -138,7 +138,7 @@ static void *AssociationKey;
 #pragma mark - Accessors
 
 - (void)setGameViewControllerDelegate:(id<GameViewControllerDelegate>)gameViewControllerDelegate {
-    objc_setAssociatedObject(self, AssociationKey, gameViewControllerDelegate, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, AssociationKey, gameViewControllerDelegate, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (id<GameViewControllerDelegate>)gameViewControllerDelegate {
