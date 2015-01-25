@@ -15,6 +15,10 @@
 
 @interface MainViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UIImageView *gameTitleImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *mainCharacterImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *gameMechanicImageView;
+
 @end
 
 @implementation MainViewController
@@ -98,10 +102,12 @@
 
 - (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {
     if ([gameViewController isKindOfClass:[PlanningViewController class]]) {
-        PlanningViewController *planningViewController = (PlanningViewController *)gameViewController;
-        UIImage *image = (UIImage *)context;
+        NSArray *images = (NSArray *)context;
+        self.gameTitleImageView = [images objectAtIndex:0];
+        self.mainCharacterImageView = [images objectAtIndex:0];
+        self.gameMechanicImageView = [images objectAtIndex:0];
         
-        //  Nick does really awesome things here.
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
