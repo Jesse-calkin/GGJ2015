@@ -25,7 +25,14 @@ NSString *const GGJScoreChangedNotification = @"GGJScoreChangedNotification";
 - (void)startGame
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTimeUp) name:GGJTimeUpNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClockTick) name:GGJClockTickElapsedNotification object:nil];
     self.clock = [[GGJClock alloc] init];
+}
+
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)handleTimeUp
@@ -61,6 +68,12 @@ NSString *const GGJScoreChangedNotification = @"GGJScoreChangedNotification";
     if (won) {
         self.score += 1000;
     }
+}
+
+
+- (void)handleClockTick
+{
+    self.score += 5;
 }
 
 
