@@ -80,8 +80,8 @@ public class CodeMinigameScreen extends ScreenAdapter implements CountdownClock.
         mCountdownClock = new CountdownClock(mGameInstance);
         mCountdownClock.setDuration(20);
         mCountdownClock.setDelay(2);
-        mCountdownClock.setX(20);
-        mCountdownClock.setY(20);
+        mCountdownClock.setX(40);
+        mCountdownClock.setY(40);
         mCountdownClock.setFontColor(Color.WHITE);
         mCountdownClock.setCountdownListener(this);
         mCountdownClock.start();
@@ -158,9 +158,6 @@ public class CodeMinigameScreen extends ScreenAdapter implements CountdownClock.
         update();
         draw();
     }
-
-    @Override
-    public void pause() {}
 
     @Override
     public void onCountdownFinished() {

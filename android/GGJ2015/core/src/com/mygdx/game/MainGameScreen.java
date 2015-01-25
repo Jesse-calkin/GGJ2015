@@ -98,11 +98,6 @@ public class MainGameScreen extends ScreenAdapter {
         draw();
     }
 
-    @Override
-    public void pause() {
-
-    }
-
     private void showWhiteboardZone() {
         mGameInstance.font.draw(mGameInstance.batch, "This is a whiteboard, fear me!",
                 mWhiteboardX + mWhiteboardClickRectangle.width + 10,
