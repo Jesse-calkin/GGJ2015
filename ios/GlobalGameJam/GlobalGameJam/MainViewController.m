@@ -27,8 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *gameMechanicImageView;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
-@property (nonatomic) BOOL canDisplayDecisionPoint;
-
 @end
 
 @implementation MainViewController
@@ -41,13 +39,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClockTick) name:GGJClockTickElapsedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleScoreChanged) name:GGJScoreChangedNotification object:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    self.canDisplayDecisionPoint = YES;
 }
 
 #pragma mark - Notification Handlers
@@ -64,17 +55,17 @@
     
     id<ScriptPoint> currentScriptPoint = [ScriptManager currentScriptPoint];
     if (currentScriptPoint != nil) {
-        if ([currentScriptPoint isKindOfClass:[GGJDecisionPoint class]]) {
-            if (self.canDisplayDecisionPoint) {
+        if (self.presentedViewController == nil) {
+            currentScriptPoint.handled = YES;
+            
+            if ([currentScriptPoint isKindOfClass:[GGJDecisionPoint class]]) {
                 GGJDecisionPoint *decisionPoint = (GGJDecisionPoint *)currentScriptPoint;
-                decisionPoint.handled = YES;
                 [self presentDecisionPoint:decisionPoint];
             }
-        }
-        else if ([currentScriptPoint isKindOfClass:[MiniGameScriptPoint class]]) {
-            MiniGameScriptPoint *miniGameScriptPoint = (MiniGameScriptPoint *)currentScriptPoint;
-            miniGameScriptPoint.handled = YES;
-            [self switchToViewControllerOfClass:miniGameScriptPoint.viewControllerClass];
+            else if ([currentScriptPoint isKindOfClass:[MiniGameScriptPoint class]]) {
+                MiniGameScriptPoint *miniGameScriptPoint = (MiniGameScriptPoint *)currentScriptPoint;
+                [self switchToViewControllerOfClass:miniGameScriptPoint.viewControllerClass];
+            }
         }
     }
 }
@@ -125,8 +116,6 @@
 #pragma mark - Private
 
 - (void)switchToViewControllerOfClass:(Class)class {
-    self.canDisplayDecisionPoint = NO;
-    
     UIViewController *viewController = [[class alloc] init];
     viewController.gameViewControllerDelegate = self;
     [self switchToViewController:viewController completion:nil];
