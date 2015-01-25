@@ -44,11 +44,11 @@ public class CodeMinigameScreen extends ScreenAdapter {
         //all the ones are to ensure the rects show up on an android device
         mLeftX = 1;
         mLeftY = 1;
-        mRightX = Gdx.graphics.getWidth() - Gdx.graphics.getWidth() / 4;
+        mRightX = mGameInstance.screenWidth - mGameInstance.screenWidth / 4;
         mRightY = 1;
         mCodeShown = 0;
-        mButtonRectWidth = Gdx.graphics.getWidth() / 4;
-        mButtonRectHeight = Gdx.graphics.getHeight() - 1;
+        mButtonRectWidth = mGameInstance.screenWidth / 4;
+        mButtonRectHeight = mGameInstance.screenHeight - 1;
 
         mLeftTouched = false;
         mRightTouched = false;
@@ -78,7 +78,7 @@ public class CodeMinigameScreen extends ScreenAdapter {
 
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
-        mGuiCam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        mGuiCam.setToOrtho(false, mGameInstance.screenWidth, mGameInstance.screenHeight);
         mGuiCam.update();
     }
 
@@ -136,7 +136,7 @@ public class CodeMinigameScreen extends ScreenAdapter {
         mGameInstance.batch.begin();
         mGameInstance.font.drawMultiLine(mGameInstance.batch,
                 subString,
-                Gdx.graphics.getWidth() / 4,
+                mGameInstance.screenWidth / 4,
                 mGameInstance.font.getMultiLineBounds(subString).height);
         mGameInstance.batch.end();
     }

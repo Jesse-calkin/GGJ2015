@@ -14,12 +14,22 @@
 #import "PlanningViewController.h"
 #import "CoffeeViewController.h"
 #import "UIViewController+Additions.h"
+#import "DecisionModalViewController.h"
+#import "GGJDecisionPoint.h"
 
 @interface MainViewController () <GameViewControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+
+
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UIImageView *gameTitleImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *mainCharacterImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *gameMechanicImageView;
+
+@property (nonatomic) BOOL canDisplayDecisionPoint;
+
+@property (strong, nonatomic) DecisionModalViewController *modalViewController;
+
+
 
 @end
 
@@ -32,14 +42,24 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClockTick) name:GGJClockTickElapsedNotification object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.canDisplayDecisionPoint = YES;
+}
+
 - (void)handleClockTick
 {
     NSUInteger elapsedPercentage = [[[GGJGameStateManager sharedInstance] clock] percentageTimeElapsed];
     float progress = (float)elapsedPercentage / 100;
+
     NSTimeInterval tickLength = [[[GGJGameStateManager sharedInstance] clock] tickLength];
     [UIView animateWithDuration:tickLength delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
         [self.progressView setProgress:progress animated:YES];
     } completion:nil];
+    
+    [self rollForDecisionsPoint];
 }
 
 #pragma mark - Actions
@@ -73,6 +93,9 @@
     if (viewControllerClass != nil) {
         UIViewController *viewController = [[viewControllerClass alloc] init];
         viewController.gameViewControllerDelegate = self;
+        
+        self.canDisplayDecisionPoint = NO;
+        
         [self switchToViewController:viewController completion:nil];
     }
 }
@@ -93,6 +116,19 @@
     NSArray *pickerItems = [self pickerItems];
     NSString *pickerItem = pickerItems[index];
     return pickerItem;
+}
+
+- (void)rollForDecisionsPoint
+{
+    if (self.canDisplayDecisionPoint) {
+        if (arc4random_uniform(5) == 1) {
+            DecisionModalViewController *modalViewController = [[DecisionModalViewController alloc] init];
+            [modalViewController configureWithDecisionPoint:[GGJDecisionPoint randomDecisionPoint]];
+            modalViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            
+            [self presentViewController:modalViewController animated:YES completion:nil];
+        }
+    }
 }
 
 #pragma mark - <GameViewControllerDelegate>

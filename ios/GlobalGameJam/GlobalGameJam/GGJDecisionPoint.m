@@ -10,4 +10,13 @@
 
 @implementation GGJDecisionPoint
 
+
++ (GGJDecisionPoint *)randomDecisionPoint
+{
+    // Parse some shit and return one of these
+    
+    return nil;
+}
+
+
 @end
