@@ -29,6 +29,7 @@ public class MainGameScreen extends ScreenAdapter {
     public MainGameScreen(final MyGdxGame game) {
         mGameInstance = game;
 
+        mGameInstance.font.setColor(Color.WHITE);
         mWhiteboardX = mGameInstance.screenWidth / 3;
         mWhiteboardY = 50;
         mCoffeeX = mGameInstance.screenWidth / 3;
@@ -46,6 +47,7 @@ public class MainGameScreen extends ScreenAdapter {
         mGuiCam = new OrthographicCamera();
         mGuiCam.setToOrtho(false, mGameInstance.screenWidth, mGameInstance.screenHeight);
         mGuiCam.update();
+        mGameInstance.font.setColor(Color.WHITE);
     }
 
     private void update() {

@@ -10,6 +10,7 @@ public class CountdownClock {
     }
 
     private Timer mTimer;
+    private Color mFontColor;
     private int mSeconds;
     private float mX;
     private float mY;
@@ -24,6 +25,10 @@ public class CountdownClock {
         mDelay = 0;
     }
 
+    public void setFontColor(Color fontColor) {
+        mFontColor = fontColor;
+    }
+
     public void setDelay(float seconds) {
         mDelay = seconds;
     }
@@ -33,7 +38,7 @@ public class CountdownClock {
     }
 
     public void render() {
-        mGameInstance.font.setColor(Color.DARK_GRAY);
+        mGameInstance.font.setColor(mFontColor);
         mGameInstance.batch.begin();
         mGameInstance.font.draw(mGameInstance.batch, Integer.toString(mSeconds), mX, mY);
         mGameInstance.batch.end();
@@ -58,7 +63,7 @@ public class CountdownClock {
         mTimer.stop();
     }
 
-    public void attachListener(CountdownClockListener listener) {
+    public void setCountdownListener(CountdownClockListener listener) {
         mListener = listener;
     }
 

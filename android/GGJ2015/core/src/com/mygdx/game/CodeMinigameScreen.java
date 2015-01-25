@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
-public class CodeMinigameScreen extends ScreenAdapter {
+public class CodeMinigameScreen extends ScreenAdapter implements CountdownClock.CountdownClockListener {
 
     MyGdxGame mGameInstance;
     Rectangle mLeftKeyRectangle;
@@ -21,6 +21,7 @@ public class CodeMinigameScreen extends ScreenAdapter {
     Vector3 mTouchPoint;
     OrthographicCamera mGuiCam;
     FileHandle mHandle;
+    CountdownClock mCountdownClock;
 
     ShapeRenderer.ShapeType mLeftShapeType;
     ShapeRenderer.ShapeType mRightShapeType;
@@ -75,6 +76,15 @@ public class CodeMinigameScreen extends ScreenAdapter {
         mRightKeyShape = new ShapeRenderer();
         mRightKeyShape.setAutoShapeType(true);
         mRightKeyShape.setColor(Color.GRAY);
+
+        mCountdownClock = new CountdownClock(mGameInstance);
+        mCountdownClock.setDuration(20);
+        mCountdownClock.setDelay(2);
+        mCountdownClock.setX(20);
+        mCountdownClock.setY(20);
+        mCountdownClock.setFontColor(Color.WHITE);
+        mCountdownClock.setCountdownListener(this);
+        mCountdownClock.start();
 
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
@@ -139,6 +149,8 @@ public class CodeMinigameScreen extends ScreenAdapter {
                 mGameInstance.screenWidth / 4,
                 mGameInstance.font.getMultiLineBounds(subString).height);
         mGameInstance.batch.end();
+
+        mCountdownClock.render();
     }
 
     @Override
@@ -149,4 +161,9 @@ public class CodeMinigameScreen extends ScreenAdapter {
 
     @Override
     public void pause() {}
+
+    @Override
+    public void onCountdownFinished() {
+        mGameInstance.setScreen(new MainGameScreen(mGameInstance));
+    }
 }
