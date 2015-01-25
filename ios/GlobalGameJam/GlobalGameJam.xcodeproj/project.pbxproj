@@ -45,6 +45,7 @@
 		E44368191A74568700DE967F /* GGJDecisionPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E44368181A74568700DE967F /* GGJDecisionPoint.m */; };
 		E443681C1A74584300DE967F /* GGJDecisionPointChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = E443681B1A74584300DE967F /* GGJDecisionPointChoice.m */; };
 		E454668D1A744153009EB648 /* GGJGameStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E454668C1A744153009EB648 /* GGJGameStateManager.m */; };
+		E4A916041A756E31002F78BB /* kenpixel_mini_square.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 882D05251A74AB13000F02C0 /* kenpixel_mini_square.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -474,6 +475,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4A916041A756E31002F78BB /* kenpixel_mini_square.ttf in Resources */,
 				88570FC41A73720B00258D69 /* CoffeeScene.sks in Resources */,
 				AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */,
 				88570FAC1A734F9500258D69 /* LaunchScreen.xib in Resources */,
