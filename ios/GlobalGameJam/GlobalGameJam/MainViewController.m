@@ -116,7 +116,7 @@
 - (void)rollForDecisionsPoint
 {
     if (self.canDisplayDecisionPoint) {
-        if (arc4random_uniform(5) == 1) {
+        if (arc4random_uniform(20) == 1) {
             DecisionModalViewController *modalViewController = [[DecisionModalViewController alloc] init];
             [modalViewController configureWithDecisionPoint:[GGJDecisionPoint randomDecisionPoint]];
             modalViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;

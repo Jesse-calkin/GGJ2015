@@ -4,6 +4,13 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="kenpixel_mini_square.ttf">
+            <string>KenPixel-Mini-Square</string>
+            <string>KenPixel-Mini-Square</string>
+            <string>KenPixel-Mini-Square</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DecisionModalViewController">
             <connections>
@@ -24,60 +31,63 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lX-nI-xr2">
-                    <rect key="frame" x="175" y="172" width="250" height="256"/>
+                    <rect key="frame" x="100" y="177" width="400" height="247"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6MZ-hE-MQb">
-                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guy1" translatesAutoresizingMaskIntoConstraints="NO" id="6MZ-hE-MQb">
+                            <rect key="frame" x="5" y="5" width="150" height="150"/>
                             <color key="backgroundColor" red="0.38594290520000002" green="0.97829209510000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="75" id="PLG-dd-u1h"/>
-                                <constraint firstAttribute="height" constant="75" id="ryw-Xd-qQQ"/>
+                                <constraint firstAttribute="width" constant="150" id="PLG-dd-u1h"/>
+                                <constraint firstAttribute="height" constant="150" id="ryw-Xd-qQQ"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb5-uX-hjQ">
-                            <rect key="frame" x="80" y="5" width="165" height="163"/>
+                            <rect key="frame" x="160" y="5" width="235" height="152"/>
                             <string key="text">Some Dumbass question that gets really long and can go on and on and on and on and on and on and on and on and on and on and on and on and on</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" name="KenPixel-Mini-Square" family="KenPixel Mini Square" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jVm-LL-3Lx">
-                            <rect key="frame" x="10" y="176" width="230" height="30"/>
-                            <state key="normal" title="Button">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="topButtonPressed:" destination="-1" eventType="touchUpInside" id="5RF-0y-3Fi"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zh0-Ng-foz">
-                            <rect key="frame" x="10" y="216" width="230" height="30"/>
+                            <rect key="frame" x="10" y="206" width="380" height="31"/>
+                            <fontDescription key="fontDescription" name="KenPixel-Mini-Square" family="KenPixel Mini Square" pointSize="15"/>
                             <state key="normal" title="Button">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="bottomButtonPressed:" destination="-1" eventType="touchUpInside" id="1qa-1F-0aC"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jVm-LL-3Lx">
+                            <rect key="frame" x="10" y="165" width="380" height="31"/>
+                            <fontDescription key="fontDescription" name="KenPixel-Mini-Square" family="KenPixel Mini Square" pointSize="15"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="topButtonPressed:" destination="-1" eventType="touchUpInside" id="5RF-0y-3Fi"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="jVm-LL-3Lx" firstAttribute="top" secondItem="fb5-uX-hjQ" secondAttribute="bottom" constant="8" id="1PY-xf-2Io"/>
                         <constraint firstItem="fb5-uX-hjQ" firstAttribute="leading" secondItem="6MZ-hE-MQb" secondAttribute="trailing" constant="5" id="2RN-Fw-3w8"/>
+                        <constraint firstItem="jVm-LL-3Lx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6MZ-hE-MQb" secondAttribute="bottom" constant="10" id="61z-b4-0UC"/>
                         <constraint firstItem="zh0-Ng-foz" firstAttribute="top" secondItem="jVm-LL-3Lx" secondAttribute="bottom" constant="10" id="6YS-FC-p2m"/>
                         <constraint firstAttribute="trailing" secondItem="zh0-Ng-foz" secondAttribute="trailing" constant="10" id="E1H-Bk-iep"/>
                         <constraint firstItem="zh0-Ng-foz" firstAttribute="top" secondItem="jVm-LL-3Lx" secondAttribute="bottom" constant="10" id="HQT-AN-hSO"/>
-                        <constraint firstItem="6MZ-hE-MQb" firstAttribute="top" secondItem="4lX-nI-xr2" secondAttribute="top" id="MQx-ko-XEN"/>
+                        <constraint firstItem="6MZ-hE-MQb" firstAttribute="top" secondItem="4lX-nI-xr2" secondAttribute="top" constant="5" id="MQx-ko-XEN"/>
                         <constraint firstAttribute="bottom" secondItem="zh0-Ng-foz" secondAttribute="bottom" constant="10" id="Rzv-ev-aUC"/>
                         <constraint firstItem="zh0-Ng-foz" firstAttribute="leading" secondItem="4lX-nI-xr2" secondAttribute="leading" constant="10" id="UGk-lr-p2B"/>
                         <constraint firstItem="fb5-uX-hjQ" firstAttribute="top" secondItem="4lX-nI-xr2" secondAttribute="top" constant="5" id="Umm-Ic-zji"/>
                         <constraint firstItem="jVm-LL-3Lx" firstAttribute="leading" secondItem="4lX-nI-xr2" secondAttribute="leading" constant="10" id="b4O-nn-Gy5"/>
                         <constraint firstAttribute="trailing" secondItem="fb5-uX-hjQ" secondAttribute="trailing" constant="5" id="cl4-Ev-bbt"/>
                         <constraint firstAttribute="trailing" secondItem="jVm-LL-3Lx" secondAttribute="trailing" constant="10" id="gOy-CQ-5Pj"/>
-                        <constraint firstItem="6MZ-hE-MQb" firstAttribute="leading" secondItem="4lX-nI-xr2" secondAttribute="leading" id="uoy-pX-vpx"/>
-                        <constraint firstAttribute="width" constant="250" id="wIg-OV-BDV"/>
+                        <constraint firstItem="6MZ-hE-MQb" firstAttribute="leading" secondItem="4lX-nI-xr2" secondAttribute="leading" constant="5" id="uoy-pX-vpx"/>
+                        <constraint firstAttribute="width" constant="400" id="wIg-OV-BDV"/>
                     </constraints>
                 </view>
             </subviews>
@@ -92,4 +102,7 @@
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="guy1" width="187" height="206"/>
+    </resources>
 </document>

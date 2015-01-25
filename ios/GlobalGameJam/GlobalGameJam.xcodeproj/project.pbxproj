@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		882D05241A74AA95000F02C0 /* GGJDecisionPoint.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882D05231A74AA95000F02C0 /* GGJDecisionPoint.xib */; };
 		88570F991A734F9500258D69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570F981A734F9500258D69 /* main.m */; };
 		88570F9C1A734F9500258D69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570F9B1A734F9500258D69 /* AppDelegate.m */; };
 		88570F9F1A734F9500258D69 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570F9E1A734F9500258D69 /* GameScene.m */; };
@@ -30,6 +29,7 @@
 		AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4522B31A740AB3004DE629 /* HackViewController.xib */; };
 		AD4522BE1A7428A0004DE629 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522BD1A7428A0004DE629 /* UIViewController+Additions.m */; };
 		AD4522C21A746E8F004DE629 /* SKScene+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522C11A746E8F004DE629 /* SKScene+Additions.m */; };
+		DF110AB81A74B024003B1F37 /* DecisionPoints.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF110AB71A74B024003B1F37 /* DecisionPoints.plist */; };
 		DF34A5161A74A36A00A92C07 /* DecisionModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF34A5141A74A36A00A92C07 /* DecisionModalViewController.m */; };
 		DF34A5171A74A36A00A92C07 /* DecisionModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF34A5151A74A36A00A92C07 /* DecisionModalViewController.xib */; };
 		DF8CE1791A742E0E00419701 /* PlanningScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8CE1781A742E0E00419701 /* PlanningScene.m */; };
@@ -55,7 +55,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		882D05231A74AA95000F02C0 /* GGJDecisionPoint.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGJDecisionPoint.xib; sourceTree = "<group>"; };
 		882D05251A74AB13000F02C0 /* kenpixel_mini_square.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kenpixel_mini_square.ttf; sourceTree = "<group>"; };
 		88570F931A734F9500258D69 /* GlobalGameJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalGameJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88570F971A734F9500258D69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		AD4522C11A746E8F004DE629 /* SKScene+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKScene+Additions.m"; sourceTree = "<group>"; };
 		AD4522C41A747201004DE629 /* GameViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewControllerDelegate.h; sourceTree = "<group>"; };
 		AD4522C51A74728D004DE629 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		DF110AB71A74B024003B1F37 /* DecisionPoints.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DecisionPoints.plist; sourceTree = "<group>"; };
 		DF34A5131A74A36A00A92C07 /* DecisionModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionModalViewController.h; sourceTree = "<group>"; };
 		DF34A5141A74A36A00A92C07 /* DecisionModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionModalViewController.m; sourceTree = "<group>"; };
 		DF34A5151A74A36A00A92C07 /* DecisionModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DecisionModalViewController.xib; sourceTree = "<group>"; };
@@ -362,11 +362,11 @@
 		E454668E1A745574009EB648 /* Decision Points */ = {
 			isa = PBXGroup;
 			children = (
+				DF110AB71A74B024003B1F37 /* DecisionPoints.plist */,
 				E44368171A74568700DE967F /* GGJDecisionPoint.h */,
 				E44368181A74568700DE967F /* GGJDecisionPoint.m */,
 				E443681A1A74584300DE967F /* GGJDecisionPointChoice.h */,
 				E443681B1A74584300DE967F /* GGJDecisionPointChoice.m */,
-				882D05231A74AA95000F02C0 /* GGJDecisionPoint.xib */,
 			);
 			name = "Decision Points";
 			sourceTree = "<group>";
@@ -457,7 +457,6 @@
 				DF34A5171A74A36A00A92C07 /* DecisionModalViewController.xib in Resources */,
 				DF8CE1821A742E8500419701 /* PlanningScene.sks in Resources */,
 				AD4522A11A737499004DE629 /* HackText in Resources */,
-				882D05241A74AA95000F02C0 /* GGJDecisionPoint.xib in Resources */,
 				AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */,
 				AD4522B01A740A84004DE629 /* CoffeeViewController.xib in Resources */,
 				88570FCA1A743D6E00258D69 /* Coffee.atlas in Resources */,
@@ -465,6 +464,7 @@
 				DF8CE17E1A742E2B00419701 /* PlanningViewController.xib in Resources */,
 				88570FA11A734F9500258D69 /* GameScene.sks in Resources */,
 				88570FA71A734F9500258D69 /* Main.storyboard in Resources */,
+				DF110AB81A74B024003B1F37 /* DecisionPoints.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
