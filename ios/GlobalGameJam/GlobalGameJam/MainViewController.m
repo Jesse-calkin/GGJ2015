@@ -62,6 +62,7 @@
     Class viewControllerClass = NSClassFromString(pickerItem);
     if (viewControllerClass != nil) {
         UIViewController *viewController = [[viewControllerClass alloc] init];
+        viewController.gameViewControllerDelegate = self;
         [self switchToViewController:viewController completion:nil];
     }
 }
@@ -72,12 +73,6 @@
 }
 
 #pragma mark - Private
-
-- (void)switchToViewControllerOfClass:(Class)viewControllerClass {
-    UIViewController *viewController = [[viewControllerClass alloc] init];
-    viewController.gameViewControllerDelegate = self;
-    [self switchToViewController:viewController completion:nil];
-}
 
 - (NSArray *)pickerItems {
     NSArray *pickerItems = @[@"", @"CoffeeViewController", @"HackViewController", @"PlanningViewController"];
