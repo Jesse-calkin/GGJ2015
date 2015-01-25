@@ -13,12 +13,12 @@ public class MyGdxGame extends Game {
 
     @Override
     public void create() {
-        font = new BitmapFont();
+        font = new BitmapFont(Gdx.files.internal("font.fnt"), Gdx.files.internal("font.png"), false);
         font.scale(0.5f);
         batch = new SpriteBatch();
         screenWidth = Gdx.graphics.getWidth();
         screenHeight = Gdx.graphics.getHeight();
-        this.setScreen(new MainGameScreen(this));
+        this.setScreen(new IntroScreen(this));
     }
 
     @Override
