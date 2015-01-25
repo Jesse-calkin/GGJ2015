@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -82,17 +83,19 @@ public class CodeMinigameScreen extends ScreenAdapter {
     }
 
     private void update() {
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.isTouched() || Gdx.input.isKeyJustPressed(Input.Keys.A) || Gdx.input.isKeyJustPressed(Input.Keys.D)) {
             mGuiCam.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 
-            if (mLeftKeyRectangle.contains(mTouchPoint.x, mTouchPoint.y) && !mLeftTouched) {
+            if ((mLeftKeyRectangle.contains(mTouchPoint.x, mTouchPoint.y) ||
+                    Gdx.input.isKeyJustPressed(Input.Keys.A)) && !mLeftTouched) {
                 mLeftShapeType = ShapeRenderer.ShapeType.Filled;
                 mLeftTouched = true;
                 drawLine();
                 return;
             }
 
-            if (mRightKeyRectangle.contains(mTouchPoint.x, mTouchPoint.y) && !mRightTouched) {
+            if ((mRightKeyRectangle.contains(mTouchPoint.x, mTouchPoint.y) ||
+                    Gdx.input.isKeyJustPressed(Input.Keys.D)) && !mRightTouched) {
                 mRightShapeType = ShapeRenderer.ShapeType.Filled;
                 mRightTouched = true;
                 drawLine();
