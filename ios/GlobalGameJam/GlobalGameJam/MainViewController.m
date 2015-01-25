@@ -17,6 +17,10 @@
 
 @interface MainViewController () <GameViewControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UIImageView *gameTitleImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *mainCharacterImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *gameMechanicImageView;
+
 @end
 
 @implementation MainViewController
@@ -97,10 +101,12 @@
 
 - (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {
     if ([gameViewController isKindOfClass:[PlanningViewController class]]) {
-        PlanningViewController *planningViewController = (PlanningViewController *)gameViewController;
-        UIImage *image = (UIImage *)context;
+        NSArray *images = (NSArray *)context;
+        self.gameTitleImageView.image = [images objectAtIndex:0];
+        self.mainCharacterImageView.image = [images objectAtIndex:1];
+        self.gameMechanicImageView.image = [images objectAtIndex:2];
         
-        //  Nick does really awesome things here.
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     if ([gameViewController isKindOfClass:[CoffeeViewController class]]) {
         BOOL didWin = [context boolValue];
