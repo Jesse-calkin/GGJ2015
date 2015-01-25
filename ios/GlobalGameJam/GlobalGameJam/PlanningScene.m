@@ -7,18 +7,21 @@
 //
 
 #import "PlanningScene.h"
+#import "SKScene+Additions.h"
 
 @interface PlanningScene ()
 
-@property NSMutableArray *lines;
-@property UIImageView *imageView;
-@property UILabel *titleLabel;
+@property (strong, nonatomic) NSMutableArray *lines;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UILabel *titleLabel;
 
-@property NSMutableArray *finishedImages;
+@property (strong, nonatomic) NSMutableArray *finishedImages;
 
-@property NSArray *roundTimes;
-@property NSTimeInterval startTime;
-@property NSInteger currentRound;
+@property (nonatomic) NSInteger renderedLines;
+
+@property (strong, nonatomic) NSArray *roundTimes;
+@property (nonatomic) NSTimeInterval startTime;
+@property (nonatomic) NSInteger currentRound;
 
 @end
 
@@ -30,6 +33,7 @@
     [super didMoveToView:view];
     
     self.lines = [NSMutableArray array];
+    self.renderedLines = 0;
     self.finishedImages = [NSMutableArray array];
     
     self.imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
@@ -37,7 +41,9 @@
     [self.view addSubview:self.imageView];
     
     self.titleLabel = [[UILabel alloc] init];
-    self.titleLabel.frame = CGRectMake(self.view.center.x - 500, self.view.center.y - 400, 1000, 200);
+    CGFloat width = MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    CGFloat height = MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    self.titleLabel.frame = CGRectMake(width/2 - 500, height/2 - 400, 1000, 200);
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:44.0f];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.imageView addSubview:self.titleLabel];
@@ -78,27 +84,20 @@
 {
     self.currentRound = newRound;
 
-    self.titleLabel.alpha = 1.0f;
-    
-    if (self.imageView.image != nil) {
-        [self.finishedImages addObject:self.imageView.image];
-    }
-    
-    [self.lines removeAllObjects];
-    
     if (newRound == 0) {
         self.titleLabel.text = @"QUICK! WE NEED A GAME TITLE";
     }
-    else if(newRound == 1) {
-        self.titleLabel.text = @"NOW WE NEED A MAIN CHARACTER";
+    else {
+        [self.finishedImages addObject:[self renderImage]];
+        [self clearCanvas];
+        
+        if(newRound  == 1) {
+            self.titleLabel.text = @"NOW WE NEED A MAIN CHARACTER";
+        }
+        else if(newRound == 2) {
+            self.titleLabel.text = @"NOW A KICKASS GAME MECHANIC";
+        }
     }
-    else if(newRound == 2) {
-        self.titleLabel.text = @"NOW A KICKASS GAME MECHANIC";
-    }
-    
-    [UIView animateWithDuration:5.0f animations:^{
-        self.titleLabel.alpha = 0.0f;
-    }];
 }
 
 
@@ -107,16 +106,70 @@
     self.titleLabel.alpha = 1.0f;
     self.titleLabel.text = @"LOOKS GOOD, NOW MAKE THAT SHIT";
     
-    //DismissViewController or something?!?!
+    self.view.paused = YES;
+    
+    [self.sceneDelegate scene:self finishedWithContext:self.finishedImages];
+}
+
+
+- (void)clearCanvas
+{
+    [self.lines removeAllObjects];
+    
+    NSMutableArray *linesToDelete = [NSMutableArray array];
+    for(CALayer *layer in self.imageView.layer.sublayers) {
+        if([layer.name isEqualToString:@"line"]) {
+            [linesToDelete addObject:layer];
+        }
+    }
+    [linesToDelete makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    
+    self.renderedLines = 0;
 }
 
 
 - (void)drawLines
 {
-    UIGraphicsBeginImageContext(self.view.frame.size);
+    for (NSInteger i = self.renderedLines; i < self.lines.count; i++) {
+        NSMutableArray *line = [self.lines objectAtIndex:i];
+
+        CGMutablePathRef ref = CGPathCreateMutable();
+        
+        for (NSInteger j = 0; j < line.count; j++) {
+            CGPoint point = [[line objectAtIndex:j] CGPointValue];
+            CGPoint convertedPoint = [self.scene convertPointToView:point];
+            
+            if (j== 0) {
+                CGPathMoveToPoint(ref, nil, convertedPoint.x, convertedPoint.y);
+            }
+            else {
+                CGPathAddLineToPoint(ref, nil, convertedPoint.x, convertedPoint.y);
+            }
+        }
+        
+        CAShapeLayer *lineLayer = [CAShapeLayer layer];
+        lineLayer.name = @"line";
+        lineLayer.strokeColor = [UIColor blackColor].CGColor;
+        lineLayer.fillColor = nil;
+        lineLayer.lineWidth = 20.0f;
+        lineLayer.lineCap = kCALineCapRound;
+        lineLayer.lineJoin = kCALineJoinRound;
+        
+        lineLayer.path = ref;
+        CGPathRelease(ref);
+        [self.imageView.layer addSublayer:lineLayer];
+        
+        self.renderedLines = i;
+    }
+}
+
+
+- (UIImage *)renderImage
+{
+    UIGraphicsBeginImageContext(CGSizeMake(240, 128));
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGContextSetLineWidth(context, 20.0f);
+    CGContextSetLineWidth(context, 20.0f * 240.0f/1024.0f);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetLineJoin(context, kCGLineJoinRound);
     
@@ -125,13 +178,14 @@
             CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
         for (NSInteger j = 0; j < line.count; j++) {
             CGPoint point = [[line objectAtIndex:j] CGPointValue];
-            CGPoint convertedPoint = [self.scene convertPointToView:point];
+            CGPoint convertedPoint = [self convertPointFromView:point];
+            CGPoint scaledPoint = CGPointMake(convertedPoint.x * 240.0f/1024.0f, convertedPoint.y * 128.0f/768.0f);
             
             if (j== 0) {
-                CGContextMoveToPoint(context, convertedPoint.x, convertedPoint.y);
+                CGContextMoveToPoint(context, scaledPoint.x, scaledPoint.y);
             }
             else {
-                CGContextAddLineToPoint(context, convertedPoint.x, convertedPoint.y);
+                CGContextAddLineToPoint(context, scaledPoint.x, scaledPoint.y);
             }
         }
         CGContextStrokePath(context);
@@ -141,7 +195,7 @@
     
     UIGraphicsEndImageContext();
     
-    self.imageView.image = image;
+    return image;
 }
 
 
