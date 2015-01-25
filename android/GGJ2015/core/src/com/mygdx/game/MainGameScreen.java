@@ -29,11 +29,11 @@ public class MainGameScreen extends ScreenAdapter {
     public MainGameScreen(final MyGdxGame game) {
         mGameInstance = game;
 
-        mWhiteboardX = Gdx.graphics.getWidth() / 3;
+        mWhiteboardX = mGameInstance.screenWidth / 3;
         mWhiteboardY = 50;
-        mCoffeeX = Gdx.graphics.getWidth() / 3;
+        mCoffeeX = mGameInstance.screenWidth / 3;
         mCoffeeY = 250;
-        mCodeX = Gdx.graphics.getWidth() / 3;
+        mCodeX = mGameInstance.screenWidth / 3;
         mCodeY = 450;
         mRectWidth = 200;
         mRectHeight = 100;
@@ -44,7 +44,7 @@ public class MainGameScreen extends ScreenAdapter {
 
         mTouchPoint = new Vector3();
         mGuiCam = new OrthographicCamera();
-        mGuiCam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        mGuiCam.setToOrtho(false, mGameInstance.screenWidth, mGameInstance.screenHeight);
         mGuiCam.update();
     }
 
