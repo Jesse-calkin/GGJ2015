@@ -29,6 +29,9 @@
 		AD4522B51A740AB3004DE629 /* HackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4522B31A740AB3004DE629 /* HackViewController.xib */; };
 		AD4522BE1A7428A0004DE629 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522BD1A7428A0004DE629 /* UIViewController+Additions.m */; };
 		AD4522C21A746E8F004DE629 /* SKScene+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522C11A746E8F004DE629 /* SKScene+Additions.m */; };
+		AD4522D31A74B851004DE629 /* ScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522D21A74B851004DE629 /* ScriptManager.m */; };
+		AD4522D71A74BB20004DE629 /* MiniGameScriptPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4522D61A74BB20004DE629 /* MiniGameScriptPoint.m */; };
+		AD4522D91A74BC85004DE629 /* Script.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD4522D81A74BC85004DE629 /* Script.plist */; };
 		DF110AB81A74B024003B1F37 /* DecisionPoints.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF110AB71A74B024003B1F37 /* DecisionPoints.plist */; };
 		DF34A5161A74A36A00A92C07 /* DecisionModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF34A5141A74A36A00A92C07 /* DecisionModalViewController.m */; };
 		DF34A5171A74A36A00A92C07 /* DecisionModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF34A5151A74A36A00A92C07 /* DecisionModalViewController.xib */; };
@@ -94,6 +97,12 @@
 		AD4522C11A746E8F004DE629 /* SKScene+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKScene+Additions.m"; sourceTree = "<group>"; };
 		AD4522C41A747201004DE629 /* GameViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewControllerDelegate.h; sourceTree = "<group>"; };
 		AD4522C51A74728D004DE629 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		AD4522D11A74B851004DE629 /* ScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptManager.h; sourceTree = "<group>"; };
+		AD4522D21A74B851004DE629 /* ScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptManager.m; sourceTree = "<group>"; };
+		AD4522D41A74B9BF004DE629 /* ScriptPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScriptPoint.h; sourceTree = "<group>"; };
+		AD4522D51A74BB20004DE629 /* MiniGameScriptPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniGameScriptPoint.h; sourceTree = "<group>"; };
+		AD4522D61A74BB20004DE629 /* MiniGameScriptPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniGameScriptPoint.m; sourceTree = "<group>"; };
+		AD4522D81A74BC85004DE629 /* Script.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Script.plist; sourceTree = "<group>"; };
 		DF110AB71A74B024003B1F37 /* DecisionPoints.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DecisionPoints.plist; sourceTree = "<group>"; };
 		DF34A5131A74A36A00A92C07 /* DecisionModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionModalViewController.h; sourceTree = "<group>"; };
 		DF34A5141A74A36A00A92C07 /* DecisionModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionModalViewController.m; sourceTree = "<group>"; };
@@ -305,6 +314,19 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		AD4522D01A74B83A004DE629 /* Script */ = {
+			isa = PBXGroup;
+			children = (
+				AD4522D11A74B851004DE629 /* ScriptManager.h */,
+				AD4522D21A74B851004DE629 /* ScriptManager.m */,
+				AD4522D41A74B9BF004DE629 /* ScriptPoint.h */,
+				AD4522D51A74BB20004DE629 /* MiniGameScriptPoint.h */,
+				AD4522D61A74BB20004DE629 /* MiniGameScriptPoint.m */,
+				AD4522D81A74BC85004DE629 /* Script.plist */,
+			);
+			name = Script;
+			sourceTree = "<group>";
+		};
 		DF34A5181A74A37200A92C07 /* Decisions Modal View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +360,7 @@
 		E4074F6A1A74177F00AF1A99 /* Game Logic */ = {
 			isa = PBXGroup;
 			children = (
+				AD4522D01A74B83A004DE629 /* Script */,
 				E454668E1A745574009EB648 /* Decision Points */,
 				E4074F741A74362800AF1A99 /* Foundation Categories */,
 				E4074F6B1A74179F00AF1A99 /* GGJClock.h */,
@@ -460,6 +483,7 @@
 				AD4522AB1A740A6C004DE629 /* MainViewController.xib in Resources */,
 				AD4522B01A740A84004DE629 /* CoffeeViewController.xib in Resources */,
 				88570FCA1A743D6E00258D69 /* Coffee.atlas in Resources */,
+				AD4522D91A74BC85004DE629 /* Script.plist in Resources */,
 				88570FA91A734F9500258D69 /* Images.xcassets in Resources */,
 				DF8CE17E1A742E2B00419701 /* PlanningViewController.xib in Resources */,
 				88570FA11A734F9500258D69 /* GameScene.sks in Resources */,
@@ -492,6 +516,7 @@
 				AD4522B41A740AB3004DE629 /* HackViewController.m in Sources */,
 				AD4522AA1A740A6C004DE629 /* MainViewController.m in Sources */,
 				AD4522C21A746E8F004DE629 /* SKScene+Additions.m in Sources */,
+				AD4522D71A74BB20004DE629 /* MiniGameScriptPoint.m in Sources */,
 				AD4522AF1A740A84004DE629 /* CoffeeViewController.m in Sources */,
 				88570FC81A73763B00258D69 /* CoffeeScene.m in Sources */,
 				E4074F6D1A74179F00AF1A99 /* GGJClock.m in Sources */,
@@ -499,6 +524,7 @@
 				E4074F701A74195300AF1A99 /* GGJTimelineStage.m in Sources */,
 				88570F9F1A734F9500258D69 /* GameScene.m in Sources */,
 				AD4522941A73563B004DE629 /* SceneManager.m in Sources */,
+				AD4522D31A74B851004DE629 /* ScriptManager.m in Sources */,
 				AD4522BE1A7428A0004DE629 /* UIViewController+Additions.m in Sources */,
 				E454668D1A744153009EB648 /* GGJGameStateManager.m in Sources */,
 				88570F991A734F9500258D69 /* main.m in Sources */,
