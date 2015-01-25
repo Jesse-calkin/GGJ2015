@@ -98,9 +98,9 @@
 - (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context {
     if ([gameViewController isKindOfClass:[PlanningViewController class]]) {
         NSArray *images = (NSArray *)context;
-        self.gameTitleImageView = [images objectAtIndex:0];
-        self.mainCharacterImageView = [images objectAtIndex:0];
-        self.gameMechanicImageView = [images objectAtIndex:0];
+        self.gameTitleImageView.image = [images objectAtIndex:0];
+        self.mainCharacterImageView.image = [images objectAtIndex:1];
+        self.gameMechanicImageView.image = [images objectAtIndex:2];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }

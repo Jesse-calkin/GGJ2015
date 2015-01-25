@@ -109,7 +109,7 @@
     self.titleLabel.alpha = 1.0f;
     self.titleLabel.text = @"LOOKS GOOD, NOW MAKE THAT SHIT";
     
-    self.paused = YES;
+    self.view.paused = YES;
     
     [self.sceneDelegate scene:self finishedWithContext:self.finishedImages];
 }
@@ -159,10 +159,10 @@
 
 - (UIImage *)renderImage
 {
-    UIGraphicsBeginImageContext(self.view.frame.size);
+    UIGraphicsBeginImageContext(CGSizeMake(240, 128));
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGContextSetLineWidth(context, 20.0f);
+    CGContextSetLineWidth(context, 20.0f * 240.0f/1024.0f);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetLineJoin(context, kCGLineJoinRound);
     
@@ -171,13 +171,14 @@
             CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
         for (NSInteger j = 0; j < line.count; j++) {
             CGPoint point = [[line objectAtIndex:j] CGPointValue];
-            CGPoint convertedPoint = [self.scene convertPointToView:point];
+            CGPoint convertedPoint = [self convertPointFromView:point];
+            CGPoint scaledPoint = CGPointMake(convertedPoint.x * 240.0f/1024.0f, convertedPoint.y * 128.0f/768.0f);
             
             if (j== 0) {
-                CGContextMoveToPoint(context, convertedPoint.x, convertedPoint.y);
+                CGContextMoveToPoint(context, scaledPoint.x, scaledPoint.y);
             }
             else {
-                CGContextAddLineToPoint(context, convertedPoint.x, convertedPoint.y);
+                CGContextAddLineToPoint(context, scaledPoint.x, scaledPoint.y);
             }
         }
         CGContextStrokePath(context);
