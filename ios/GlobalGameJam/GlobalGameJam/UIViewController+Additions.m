@@ -22,6 +22,8 @@
 }
 
 - (void)configureForScene:(SKScene *)scene {
+    scene.sceneDelegate = self;
+    
     CGRect frame = self.view.bounds;
     SKView *skView = [[SKView alloc] initWithFrame:frame];
     skView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -113,6 +115,12 @@
 + (UIImage *)pixelatedImageOfViewController:(UIViewController *)viewController {
     UIImage *pixelatedImage = [self pixelatedImageOfView:viewController.view];
     return pixelatedImage;
+}
+
+#pragma mark - <SceneDelegate>
+
+- (void)sceneFinished:(SKScene *)scene {
+    
 }
 
 @end

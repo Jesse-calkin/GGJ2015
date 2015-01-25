@@ -11,10 +11,18 @@
 
 @implementation CoffeeViewController
 
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self configureForScene];
+}
+
+#pragma mark - <SceneDelegate>
+
+- (void)sceneFinished:(SKScene *)scene {
+    
 }
 
 @end

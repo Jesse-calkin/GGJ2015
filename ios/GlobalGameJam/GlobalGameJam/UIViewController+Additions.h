@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import "SKScene+Additions.h"
 
-@interface UIViewController (Additions) <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface UIViewController (Additions) <SceneDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
 - (void)configureForScene;
 - (void)configureForScene:(SKScene *)scene;
