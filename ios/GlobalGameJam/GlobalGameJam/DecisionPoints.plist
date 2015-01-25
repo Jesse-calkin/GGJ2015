@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DecisionPoint - 9</key>
+	<dict>
+		<key>prompt</key>
+		<string>Really worried about the fructose in apples and so forth so want to make a substitute. I was thinking of mixing glucose, artificial apple flavoring, and some kind of non-nutritive fibrous substrate together. Then shaping it into apple shapes and letting it set and then dig in :) but I&apos;m not sure which fiber to choose? I was thinking celery pulp? And how long to dry out to let it set? Thanks!</string>
+		<key>yes</key>
+		<string>Celery Pulp: What the actual fuck?</string>
+		<key>no</key>
+		<string>Denim: what the actual fuck?</string>
+	</dict>
+	<key>DecisionPoint - 8</key>
+	<dict>
+		<key>prompt</key>
+		<string>I think we&apos;re ahead of schedule, let&apos;s go party with some undergrads!</string>
+		<key>yes</key>
+		<string>YES: Bob makes a pass at the underage sister of a left defenseman. Three of Bob&apos;s fingers are broken</string>
+		<key>no</key>
+		<string>NO: It wouldn&apos;t have been any fun anyway. These punks can&apos;t hold their liquor.</string>
+	</dict>
+	<key>DecisionPoint - 7</key>
+	<dict>
+		<key>prompt</key>
+		<string>For dinner, should we go to Jerusalem&apos;s or just get some gas station burritos?</string>
+		<key>yes</key>
+		<string>Jerusalem&apos;s: Your team is well fed and ready to go!</string>
+		<key>no</key>
+		<string>Gas station: Bob has died of dysentery.</string>
+	</dict>
+	<key>DecisionPoint - 6</key>
+	<dict>
+		<key>prompt</key>
+		<string>It&apos;s so hard to find good art with an open license, let&apos;s just copy shit off tumblr</string>
+		<key>yes</key>
+		<string>Who even draws? Lets do it: You steal from an artist who happens to be working with another team. They beat you up and take your shoes</string>
+		<key>no</key>
+		<string>No: opengameart.org, duh</string>
+	</dict>
+	<key>DecisionPoint - 5</key>
+	<dict>
+		<key>prompt</key>
+		<string>Should we track tasks with a tool like JIRA, or just use sticky notes?</string>
+		<key>yes</key>
+		<string>Sticky notes: SCRUMMASTER POWER UP! AGILE AS FUCK!!!</string>
+		<key>no</key>
+		<string>JIRA: Dawn breaks in Australia and JIRA goes down for maintenence.</string>
+	</dict>
+	<key>DecisionPoint - 4</key>
+	<dict>
+		<key>prompt</key>
+		<string>Fuck this game library, we should switch to unity!</string>
+		<key>yes</key>
+		<string>Unity Wooooo!: GREY SCREEN</string>
+		<key>no</key>
+		<string>Nope: A disaster has been averted.</string>
+	</dict>
+	<key>DecisionPoint - 3</key>
+	<dict>
+		<key>prompt</key>
+		<string>I don&apos;t understand this theme, we should just reuse last year&apos;s game and put the new name on it.</string>
+		<key>yes</key>
+		<string>Our old game was super cool!: There are no comments in your old code and all your method names are incomprehensible garbage. Most of the art remained with the artist who died of autoeroticasphyxiation months earlier.</string>
+		<key>no</key>
+		<string>Where is the Jam Spirit: Winners don&apos;t cheat!</string>
+	</dict>
+	<key>DecisionPoint - 2</key>
+	<dict>
+		<key>prompt</key>
+		<string>Hey guys, I think our concept is too limited. We should really convert this into an MMORPG.</string>
+		<key>yes</key>
+		<string>I mean, how hard can it be?: Nobody on your team has the faintest idea how multiplayer networking works, this idea goes nowhere.</string>
+		<key>no</key>
+		<string>Nope: A disaster has been averted</string>
+	</dict>
+	<key>DecisionPoint</key>
+	<dict>
+		<key>prompt</key>
+		<string>You&apos;re using git? Man, version control will just slow you down, you should stop using version control and just use a shared folder</string>
+		<key>yes</key>
+		<string>Dropbox will totally work!: A team member accidentally overwrites your project&apos;s shared folder with pictures of their cat! Sucks to be you!</string>
+		<key>no</key>
+		<string>No, love the git and it will love you back: A disaster has been averted!</string>
+	</dict>
+</dict>
+</plist>

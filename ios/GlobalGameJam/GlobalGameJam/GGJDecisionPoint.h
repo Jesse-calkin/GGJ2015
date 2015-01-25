@@ -14,4 +14,7 @@
 @property (nonatomic) NSArray *choices;
 @property (nonatomic,copy) NSString *promptText;
 
++ (GGJDecisionPoint *)randomDecisionPoint;
+
+
 @end
