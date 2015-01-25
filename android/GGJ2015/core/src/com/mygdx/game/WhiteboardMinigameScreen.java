@@ -117,6 +117,6 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
 
     @Override
     public void onCountdownFinished() {
-        mGameInstance.setScreen(new MainGameScreen(mGameInstance));
+        mGameInstance.setScreen(new EndScreen(mGameInstance, "Ended with score of " + Integer.toString(mPoints.size()), mGameInstance.screenWidth/2.0f, mGameInstance.screenHeight/2.0f ));
     }
 }
