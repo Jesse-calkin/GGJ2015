@@ -7,6 +7,6 @@
 //
 
 @protocol GameViewControllerDelegate <NSObject>
-- (void)gameViewControllerFinished;
-- (void)gameViewControllerFinishedWithContext:(id)context;
+- (void)gameViewControllerFinished:(UIViewController *)gameViewController;
+- (void)gameViewController:(UIViewController *)gameViewController finishedWithContext:(id)context;
 @end

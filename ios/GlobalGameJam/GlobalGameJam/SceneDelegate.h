@@ -10,4 +10,5 @@
 
 @protocol SceneDelegate <NSObject>
 - (void)sceneFinished:(SKScene *)scene;
+- (void)scene:(SKScene *)scene finishedWithContext:(id)context;
 @end

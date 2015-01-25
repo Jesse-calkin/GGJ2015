@@ -124,7 +124,15 @@ static void *AssociationKey;
 #pragma mark - <SceneDelegate>
 
 - (void)sceneFinished:(SKScene *)scene {
-    
+    if ([self.gameViewControllerDelegate respondsToSelector:@selector(gameViewControllerFinished:)]) {
+        [self.gameViewControllerDelegate gameViewControllerFinished:self];
+    }
+}
+
+- (void)scene:(SKScene *)scene finishedWithContext:(id)context {
+    if ([self.gameViewControllerDelegate respondsToSelector:@selector(gameViewController:finishedWithContext:)]) {
+        [self.gameViewControllerDelegate gameViewController:self finishedWithContext:context];
+    }
 }
 
 #pragma mark - Accessors
