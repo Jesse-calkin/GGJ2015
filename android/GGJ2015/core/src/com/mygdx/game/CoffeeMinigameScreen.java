@@ -19,7 +19,7 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
     Texture mCoffeeGuyTexture;
     Texture mBackgroundTexture;
     Texture mCoffeeMeterTexture;
-    Rectangle mBackgroundRectangle;
+    Rectangle mCoffeeGuyRectangle;
     Rectangle mCoffeeTouchRectangle;
     ShapeRenderer mCoffeeHighlight;
     Vector3 mTouchPoint;
@@ -53,7 +53,12 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
 
         mCoffeeMeterTexture = mCoffeeTextures.get(0);
 
-        mBackgroundRectangle = new Rectangle(0, 0, mGameInstance.screenWidth, mGameInstance.screenHeight);
+        mCoffeeGuyRectangle = new Rectangle(mCoffeeGuyX,
+                0,
+                mCoffeeGuyTexture.getWidth() * 6,
+                mCoffeeGuyTexture.getHeight() * 6);
+
+
         mCoffeeTouchRectangle = new Rectangle(mGameInstance.screenWidth / 8.5f, mGameInstance.screenHeight / 4, 150, 220);
 
         mTouchPoint = new Vector3();
@@ -63,10 +68,11 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
 
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
-            public boolean touchUp(int x, int y, int pointer, int button) {
+            public boolean touchDown(int x, int y, int pointer, int button) {
                 mGuiCam.unproject(mTouchPoint.set(x, y, 0));
 
-                if (mCoffeeTouchRectangle.contains(mTouchPoint.x, mTouchPoint.y)) {
+                if (mCoffeeTouchRectangle.contains(mTouchPoint.x, mTouchPoint.y) &&
+                        !mCoffeeGuyRectangle.contains(mTouchPoint.x, mTouchPoint.y)) {
                     if (mCoffeeLevel < mCoffeeTextures.size() - 1) {
                         mCoffeeLevel++;
                         mCoffeeMeterTexture = mCoffeeTextures.get(mCoffeeLevel);
@@ -89,6 +95,7 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
                 mCoffeeGuyMovingRight = true;
             }
         }
+        mCoffeeGuyRectangle.setPosition(mCoffeeGuyX, 0);
     }
 
     private void draw() {
@@ -98,8 +105,8 @@ public class CoffeeMinigameScreen extends ScreenAdapter {
 
         mGameInstance.batch.begin();
         mGameInstance.batch.draw(mBackgroundTexture,
-                mBackgroundRectangle.x,
-                mBackgroundRectangle.y,
+                0,
+                0,
                 mGameInstance.screenWidth,
                 mGameInstance.screenHeight);
         mGameInstance.batch.draw(mCoffeeMeterTexture,
