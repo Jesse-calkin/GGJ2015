@@ -27,8 +27,6 @@
 
 @property (nonatomic) BOOL canDisplayDecisionPoint;
 
-@property (strong, nonatomic) DecisionModalViewController *modalViewController;
-
 
 
 @end
