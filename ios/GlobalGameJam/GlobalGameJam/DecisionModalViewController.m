@@ -32,16 +32,16 @@
 
     self.modalView.layer.cornerRadius = 5.0f;
     self.modalView.layer.borderWidth = 1.0f;
-    self.modalView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.modalView.layer.borderColor = [UIColor yellowColor].CGColor;
     
     self.topButton.layer.cornerRadius = 3.0f;
     self.topButton.layer.borderWidth = 1.0f;
-    self.topButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.topButton.layer.borderColor = [UIColor yellowColor].CGColor;
     self.topButton.titleLabel.numberOfLines = 0;
     self.bottomButton.layer.cornerRadius = 3.0f;
     self.bottomButton.layer.borderWidth = 1.0f;
     self.bottomButton.titleLabel.numberOfLines = 0;
-    self.bottomButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.bottomButton.layer.borderColor = [UIColor yellowColor].CGColor;
 }
 
 
