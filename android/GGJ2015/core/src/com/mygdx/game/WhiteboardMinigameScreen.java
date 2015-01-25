@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.util.ArrayList;
 
@@ -130,6 +131,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
         mScreenCount += 1;
         countdownClock.stop();
         mScore += mPoints.size();
+        mGameInstance.whiteboardTextures.add(ScreenUtils.getFrameBufferTexture());
         if (mScreenCount == 1) {
             mStateText = mCharacterMessage;
             mPoints.clear();
@@ -163,7 +165,7 @@ public class WhiteboardMinigameScreen extends ScreenAdapter implements InputProc
             else {
                 endText = "Well you have an idea...kind of...";
             }
-            mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/2.0f, mGameInstance.screenHeight/2.0f ));
+            mGameInstance.setScreen(new EndScreen(mGameInstance, endText, mGameInstance.screenWidth/4, mGameInstance.screenHeight/2.0f ));
         }
     }
 }
