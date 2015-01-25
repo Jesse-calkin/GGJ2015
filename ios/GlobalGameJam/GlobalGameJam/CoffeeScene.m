@@ -36,15 +36,15 @@ static NSString * const GGJCoffeeAtlasName = @"Coffee";
 
 - (void)setupBlocker
 {
-    self.blocker = [SKSpriteNode spriteNodeWithImageNamed:@"snakeLava"];
+    self.blocker = [SKSpriteNode spriteNodeWithImageNamed:@"coffeeman"];
     self.blocker.position = CGPointMake(323.0, 310.0);
     self.blocker.texture.filteringMode = SKTextureFilteringNearest;
-    self.blocker.xScale = 4.4;
-    self.blocker.yScale = 4.4;
+    self.blocker.xScale = 0.5;
+    self.blocker.yScale = 0.5;
     
-    SKAction *a1 = [SKAction moveByX:-230.0 y:0.0 duration:0.88];
+    SKAction *a1 = [SKAction moveByX:-150.0 y:0.0 duration:0.88];
     SKAction *r1 = [a1 reversedAction];
-    SKAction *a2 = [SKAction moveByX:75.0 y:0.0 duration:0.33];
+    SKAction *a2 = [SKAction moveByX:270.0 y:0.0 duration:1.15];
     SKAction *r2 = [a2 reversedAction];
     
     SKAction *chain = [SKAction sequence:@[a1, a2, r2, r1]];

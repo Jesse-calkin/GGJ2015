@@ -46,6 +46,8 @@
 		E443681C1A74584300DE967F /* GGJDecisionPointChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = E443681B1A74584300DE967F /* GGJDecisionPointChoice.m */; };
 		E454668D1A744153009EB648 /* GGJGameStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E454668C1A744153009EB648 /* GGJGameStateManager.m */; };
 		E4A916041A756E31002F78BB /* kenpixel_mini_square.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 882D05251A74AB13000F02C0 /* kenpixel_mini_square.ttf */; };
+		E4A916091A757539002F78BB /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A916071A757539002F78BB /* GameOverViewController.m */; };
+		E4A9160A1A757539002F78BB /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4A916081A757539002F78BB /* GameOverViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,9 @@
 		E443681B1A74584300DE967F /* GGJDecisionPointChoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJDecisionPointChoice.m; sourceTree = "<group>"; };
 		E454668B1A744153009EB648 /* GGJGameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGJGameStateManager.h; sourceTree = "<group>"; };
 		E454668C1A744153009EB648 /* GGJGameStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGJGameStateManager.m; sourceTree = "<group>"; };
+		E4A916061A757539002F78BB /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
+		E4A916071A757539002F78BB /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
+		E4A916081A757539002F78BB /* GameOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +260,7 @@
 		AD4522A31A74095D004DE629 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E4A916051A7573D7002F78BB /* Endgame */,
 				AD4522A41A740966004DE629 /* Main View Controller */,
 				DF8CE17F1A742E3300419701 /* Planning View Controller */,
 				AD4522A51A74096D004DE629 /* Coffee View Controller */,
@@ -395,6 +401,16 @@
 			name = "Decision Points";
 			sourceTree = "<group>";
 		};
+		E4A916051A7573D7002F78BB /* Endgame */ = {
+			isa = PBXGroup;
+			children = (
+				E4A916061A757539002F78BB /* GameOverViewController.h */,
+				E4A916071A757539002F78BB /* GameOverViewController.m */,
+				E4A916081A757539002F78BB /* GameOverViewController.xib */,
+			);
+			name = Endgame;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -488,6 +504,7 @@
 				AD4522D91A74BC85004DE629 /* Script.plist in Resources */,
 				88570FA91A734F9500258D69 /* Images.xcassets in Resources */,
 				DF8CE17E1A742E2B00419701 /* PlanningViewController.xib in Resources */,
+				E4A9160A1A757539002F78BB /* GameOverViewController.xib in Resources */,
 				88570FA11A734F9500258D69 /* GameScene.sks in Resources */,
 				88570FA71A734F9500258D69 /* Main.storyboard in Resources */,
 				DF110AB81A74B024003B1F37 /* DecisionPoints.plist in Resources */,
@@ -524,6 +541,7 @@
 				E4074F6D1A74179F00AF1A99 /* GGJClock.m in Sources */,
 				E44368191A74568700DE967F /* GGJDecisionPoint.m in Sources */,
 				E4074F701A74195300AF1A99 /* GGJTimelineStage.m in Sources */,
+				E4A916091A757539002F78BB /* GameOverViewController.m in Sources */,
 				88570F9F1A734F9500258D69 /* GameScene.m in Sources */,
 				AD4522941A73563B004DE629 /* SceneManager.m in Sources */,
 				AD4522D31A74B851004DE629 /* ScriptManager.m in Sources */,
